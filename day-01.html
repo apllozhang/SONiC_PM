@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#6b489d">
-  <meta name="description" content="分清芯片、整机、镜像、服务四层责任；建立 SONiC 产品坐标系与核验包草稿。">
+  <meta name="description" content="分清芯片、整机、镜像、服务四层责任；建立 SONiC 产品参照框架与核验包草稿。">
   <title>第 1 天 · 产品地图 · SONiC PM Atlas</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css?v=2.1.1">
@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v2.1.0</span>
+    <span class="ver-badge">v2.1.1</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a class="nav-link" href="index.html" data-nav="home">首页</a>
@@ -80,14 +80,14 @@
       <header class="page-header">
         <p class="section-kicker">入门 / 第 1 天</p>
         <h1>产品地图：先分清谁负责什么</h1>
-        <p class="page-lead">第 1 天不背命令。先立坐标系：芯片能力、平台适配、镜像来源、硬件型号、测试加固、售后支持，每一层都要能对应到具体版本和负责人。</p>
+        <p class="page-lead">第 1 天不背命令。先立参照框架：芯片能力、平台适配、镜像来源、硬件型号、测试加固、售后支持，每一层都要能对应到具体版本和负责人。</p>
         <div class="meta-row"><span class="tag ">第 1 天</span><span class="tag ">责任划分</span><span class="tag ">核验包</span></div>
       </header>
       <div class="content-grid">
         <article class="prose">
 
 <h2>为什么「支持 SONiC」不能一句话说完</h2>
-<p>同一句话在不同材料里指的往往不是同一层。芯片厂页面写「Enterprise SONiC 支持基于 StrataXGS 的 50 多个 ODM/OEM 平台」，说的是生态范围，不是某一块板卡的硬件兼容列表（HCL）。整机厂页面写「已在 1G–400G 开放交换机上 harden」，说的是方法路径，不等于你的目标型号已进正式支持清单。</p>
+<p>同一句话在不同材料里指的往往不是同一层。芯片厂页面写「Enterprise SONiC 支持基于 StrataXGS 的 50 多个 ODM/OEM 平台」，说的是生态范围，不是某一块板卡的硬件兼容列表（HCL）。整机厂页面写「已在 1G–400G 开放交换机上 加固」，说的是方法路径，不等于你的目标型号已进正式支持清单。</p>
 <p>产品经理第 1 天的任务，是把「支持」拆成可核对的层，避免把生态声明当成客户现场结论。</p>
 
 <h2>四层责任地图</h2>
@@ -136,7 +136,7 @@
   <li><strong>测试与硬化</strong>：是否有问题单、补丁、测试床、缺陷关闭记录。</li>
   <li><strong>支持服务</strong>：出问题找谁、多久响应、备件与停产怎么通知。</li>
 </ol>
-<div class="callout"><strong>硬性原则：</strong>不能把同 ASIC 的不同板卡设计泛化成相同支持状态；不能把芯片级公开定位外推为客户部署已获支持。</div>
+<div class="callout"><strong>硬性原则：</strong>不能把同 ASIC 的不同板卡设计笼统当成同一种支持状态；不能把芯片级公开定位推成客户部署已获支持。</div>
 
 <h2>案例：三句话里的三个陷阱</h2>
 <table class="matrix">
@@ -148,7 +148,7 @@
       <td>目标型号 × 端口分拆 × 光模块 × 镜像版本，是否在本项目 HCL 上</td>
     </tr>
     <tr>
-      <td>「已在开放交换机上 harden」</td>
+      <td>「已在开放交换机上 加固」</td>
       <td>方法标签 ≠ 可追溯发布</td>
       <td>每个目标补丁是否有 Issue/PR、CI、DUT、测试床、已知限制与负责人</td>
     </tr>
@@ -259,7 +259,7 @@
         <a href="index.html">← 返回首页</a>
         <a href="day-02.html">第 2 天 · 功能证据 →</a>
       </nav>
-      <footer class="site-footer">SONiC PM Atlas v2.1.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
+      <footer class="site-footer">SONiC PM Atlas v2.1.1 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>
   </main>
   <script src="js/app.js?v=2.1.1" defer></script>

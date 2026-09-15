@@ -14,7 +14,7 @@ const tracks = [
 <ul>
   <li>ASIC 驱动经 <code>syncd</code> 容器加载；转发表项与状态同步必须经过 SAI 抽象。</li>
   <li>核验硬件型号（HW-SKU）驱动是否与目标内核及 SAI 版本严格锁定。</li>
-  <li>同 ASIC 的不同板卡设计（端口映射、光学、电源）不能泛化为相同支持状态。</li>
+  <li>同 ASIC 的不同板卡设计（端口映射、光学、电源）不能笼统当成同一种支持状态。</li>
 </ul>
 
 <h2>白牌准入：六件套</h2>
@@ -33,10 +33,10 @@ const tracks = [
 <h2>案例拆解（示意，非排名）</h2>
 <ul>
   <li><strong>芯片商生态页</strong>：Tomahawk 5 等以 51.2 Tb/s 档位介绍 AI/ML 定位——这是芯片级公开定位，不能自动等于某整机、某镜像已支持。</li>
-  <li><strong>整机/ODM harden 叙事</strong>：基于社区分支选 PR、跑 CI/CT、用 Jira 与测试床建追溯链——要问：是否能对每个目标补丁给出 Issue/PR、commit、DUT、已知限制与负责人。</li>
+  <li><strong>整机/ODM 加固 叙事</strong>：基于社区分支选 PR、跑 CI/CT、用 Jira 与测试床建追溯链——要问：是否能对每个目标补丁给出 Issue/PR、commit、DUT、已知限制与负责人。</li>
   <li><strong>光学协同</strong>：强调交换机 + NOS + 多来源光模块组合验证——要落到你项目的 HCL 行，而不是「支持第三方光模块」一句话。</li>
 </ul>
-<div class="callout"><strong>网关：</strong>生态声明不能替代型号级 HCL。评审必须追到准确型号、端口/分拆模式、光模块、镜像、BIOS/CPLD、温度/气流、RMA 与测试报告。</div>
+<div class="callout"><strong>网关：</strong>生态声明不能代替型号级 HCL。评审必须追到准确型号、端口/分拆模式、光模块、镜像、BIOS/CPLD、温度/气流、RMA 与测试报告。</div>
 
 <h2>真实样例：HCL 行与证据列（示意）</h2>
 <table class="matrix">
@@ -246,7 +246,7 @@ orchagent/syncd：与镜像同构建
 
 <h2>分支与发布节奏</h2>
 <ul>
-  <li>社区基线 → 平台插件 → 目标镜像的依赖链要与发布节奏对齐。</li>
+  <li>社区基线 → 平台插件 → 目标镜像的依赖关系要与发布节奏对齐。</li>
   <li>补丁物料清单（BOM）：来源 PR、优先级、冲突风险、回退方式。</li>
   <li>升级与回退写进版本定义：失败恢复、数据保全、时间窗口。</li>
 </ul>
@@ -491,7 +491,7 @@ Owner：赵六</code></pre>
 
 <h2>商业化网关（放行条件）</h2>
 <ul>
-  <li>未通过目标规模/拓扑真实测试床闭环验证的方案，不进入 GA 叙述。</li>
+  <li>未通过目标规模/拓扑真实测试床完整验证的方案，不进入 GA 叙述。</li>
   <li>每一项对外「支持」都能回到版本、平台、证据与负责人。</li>
   <li>未知项有风险签字人，且不进「已支持」统计口径。</li>
 </ul>
@@ -558,7 +558,7 @@ const glossary = {
   <tbody>
     <tr><td>community SONiC</td><td>Apache 2.0 下的社区版本，支持通常以服务型方式提供</td></tr>
     <tr><td>Enterprise / 商业发行</td><td>将社区代码、平台、镜像版本、授权与升级资料绑定为可服务交付</td></tr>
-    <tr><td>harden / 加固</td><td>选补丁、跑 CI/CT、平台验证与缺陷关闭的路径；是方法，不是自动等于 GA</td></tr>
+    <tr><td>加固 / 加固</td><td>选补丁、跑 CI/CT、平台验证与缺陷关闭的路径；是方法，不是自动等于 GA</td></tr>
     <tr><td>EOL / 变更通知</td><td>停产与重大变更的提前告知，应写入合同</td></tr>
     <tr><td>TAC / L3</td><td>技术支持层级；要写清升级路径与响应级别</td></tr>
   </tbody>
@@ -598,7 +598,7 @@ const checklist = {
     <tr><td>4</td><td>目标 NOS / 版本 / 镜像</td><td>社区或商业、授权方式</td><td></td><td></td><td></td></tr>
     <tr><td>5</td><td>SDK / SAI / 平台插件</td><td>版本锁定方式</td><td></td><td></td><td></td></tr>
     <tr><td>6</td><td>硬件、光模块与 HCL</td><td>实验室证据有无</td><td></td><td></td><td></td></tr>
-    <tr><td>7</td><td>补丁 / CI / DUT / 回归</td><td>hardening 追溯链</td><td></td><td></td><td></td></tr>
+    <tr><td>7</td><td>补丁 / CI / DUT / 回归</td><td>加固过程追溯</td><td></td><td></td><td></td></tr>
     <tr><td>8</td><td>AI/DC 拓扑与拥塞验证</td><td>PFC/ECN、封装路径</td><td></td><td></td><td></td></tr>
     <tr><td>9</td><td>升级 / 回退 / CVE / RMA</td><td>窗口与责任</td><td></td><td></td><td></td></tr>
     <tr><td>10</td><td>已知限制与风险签字人</td><td>未知项必须有主</td><td></td><td></td><td></td></tr>
@@ -641,7 +641,7 @@ const cases = {
 
 <h2>案例 A：芯片商 + 整机 ODM</h2>
 <ul>
-  <li><strong>常见叙事</strong>：Enterprise SONiC 覆盖 StrataXGS 系列大量 ODM 平台；整机侧在开放交换机上做 harden，强调与多来源光模块协同验证。</li>
+  <li><strong>常见叙事</strong>：Enterprise SONiC 覆盖 StrataXGS 系列大量 ODM 平台；整机侧在开放交换机上做加固，强调与多来源光模块协同验证。</li>
   <li><strong>分层追问</strong>
     <ul>
       <li>芯片：目标 ASIC 与 SAI 版本？内核是否锁定？</li>
@@ -671,7 +671,7 @@ const cases = {
 <ul>
   <li><strong>常见叙事</strong>：社区代码 + 品牌平台 + 镜像版本 + 授权 + ONIE + 升级资料，绑定为可服务交付。</li>
   <li><strong>分层追问</strong>：仅列出的型号与授权路径是否覆盖你的项目？非列出硬件能否外推？</li>
-  <li><strong>易错</strong>：商业发行文档外推到非清单硬件。</li>
+  <li><strong>易错</strong>：商业发行文档推到非清单硬件。</li>
 </ul>
 
 <h2>你自己的练习模板</h2>
@@ -707,8 +707,8 @@ const cases = {
       <td>发行版功能清单与补丁窗口条款</td>
     </tr>
     <tr>
-      <td>「竞品宣传 harden，你们有吗？」</td>
-      <td>「我们也 hardened」</td>
+      <td>「竞品宣传 加固，你们有吗？」</td>
+      <td>「我们也 加固ed」</td>
       <td>「我们可以说明补丁选取、CI 与平台验证流程，并给出可追溯清单范围。」</td>
       <td>补丁追溯链样例（脱敏）</td>
     </tr>

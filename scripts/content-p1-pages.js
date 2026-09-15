@@ -4,16 +4,16 @@ const featureMap = {
   file: 'feature-map.html',
   title: '功能特性地图',
   description: '功能 × 仓库 × 容器 × DB 表 × 验证命令速查，覆盖 L2/L3/EVPN-VXLAN/QoS/遥测。',
-  kicker: '知识底座',
+  kicker: '知识库',
   h1: '功能特性地图',
   lead: '给售前查「归谁管」、给测试找「验什么」、给 PM 问「证据在哪」。每行尽量对应：社区仓库、容器、关键 DB 表、配置入口、验证命令。',
   tags: [{ text: 'P1' }, { text: '速查' }, { text: '功能地图' }],
   breadcrumb: [
     { label: '首页', href: 'index.html' },
-    { label: '知识底座', href: 'feature-map.html' },
+    { label: '知识库', href: 'feature-map.html' },
   ],
   prev: { href: 'track-02.html', label: '架构与版本工程' },
-  next: { href: 'ecosystem.html', label: '版本与生态坐标系' },
+  next: { href: 'ecosystem.html', label: '版本与生态怎么对上' },
   body: `
 <p class="muted">说明：表中命令为社区常见 CLI 示意，商业发行版命令可能不同；验收前以目标镜像文档为准。仓库名以 GitHub 组织 <code>sonic-net</code> 为准。</p>
 
@@ -195,15 +195,15 @@ const featureMap = {
 
 const ecosystem = {
   file: 'ecosystem.html',
-  title: '版本与生态坐标系',
+  title: '版本与生态怎么对上',
   description: '社区 release 节奏与命名、商业发行版对照、主流 ASIC 与白牌整机矩阵，附官方外链。',
-  kicker: '知识底座',
-  h1: '版本与生态坐标系',
+  kicker: '知识库',
+  h1: '版本与生态怎么对上',
   lead: '全站反复要求「结论对上版本」——本页解释版本从哪来、商业发行如何对照、ASIC 与整机如何分层，避免名词悬空。',
   tags: [{ text: 'P1' }, { text: '版本' }, { text: '生态' }],
   breadcrumb: [
     { label: '首页', href: 'index.html' },
-    { label: '知识底座', href: 'ecosystem.html' },
+    { label: '知识库', href: 'ecosystem.html' },
   ],
   prev: { href: 'feature-map.html', label: '功能特性地图' },
   next: { href: 'glossary.html', label: '术语与参数四态' },
@@ -236,10 +236,10 @@ const ecosystem = {
       <td>整机厂商业发行</td>
       <td>绑定品牌机型、授权、升级资料、服务网络</td>
       <td>仅列出型号/授权路径能否覆盖项目</td>
-      <td>外推到非清单硬件</td>
+      <td>推到非清单硬件</td>
     </tr>
     <tr>
-      <td>厂商加固版（harden）</td>
+      <td>厂商加固版（加固）</td>
       <td>选 PR、CI/CT、平台验证、缺陷关闭</td>
       <td>每个补丁的追溯链是否完整</td>
       <td>市场标签代替发布门禁</td>
@@ -277,7 +277,7 @@ const ecosystem = {
     </tr>
   </tbody>
 </table>
-<p class="muted">本表只用于建立「坐标系」，不是选型推荐或正式 HCL。对外材料请以各厂商最新官方文档与合同范围为准。</p>
+<p class="muted">本表只用于建立「参照框架」，不是选型推荐或正式 HCL。对外材料请以各厂商最新官方文档与合同范围为准。</p>
 
 <h2>把版本写进结论的模板</h2>
 <pre class="code-sample"><code>社区基线：202311（或目标发行版所声明的上游）

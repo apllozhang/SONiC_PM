@@ -1,11 +1,21 @@
 'use strict';
 
 /** 全站唯一版本号：改这里再 build/deploy */
-const SITE_VERSION = '2.1.0';
+const SITE_VERSION = '2.1.1';
 const SITE_VERSION_LABEL = `v${SITE_VERSION}`;
 
 /** CHANGELOG 数据（内容负责人列） */
 const CHANGELOG = [
+  {
+    version: '2.1.1',
+    date: '2026-09-15',
+    owner: '内容组 / SONiC PM Atlas',
+    summary: '全站措辞清理：去掉生硬翻译腔与黑话',
+    changes: [
+      '主标语改为「能说清、能交付、能长期服务」',
+      '「可经营 / 知识底座 / 坐标系 / harden / 泛化 / 外推」等改为日常产品与交付用语',
+    ],
+  },
   {
     version: '2.1.0',
     date: '2026-09-15',
@@ -21,11 +31,11 @@ const CHANGELOG = [
     version: '2.0.1',
     date: '2026-09-15',
     owner: '内容组 / SONiC PM Atlas',
-    summary: 'P1 知识底座：架构扩容、功能地图、版本生态、真实样例',
+    summary: 'P1 知识库：架构扩容、功能地图、版本生态、真实样例',
     changes: [
       '架构线：容器全景、Redis 库表速查、重启影响矩阵、版本锁定样例',
       '新增功能特性地图（功能×仓库×容器×DB×命令）',
-      '新增版本与生态坐标系（release、商业发行、ASIC/整机、官方外链）',
+      '新增版本与生态怎么对上（release、商业发行、ASIC/整机、官方外链）',
       '各能力线至少 1 个真实样例（HCL 行 / 用例 / PR 对应 / 定型行 / 报价拆行）',
     ],
   },
@@ -134,7 +144,7 @@ const LEVELS = [
     level: 'L2',
     name: '熟练 · 能撑起单模块',
     can: [
-      '读懂控制面链路与容器职责，能解释故障卡在哪一环',
+      '读懂控制面路径与容器职责，能解释故障卡在哪一环',
       '按功能×仓库×容器×DB 表定位验证命令',
       '独立完成供应链或测试床的证据收集',
     ],

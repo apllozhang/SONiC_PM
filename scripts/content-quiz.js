@@ -89,7 +89,7 @@ const quiz = {
         a: '板级原理图/版本、ONIE 固件、CPLD、光模块/DAC HCL、热与电、诊断（Support Bundle 覆盖）。',
       },
       {
-        q: '「已在开放交换机上 harden」应追问什么？',
+        q: '「已在开放交换机上 加固」应追问什么？',
         a: '每个目标补丁是否有 Issue/PR、commit、CI、DUT/测试床、已知限制与 Owner；缺一项不能进 GA 功能清单。',
       },
     ],
@@ -160,7 +160,7 @@ const quiz = {
         a: '生态范围说明，不是单一 SKU 的 HCL。',
       },
       {
-        q: '版本坐标系里 ASIC 与白牌整机如何分层？',
+        q: '版本参照框架里 ASIC 与白牌整机如何分层？',
         a: 'ASIC 是芯片层；白牌/ODM 是板卡层（HW-SKU/ONIE/CPLD/HCL）；还要再绑镜像与服务。',
       },
     ],

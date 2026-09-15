@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#6b489d">
   <meta name="description" content="社区 release 节奏与命名、商业发行版对照、主流 ASIC 与白牌整机矩阵，附官方外链。">
-  <title>版本与生态坐标系 · SONiC PM Atlas</title>
+  <title>版本与生态怎么对上 · SONiC PM Atlas</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css?v=2.1.1">
   <link rel="stylesheet" href="css/base.css?v=2.1.1">
@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v2.1.0</span>
+    <span class="ver-badge">v2.1.1</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a class="nav-link" href="index.html" data-nav="home">首页</a>
@@ -76,10 +76,10 @@
   <div class="nav-scrim" id="navScrim" hidden></div>
   <main class="main" id="main" tabindex="-1">
     <div class="container">
-<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="ecosystem.html">知识底座</a></nav>
+<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="ecosystem.html">知识库</a></nav>
       <header class="page-header">
-        <p class="section-kicker">知识底座</p>
-        <h1>版本与生态坐标系</h1>
+        <p class="section-kicker">知识库</p>
+        <h1>版本与生态怎么对上</h1>
         <p class="page-lead">全站反复要求「结论对上版本」——本页解释版本从哪来、商业发行如何对照、ASIC 与整机如何分层，避免名词悬空。</p>
         <div class="meta-row"><span class="tag ">P1</span><span class="tag ">版本</span><span class="tag ">生态</span></div>
       </header>
@@ -114,10 +114,10 @@
       <td>整机厂商业发行</td>
       <td>绑定品牌机型、授权、升级资料、服务网络</td>
       <td>仅列出型号/授权路径能否覆盖项目</td>
-      <td>外推到非清单硬件</td>
+      <td>推到非清单硬件</td>
     </tr>
     <tr>
-      <td>厂商加固版（harden）</td>
+      <td>厂商加固版（加固）</td>
       <td>选 PR、CI/CT、平台验证、缺陷关闭</td>
       <td>每个补丁的追溯链是否完整</td>
       <td>市场标签代替发布门禁</td>
@@ -155,7 +155,7 @@
     </tr>
   </tbody>
 </table>
-<p class="muted">本表只用于建立「坐标系」，不是选型推荐或正式 HCL。对外材料请以各厂商最新官方文档与合同范围为准。</p>
+<p class="muted">本表只用于建立「参照框架」，不是选型推荐或正式 HCL。对外材料请以各厂商最新官方文档与合同范围为准。</p>
 
 <h2>把版本写进结论的模板</h2>
 <pre class="code-sample"><code>社区基线：202311（或目标发行版所声明的上游）
@@ -195,7 +195,7 @@ SAI/SDK：&lt;版本&gt;  内核：&lt;版本&gt;
     <div class="quiz-a">生态范围说明，不是单一 SKU 的 HCL。</div>
   </details>
   <details class="quiz-item">
-    <summary>自测 3：版本坐标系里 ASIC 与白牌整机如何分层？</summary>
+    <summary>自测 3：版本参照框架里 ASIC 与白牌整机如何分层？</summary>
     <div class="quiz-a">ASIC 是芯片层；白牌/ODM 是板卡层（HW-SKU/ONIE/CPLD/HCL）；还要再绑镜像与服务。</div>
   </details>
   <p class="quiz-note muted">建议：正确率 ≥ 80% 再进入下一页。培训组织者可按此判分。</p>
@@ -214,7 +214,7 @@ SAI/SDK：&lt;版本&gt;  内核：&lt;版本&gt;
         <a href="feature-map.html">← 功能特性地图</a>
         <a href="glossary.html">术语与参数四态 →</a>
       </nav>
-      <footer class="site-footer">SONiC PM Atlas v2.1.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
+      <footer class="site-footer">SONiC PM Atlas v2.1.1 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>
   </main>
   <script src="js/app.js?v=2.1.1" defer></script>

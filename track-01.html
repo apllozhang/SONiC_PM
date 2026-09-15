@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v2.1.0</span>
+    <span class="ver-badge">v2.1.1</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a class="nav-link" href="index.html" data-nav="home">首页</a>
@@ -93,7 +93,7 @@
 <ul>
   <li>ASIC 驱动经 <code>syncd</code> 容器加载；转发表项与状态同步必须经过 SAI 抽象。</li>
   <li>核验硬件型号（HW-SKU）驱动是否与目标内核及 SAI 版本严格锁定。</li>
-  <li>同 ASIC 的不同板卡设计（端口映射、光学、电源）不能泛化为相同支持状态。</li>
+  <li>同 ASIC 的不同板卡设计（端口映射、光学、电源）不能笼统当成同一种支持状态。</li>
 </ul>
 
 <h2>白牌准入：六件套</h2>
@@ -112,10 +112,10 @@
 <h2>案例拆解（示意，非排名）</h2>
 <ul>
   <li><strong>芯片商生态页</strong>：Tomahawk 5 等以 51.2 Tb/s 档位介绍 AI/ML 定位——这是芯片级公开定位，不能自动等于某整机、某镜像已支持。</li>
-  <li><strong>整机/ODM harden 叙事</strong>：基于社区分支选 PR、跑 CI/CT、用 Jira 与测试床建追溯链——要问：是否能对每个目标补丁给出 Issue/PR、commit、DUT、已知限制与负责人。</li>
+  <li><strong>整机/ODM 加固 叙事</strong>：基于社区分支选 PR、跑 CI/CT、用 Jira 与测试床建追溯链——要问：是否能对每个目标补丁给出 Issue/PR、commit、DUT、已知限制与负责人。</li>
   <li><strong>光学协同</strong>：强调交换机 + NOS + 多来源光模块组合验证——要落到你项目的 HCL 行，而不是「支持第三方光模块」一句话。</li>
 </ul>
-<div class="callout"><strong>网关：</strong>生态声明不能替代型号级 HCL。评审必须追到准确型号、端口/分拆模式、光模块、镜像、BIOS/CPLD、温度/气流、RMA 与测试报告。</div>
+<div class="callout"><strong>网关：</strong>生态声明不能代替型号级 HCL。评审必须追到准确型号、端口/分拆模式、光模块、镜像、BIOS/CPLD、温度/气流、RMA 与测试报告。</div>
 
 <h2>真实样例：HCL 行与证据列（示意）</h2>
 <table class="matrix">
@@ -164,7 +164,7 @@
     <div class="quiz-a">板级原理图/版本、ONIE 固件、CPLD、光模块/DAC HCL、热与电、诊断（Support Bundle 覆盖）。</div>
   </details>
   <details class="quiz-item">
-    <summary>自测 3：「已在开放交换机上 harden」应追问什么？</summary>
+    <summary>自测 3：「已在开放交换机上 加固」应追问什么？</summary>
     <div class="quiz-a">每个目标补丁是否有 Issue/PR、commit、CI、DUT/测试床、已知限制与 Owner；缺一项不能进 GA 功能清单。</div>
   </details>
   <p class="quiz-note muted">建议：正确率 ≥ 80% 再进入下一页。培训组织者可按此判分。</p>
@@ -179,7 +179,7 @@
         <a href="day-03.html">← 第 3 天 · 试点验收</a>
         <a href="track-02.html">能力线 02 →</a>
       </nav>
-      <footer class="site-footer">SONiC PM Atlas v2.1.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
+      <footer class="site-footer">SONiC PM Atlas v2.1.1 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>
   </main>
   <script src="js/app.js?v=2.1.1" defer></script>
