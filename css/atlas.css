@@ -31,14 +31,9 @@
 .brand img { width: auto; display: block; }
 .brand .logo-color { height: 32px; }
 .brand .logo-white { display: none; }
-/* 官方白标 200×141 竖版：按宽度放大，避免暗色下显得比亮色横版小一号 */
+/* 横版白标（489×187）与彩标同高切换，避免暗色小一号 */
 :root.dark .brand .logo-color { display: none; }
-:root.dark .brand .logo-white {
-  display: block;
-  height: auto;
-  width: 108px;
-  max-height: 56px;
-}
+:root.dark .brand .logo-white { display: block; height: 32px; }
 .brand .divider { width: 1px; height: 22px; background: var(--color-border); flex: 0 0 auto; }
 .brand-title { font-size: .95rem; letter-spacing: .01em; color: var(--color-text-primary); }
 .brand-title .lite { color: var(--color-action); }
