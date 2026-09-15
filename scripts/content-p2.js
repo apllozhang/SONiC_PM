@@ -91,7 +91,7 @@ const levels = {
 </ol>
 `,
   side: `<div class="panel"><h2>配套</h2><ul>
-    <li><a href="index.html#training">培训使用说明</a></li>
+    <li><a href="index.html#training">培训安排</a></li>
     <li><a href="toc.html">全站目录</a></li>
     <li><a href="faq.html">FAQ</a></li>
   </ul></div>`,

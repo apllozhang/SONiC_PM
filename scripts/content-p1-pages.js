@@ -174,7 +174,7 @@ const featureMap = {
   </tbody>
 </table>
 
-<h2>怎么用这张地图做培训</h2>
+<h2>培训里怎么用这张地图</h2>
 <ol>
   <li><strong>售前</strong>：客户问「支不支持 X」，先定位行，再问「目标镜像上验证命令输出是否归档」。</li>
   <li><strong>测试</strong>：按行设计用例，证据列写「命令输出 + 版本」。</li>
