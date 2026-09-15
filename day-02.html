@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v1.1 · ALE WebUI</span>
+    <span class="ver-badge">v2.0.0</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -35,6 +35,7 @@
       <a href="glossary.html" data-nav="glossary">术语</a>
       <a href="checklist.html" data-nav="checklist">核验包</a>
       <a href="cases.html" data-nav="cases">案例</a>
+      <a href="changelog.html" data-nav="changelog">更新</a>
     </nav>
 
     <div class="topbar-tools">
@@ -157,6 +158,36 @@
   <li>四态标注完整，没有把「未披露」写成「不支持」或「已支持」。</li>
 </ul>
 
+
+<section class="accept-block" aria-labelledby="acc-t">
+  <h2 id="acc-t">动手任务验收标准</h2>
+  <ul class="accept-list">
+    <li>提交 3 条「功能名 → 可验收场景」改写（含设备+条件+证据+负责人）</li>
+    <li>正确标注四态，且「有值」行均有可打开证据链接</li>
+    <li>声明门禁四项自检通过（型号/版本/链接/签字）</li>
+  </ul>
+</section>
+<section class="quiz-block" aria-labelledby="quiz-t">
+  <h2 id="quiz-t">自测题（点击展开答案）</h2>
+  
+  <details class="quiz-item">
+    <summary>自测 1：为什么「支持 RoCE」不能直接进定型表？</summary>
+    <div class="quiz-a">缺少拓扑、PFC/ECN 参数、拥塞点、性能目标、故障恢复与日志证据，无法验收也无法追责。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 2：参数「未披露」能不能写成「不支持」？</summary>
+    <div class="quiz-a">不能。未披露只是公开材料没写，应向厂商提问或标待核，不可默认否定或肯定。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 3：证据五要素是什么？</summary>
+    <div class="quiz-a">被测设备/芯片、拓扑/负载、条件（拥塞/故障/升级）、证据（日志/配置/哈希/链接）、责任（负责人/风险签字/补丁窗口）。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 4：「已测 EVPN」能否代替 L2 / L3 对称 / L3 非对称路径的区分？</summary>
+    <div class="quiz-a">不能。验收要区分路径；只写「已测」容易掩盖未覆盖路径。</div>
+  </details>
+  <p class="quiz-note muted">建议：正确率 ≥ 80% 再进入下一页。培训组织者可按此判分。</p>
+</section>
         </article>
         <aside class="side-panel">
 
@@ -190,7 +221,7 @@
         <a href="day-01.html">← 第 1 天 · 产品地图</a>
         <a href="day-03.html">第 3 天 · 试点验收 →</a>
       </nav>
-      <footer class="site-footer">SONiC PM Atlas · 结论要能对上版本、型号、证据和负责人</footer>
+      <footer class="site-footer">SONiC PM Atlas v2.0.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>
   </main>
   <script src="js/app.js" defer></script>

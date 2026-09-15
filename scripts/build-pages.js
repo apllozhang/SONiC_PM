@@ -3,6 +3,8 @@ const path = require('path');
 const root = path.join(__dirname, '..');
 const { day01, day02, day03 } = require('./content-days');
 const { tracks, glossary, checklist, cases } = require('./content-tracks');
+const { quiz } = require('./content-quiz');
+const { SITE_VERSION_LABEL, CHANGELOG } = require('./site-meta');
 
 const NAV = `
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
@@ -17,6 +19,7 @@ const NAV = `
       <a href="glossary.html" data-nav="glossary">术语</a>
       <a href="checklist.html" data-nav="checklist">核验包</a>
       <a href="cases.html" data-nav="cases">案例</a>
+      <a href="changelog.html" data-nav="changelog">更新</a>
     </nav>`;
 
 const TOOLS = `
@@ -38,11 +41,38 @@ function topbar() {
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v1.1 · ALE WebUI</span>
+    <span class="ver-badge">${SITE_VERSION_LABEL}</span>
 ${NAV}
 ${TOOLS}
   </header>
   <div class="nav-scrim" id="navScrim" hidden></div>`;
+}
+
+function renderTraining(sections) {
+  if (!sections?.quiz?.length && !sections?.acceptance?.length) return '';
+  let html = '';
+  if (sections.acceptance?.length) {
+    html += `
+<section class="accept-block" aria-labelledby="acc-t">
+  <h2 id="acc-t">动手任务验收标准</h2>
+  <ul class="accept-list">
+    ${sections.acceptance.map((a) => `<li>${a}</li>`).join('\n    ')}
+  </ul>
+</section>`;
+  }
+  if (sections.quiz?.length) {
+    html += `
+<section class="quiz-block" aria-labelledby="quiz-t">
+  <h2 id="quiz-t">自测题（点击展开答案）</h2>
+  ${sections.quiz.map((it, i) => `
+  <details class="quiz-item">
+    <summary>自测 ${i + 1}：${it.q}</summary>
+    <div class="quiz-a">${it.a}</div>
+  </details>`).join('')}
+  <p class="quiz-note muted">建议：正确率 ≥ 80% 再进入下一页。培训组织者可按此判分。</p>
+</section>`;
+  }
+  return html;
 }
 
 function page({ title, description, breadcrumb, kicker, h1, lead, tags, body, side, prev, next }) {
@@ -52,6 +82,7 @@ function page({ title, description, breadcrumb, kicker, h1, lead, tags, body, si
       ).join('<span class="sep" aria-hidden="true">/</span>')}</nav>`
     : '';
 
+  // file name from title slug is passed separately when writing; use data-file via wrapper
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -90,7 +121,7 @@ ${side}
         ${prev ? `<a href="${prev.href}">← ${prev.label}</a>` : '<a href="index.html">← 返回首页</a>'}
         ${next ? `<a href="${next.href}">${next.label} →</a>` : '<a href="index.html">返回首页 →</a>'}
       </nav>
-      <footer class="site-footer">SONiC PM Atlas · 结论要能对上版本、型号、证据和负责人</footer>
+      <footer class="site-footer">SONiC PM Atlas ${SITE_VERSION_LABEL} · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>
   </main>
   <script src="js/app.js" defer></script>
@@ -99,9 +130,15 @@ ${side}
 `;
 }
 
+function writePage(file, data) {
+  const t = quiz[file] || {};
+  const body = `${data.body}\n${renderTraining(t)}`;
+  fs.writeFileSync(path.join(root, file), page({ ...data, body }), 'utf8');
+  console.log('wrote', file);
+}
+
 for (const d of [day01, day02, day03]) {
-  fs.writeFileSync(path.join(root, d.file), page(d), 'utf8');
-  console.log('wrote', d.file);
+  writePage(d.file, d);
 }
 
 for (const t of tracks) {
@@ -112,7 +149,7 @@ for (const t of tracks) {
   const next = idx === 6
     ? { href: 'glossary.html', label: '术语与四态' }
     : { href: `track-${String(idx + 1).padStart(2, '0')}.html`, label: `能力线 ${String(idx + 1).padStart(2, '0')}` };
-  fs.writeFileSync(path.join(root, t.file), page({
+  writePage(t.file, {
     title: `${t.num} ${t.title}`,
     description: t.lead,
     kicker: `12 周能力线 / ${t.week}`,
@@ -127,11 +164,52 @@ for (const t of tracks) {
     body: t.body,
     side: t.side,
     prev, next,
-  }), 'utf8');
-  console.log('wrote', t.file);
+  });
 }
 
 for (const p of [glossary, checklist, cases]) {
-  fs.writeFileSync(path.join(root, p.file), page(p), 'utf8');
-  console.log('wrote', p.file);
+  writePage(p.file, p);
 }
+
+// CHANGELOG
+const changelogBody = `
+<h2>如何使用本页</h2>
+<p>培训组织与内容评审以本页为基线。改正文请改 <code>scripts/content-*.js</code> 后执行 <code>build-pages.js</code>，并在下表增加版本行与负责人。</p>
+${CHANGELOG.map((v) => `
+<h2>${v.version} · ${v.date}</h2>
+<p><strong>内容负责人：</strong>${v.owner}</p>
+<p><strong>摘要：</strong>${v.summary}</p>
+<ul>
+${v.changes.map((c) => `  <li>${c}</li>`).join('\n')}
+</ul>
+`).join('\n')}
+`;
+
+writePage('changelog.html', {
+  title: '更新日志 CHANGELOG',
+  description: '站点版本历史、内容负责人与最近评审记录。',
+  kicker: '维护',
+  h1: '更新日志',
+  lead: `当前全站版本 ${SITE_VERSION_LABEL}。内容变更须登记版本、日期、负责人与变更摘要。`,
+  tags: [{ text: SITE_VERSION_LABEL }, { text: '内容负责人' }],
+  breadcrumb: [
+    { label: '首页', href: 'index.html' },
+    { label: '更新日志' },
+  ],
+  body: changelogBody,
+  side: `
+<div class="panel">
+  <h2>当前版本</h2>
+  <p style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--color-action)">${SITE_VERSION_LABEL}</p>
+  <p class="muted" style="font-size:13px">全站顶栏徽章与此一致</p>
+</div>
+<div class="panel">
+  <h2>评审材料</h2>
+  <ul>
+    <li><a href="review/index.html">评审意见入口</a></li>
+    <li><a href="review/2026-09-15-content-review.md">2026-09-15 评审全文</a></li>
+  </ul>
+</div>`,
+  prev: { href: 'cases.html', label: '厂商案例拆解' },
+  next: { href: 'index.html', label: '返回首页' },
+});

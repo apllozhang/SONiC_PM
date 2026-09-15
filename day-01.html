@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v1.1 · ALE WebUI</span>
+    <span class="ver-badge">v2.0.0</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -35,6 +35,7 @@
       <a href="glossary.html" data-nav="glossary">术语</a>
       <a href="checklist.html" data-nav="checklist">核验包</a>
       <a href="cases.html" data-nav="cases">案例</a>
+      <a href="changelog.html" data-nav="changelog">更新</a>
     </nav>
 
     <div class="topbar-tools">
@@ -170,6 +171,36 @@
   <li>术语：HCL、HW-SKU、ONIE、CPLD、SAI、syncd 见 <a href="glossary.html">术语与参数四态</a>。</li>
 </ul>
 
+
+<section class="accept-block" aria-labelledby="acc-t">
+  <h2 id="acc-t">动手任务验收标准</h2>
+  <ul class="accept-list">
+    <li>能用一句话向同事解释：生态声明 ≠ 型号级 HCL</li>
+    <li>完成核验包草稿：场景、型号、NOS 版本、证据链接、负责人 五项齐全</li>
+    <li>对 3 条厂商原句完成「层归属 + 可写入定型表的改写」</li>
+  </ul>
+</section>
+<section class="quiz-block" aria-labelledby="quiz-t">
+  <h2 id="quiz-t">自测题（点击展开答案）</h2>
+  
+  <details class="quiz-item">
+    <summary>自测 1：厂商材料写「Enterprise SONiC 支持 50+ ODM 平台」，这最接近哪一层？</summary>
+    <div class="quiz-a">芯片/生态范围层。不能直接当作你的目标型号 HCL。必须再核对具体 SKU、板卡版本与实验室证据。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 2：「SAI 开放了 EVPN 能力」能否写进定型表的「已支持」？</summary>
+    <div class="quiz-a">不能直接写「已支持」。SAI 开放是接口事实，需另证明目标镜像 + 目标板卡在约定场景下验证过，并绑定版本与证据。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 3：四层责任地图指哪四层？</summary>
+    <div class="quiz-a">①芯片/SDK/SAI ②平台/整机/白牌 ③NOS 发行版（社区/商业/加固） ④服务与支持。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 4：核验包草稿最少要有哪几项才能进入第 2 天？</summary>
+    <div class="quiz-a">目标场景、目标型号（含板卡）、目标 NOS/版本/镜像、证据链接、负责人；有已知限制时还要有风险签字人。</div>
+  </details>
+  <p class="quiz-note muted">建议：正确率 ≥ 80% 再进入下一页。培训组织者可按此判分。</p>
+</section>
         </article>
         <aside class="side-panel">
 
@@ -203,7 +234,7 @@
         <a href="index.html">← 返回首页</a>
         <a href="day-02.html">第 2 天 · 功能证据 →</a>
       </nav>
-      <footer class="site-footer">SONiC PM Atlas · 结论要能对上版本、型号、证据和负责人</footer>
+      <footer class="site-footer">SONiC PM Atlas v2.0.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>
   </main>
   <script src="js/app.js" defer></script>

@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v1.1 · ALE WebUI</span>
+    <span class="ver-badge">v2.0.0</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -35,6 +35,7 @@
       <a href="glossary.html" data-nav="glossary">术语</a>
       <a href="checklist.html" data-nav="checklist">核验包</a>
       <a href="cases.html" data-nav="cases">案例</a>
+      <a href="changelog.html" data-nav="changelog">更新</a>
     </nav>
 
     <div class="topbar-tools">
@@ -100,6 +101,31 @@
   </tbody>
 </table>
 
+
+<section class="accept-block" aria-labelledby="acc-t">
+  <h2 id="acc-t">动手任务验收标准</h2>
+  <ul class="accept-list">
+    <li>能向非研发同事解释四态差别</li>
+    <li>能指出 syncd / OrchAgent / CONFIG_DB 的关系一句话</li>
+  </ul>
+</section>
+<section class="quiz-block" aria-labelledby="quiz-t">
+  <h2 id="quiz-t">自测题（点击展开答案）</h2>
+  
+  <details class="quiz-item">
+    <summary>自测 1：「抽取失败」等于功能不存在吗？</summary>
+    <div class="quiz-a">不等于。只是解析失败，应换源或人工读原文。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 2：OrchAgent 的主要职责？</summary>
+    <div class="quiz-a">把网络意图（VLAN、BGP 等）转成 SAI 对象，经 ASIC_DB 交给 syncd。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 3：HCL 的证据形态应是什么？</summary>
+    <div class="quiz-a">同版本实验室互通/烧录证据，而不是仅营销矩阵或 Excel 空表。</div>
+  </details>
+  <p class="quiz-note muted">建议：正确率 ≥ 80% 再进入下一页。培训组织者可按此判分。</p>
+</section>
         </article>
         <aside class="side-panel">
 
@@ -115,7 +141,7 @@
         <a href="day-02.html">← 第 2 天 · 功能证据</a>
         <a href="checklist.html">产品定型核验包 →</a>
       </nav>
-      <footer class="site-footer">SONiC PM Atlas · 结论要能对上版本、型号、证据和负责人</footer>
+      <footer class="site-footer">SONiC PM Atlas v2.0.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>
   </main>
   <script src="js/app.js" defer></script>

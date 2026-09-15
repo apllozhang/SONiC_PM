@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v1.1 · ALE WebUI</span>
+    <span class="ver-badge">v2.0.0</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -35,6 +35,7 @@
       <a href="glossary.html" data-nav="glossary">术语</a>
       <a href="checklist.html" data-nav="checklist">核验包</a>
       <a href="cases.html" data-nav="cases">案例</a>
+      <a href="changelog.html" data-nav="changelog">更新</a>
     </nav>
 
     <div class="topbar-tools">
@@ -131,6 +132,36 @@
   <li>是否放量扩大试点的书面结论。</li>
 </ul>
 
+
+<section class="accept-block" aria-labelledby="acc-t">
+  <h2 id="acc-t">动手任务验收标准</h2>
+  <ul class="accept-list">
+    <li>试点检查清单六维均已勾选或标差异</li>
+    <li>交付包目录草稿可复现安装（含版本与校验值）</li>
+    <li>证据链六步能对照到自己项目中的实际材料</li>
+  </ul>
+</section>
+<section class="quiz-block" aria-labelledby="quiz-t">
+  <h2 id="quiz-t">自测题（点击展开答案）</h2>
+  
+  <details class="quiz-item">
+    <summary>自测 1：试点与演示的最大差别是什么？</summary>
+    <div class="quiz-a">试点要证明真实约束下可跑通、可回退、有人负责、可扩量交付；演示只证明顺利路径能展示。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 2：「未知」在验收表里算「不满足」吗？</summary>
+    <div class="quiz-a">不算。未知单独列出，必须有 Owner 与风险签字人，但不能混进「已支持」统计。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 3：交付包至少包含哪些？</summary>
+    <div class="quiz-a">镜像与签名、配置基线、硬件与光学、操作手册（含升级回退与诊断包）、责任表。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 4：从社区代码到可交付版本的最小证据链有哪几步？</summary>
+    <div class="quiz-a">基线选择 → 补丁取舍（Issue/PR）→ CI → 平台验证/DUT → 缺陷关闭与已知限制 → 发布门禁。</div>
+  </details>
+  <p class="quiz-note muted">建议：正确率 ≥ 80% 再进入下一页。培训组织者可按此判分。</p>
+</section>
         </article>
         <aside class="side-panel">
 
@@ -164,7 +195,7 @@
         <a href="day-02.html">← 第 2 天 · 功能证据</a>
         <a href="track-01.html">进入供应链能力线 →</a>
       </nav>
-      <footer class="site-footer">SONiC PM Atlas · 结论要能对上版本、型号、证据和负责人</footer>
+      <footer class="site-footer">SONiC PM Atlas v2.0.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>
   </main>
   <script src="js/app.js" defer></script>

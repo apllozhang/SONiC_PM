@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v1.1 · ALE WebUI</span>
+    <span class="ver-badge">v2.0.0</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -35,6 +35,7 @@
       <a href="glossary.html" data-nav="glossary">术语</a>
       <a href="checklist.html" data-nav="checklist">核验包</a>
       <a href="cases.html" data-nav="cases">案例</a>
+      <a href="changelog.html" data-nav="changelog">更新</a>
     </nav>
 
     <div class="topbar-tools">
@@ -105,6 +106,32 @@
   <li>运维验收清单。</li>
 </ul>
 
+
+<section class="accept-block" aria-labelledby="acc-t">
+  <h2 id="acc-t">动手任务验收标准</h2>
+  <ul class="accept-list">
+    <li>测试环境定义含与客户拓扑的差异表</li>
+    <li>异常用例集每条有指标与证据形态</li>
+    <li>运维验收清单覆盖遥测/告警/诊断包</li>
+  </ul>
+</section>
+<section class="quiz-block" aria-labelledby="quiz-t">
+  <h2 id="quiz-t">自测题（点击展开答案）</h2>
+  
+  <details class="quiz-item">
+    <summary>自测 1：实验室简化拓扑的结论能否直接写成客户场景验收？</summary>
+    <div class="quiz-a">不能。需对齐真实组网差异（规模、型号、分拆、冗余）或书面说明差异与风险。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 2：异常测试最小集通常包含哪些？</summary>
+    <div class="quiz-a">MAC 泛洪、BGP 震荡、端口闪断、PFC 风暴、控制面组件异常等，并量化恢复时间。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 3：测试覆盖点能否代替吞吐/时延/无损验收结论？</summary>
+    <div class="quiz-a">不能。覆盖点说明测过什么场景，不能代替性能与规模结论。</div>
+  </details>
+  <p class="quiz-note muted">建议：正确率 ≥ 80% 再进入下一页。培训组织者可按此判分。</p>
+</section>
         </article>
         <aside class="side-panel">
 <div class="panel"><h2>本阶段产出</h2><ul><li>测试环境定义</li><li>异常用例集</li><li>运维验收清单</li></ul></div>
@@ -114,7 +141,7 @@
         <a href="track-02.html">← 能力线 02</a>
         <a href="track-04.html">能力线 04 →</a>
       </nav>
-      <footer class="site-footer">SONiC PM Atlas · 结论要能对上版本、型号、证据和负责人</footer>
+      <footer class="site-footer">SONiC PM Atlas v2.0.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>
   </main>
   <script src="js/app.js" defer></script>

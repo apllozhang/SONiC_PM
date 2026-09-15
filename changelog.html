@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6b489d">
+  <meta name="description" content="站点版本历史、内容负责人与最近评审记录。">
+  <title>更新日志 CHANGELOG · SONiC PM Atlas</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/atlas.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="返回首页 · SONiC PM Atlas">
+      <img class="logo-color" src="assets/brand/ale-primary-logo-horizontal.png" alt="Alcatel-Lucent Enterprise">
+      <img class="logo-white" src="assets/brand/ale-primary-logo-horizontal-white.png" alt="Alcatel-Lucent Enterprise">
+      <span class="divider" aria-hidden="true"></span>
+      <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
+    </a>
+    <span class="ver-badge">v2.0.0</span>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="主导航">
+      <a href="index.html" data-nav="home">首页</a>
+      <a href="day-01.html" data-nav="intro">3 天入门</a>
+      <a href="track-01.html" data-nav="track-01">供应链</a>
+      <a href="track-02.html" data-nav="track-02">架构</a>
+      <a href="track-03.html" data-nav="track-03">测试</a>
+      <a href="track-04.html" data-nav="track-04">社区</a>
+      <a href="track-05.html" data-nav="track-05">定型</a>
+      <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="glossary.html" data-nav="glossary">术语</a>
+      <a href="checklist.html" data-nav="checklist">核验包</a>
+      <a href="cases.html" data-nav="cases">案例</a>
+      <a href="changelog.html" data-nav="changelog">更新</a>
+    </nav>
+
+    <div class="topbar-tools">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="切换主题" title="切换主题">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="打开导航">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim" id="navScrim" hidden></div>
+  <main class="main" id="main" tabindex="-1">
+    <div class="container">
+<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">更新日志</span></nav>
+      <header class="page-header">
+        <p class="section-kicker">维护</p>
+        <h1>更新日志</h1>
+        <p class="page-lead">当前全站版本 v2.0.0。内容变更须登记版本、日期、负责人与变更摘要。</p>
+        <div class="meta-row"><span class="tag ">v2.0.0</span><span class="tag ">内容负责人</span></div>
+      </header>
+      <div class="content-grid">
+        <article class="prose">
+
+<h2>如何使用本页</h2>
+<p>培训组织与内容评审以本页为基线。改正文请改 <code>scripts/content-*.js</code> 后执行 <code>build-pages.js</code>，并在下表增加版本行与负责人。</p>
+
+<h2>2.0.0 · 2026-09-15</h2>
+<p><strong>内容负责人：</strong>内容组 / SONiC PM Atlas</p>
+<p><strong>摘要：</strong>培训可用性与知识底座改版（评审 P0+P1+P2）</p>
+<ul>
+  <li>统一全站版本号 v2.0.0，新增本页与内容负责人列</li>
+  <li>每页增加 3–5 道自测题（可折叠答案）与动手任务验收标准</li>
+  <li>首页增加 PM / 售前 / 测试角色导航与培训使用说明（周期、考核、结业）</li>
+  <li>架构线扩容：容器全景、Redis 库表速查、容器重启影响矩阵</li>
+  <li>新增功能特性地图、版本与生态坐标系（含官方外链）</li>
+  <li>每条能力线至少 1 个真实样例（配置片段 / 命令 / 报告节选）</li>
+  <li>定义 L1–L3 能力等级并映射 12 周路线；新增 FAQ 与全站目录</li>
+  <li>保留：四层责任地图、参数四态、核验包 10 字段、案例六层追问</li>
+</ul>
+
+
+<h2>1.1.0 · 2026-09-15</h2>
+<p><strong>内容负责人：</strong>内容组 / SONiC PM Atlas</p>
+<p><strong>摘要：</strong>内容加厚与工具页</p>
+<ul>
+  <li>Day/Track 扩写为结构化表格与案例</li>
+  <li>新增术语与四态、产品定型核验包、厂商案例拆解</li>
+  <li>部署脚本 deploy-nas.js 一键上线 NAS :8788</li>
+</ul>
+
+
+<h2>1.0.0 · 2026-09-15</h2>
+<p><strong>内容负责人：</strong>内容组 / SONiC PM Atlas</p>
+<p><strong>摘要：</strong>ALE WebUI 静态站基线</p>
+<ul>
+  <li>按 ALE 规范重建顶栏导航、亮暗主题、能力地图</li>
+  <li>替换原 Manus SPA 内容骨架</li>
+</ul>
+
+
+
+        </article>
+        <aside class="side-panel">
+
+<div class="panel">
+  <h2>当前版本</h2>
+  <p style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--color-action)">v2.0.0</p>
+  <p class="muted" style="font-size:13px">全站顶栏徽章与此一致</p>
+</div>
+<div class="panel">
+  <h2>评审材料</h2>
+  <ul>
+    <li><a href="review/index.html">评审意见入口</a></li>
+    <li><a href="review/2026-09-15-content-review.md">2026-09-15 评审全文</a></li>
+  </ul>
+</div>
+        </aside>
+      </div>
+      <nav class="page-nav" aria-label="上一页下一页">
+        <a href="cases.html">← 厂商案例拆解</a>
+        <a href="index.html">返回首页 →</a>
+      </nav>
+      <footer class="site-footer">SONiC PM Atlas v2.0.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
+    </div>
+  </main>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
