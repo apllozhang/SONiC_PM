@@ -25,23 +25,43 @@
     <span class="ver-badge">v2.1.0</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
-      <a href="index.html" data-nav="home">首页</a>
-      <a href="day-01.html" data-nav="intro">3 天入门</a>
-      <a href="track-01.html" data-nav="track-01">供应链</a>
-      <a href="track-02.html" data-nav="track-02">架构</a>
-      <a href="track-03.html" data-nav="track-03">测试</a>
-      <a href="track-04.html" data-nav="track-04">社区</a>
-      <a href="track-05.html" data-nav="track-05">定型</a>
-      <a href="track-06.html" data-nav="track-06">商业化</a>
-      <a href="feature-map.html" data-nav="feature-map">功能地图</a>
-      <a href="ecosystem.html" data-nav="ecosystem">版本生态</a>
-      <a href="glossary.html" data-nav="glossary">术语</a>
-      <a href="checklist.html" data-nav="checklist">核验包</a>
-      <a href="cases.html" data-nav="cases">案例</a>
-      <a href="levels.html" data-nav="levels">L1–L3</a>
-      <a href="toc.html" data-nav="toc">目录</a>
-      <a href="faq.html" data-nav="faq">FAQ</a>
-      <a href="changelog.html" data-nav="changelog">更新</a>
+      <a class="nav-link" href="index.html" data-nav="home">首页</a>
+      <a class="nav-link" href="day-01.html" data-nav="intro">3 天入门</a>
+      <div class="nav-group">
+        <button type="button" class="nav-link nav-group-btn" aria-expanded="false" aria-haspopup="true">能力线</button>
+        <div class="nav-menu" role="menu">
+          <a href="track-01.html" data-nav="track-01">01 供应链</a>
+          <a href="track-02.html" data-nav="track-02">02 架构</a>
+          <a href="track-03.html" data-nav="track-03">03 测试</a>
+          <a href="track-04.html" data-nav="track-04">04 社区</a>
+          <a href="track-05.html" data-nav="track-05">05 定型</a>
+          <a href="track-06.html" data-nav="track-06">06 商业化</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" class="nav-link nav-group-btn" aria-expanded="false" aria-haspopup="true">知识库</button>
+        <div class="nav-menu" role="menu">
+          <a href="feature-map.html" data-nav="feature-map">功能特性地图</a>
+          <a href="ecosystem.html" data-nav="ecosystem">版本与生态</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" class="nav-link nav-group-btn" aria-expanded="false" aria-haspopup="true">工具</button>
+        <div class="nav-menu" role="menu">
+          <a href="glossary.html" data-nav="glossary">术语与四态</a>
+          <a href="checklist.html" data-nav="checklist">定型核验包</a>
+          <a href="cases.html" data-nav="cases">案例拆解</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" class="nav-link nav-group-btn" aria-expanded="false" aria-haspopup="true">培训</button>
+        <div class="nav-menu" role="menu">
+          <a href="levels.html" data-nav="levels">L1–L3 等级</a>
+          <a href="faq.html" data-nav="faq">FAQ</a>
+          <a href="toc.html" data-nav="toc">全站目录</a>
+        </div>
+      </div>
+      <a class="nav-link" href="changelog.html" data-nav="changelog">更新</a>
     </nav>
 
     <div class="topbar-tools">
@@ -74,7 +94,7 @@
           <li><strong>3</strong><span>天共同语言</span></li>
           <li><strong>12</strong><span>周能力线</span></li>
           <li><strong>3</strong><span>类角色路径</span></li>
-          <li><strong>v2.0.0</strong><span>含自测与验收</span></li>
+          <li><strong>v2.1.0</strong><span>含自测与验收</span></li>
         </ul>
       </div>
       <svg class="hero-wave" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true">
@@ -87,32 +107,47 @@
         <div class="section-head">
           <div>
             <p class="section-kicker">培训使用说明</p>
-            <h2 id="training-title">周期 · 考核 · 结业</h2>
+            <h2 id="training-title">怎么用这套站组织培训</h2>
           </div>
+          <a class="button secondary sm" href="levels.html">L1–L3 详情</a>
         </div>
-        <div class="track-grid">
-          <div class="panel">
-            <h2>周期建议</h2>
-            <ul>
-              <li><strong>第 0 周</strong>：通读首页说明 + 术语页，确认角色路径</li>
-              <li><strong>第 1 周</strong>：3 天入门（每天 0.5–1 天，含自测与动手）</li>
-              <li><strong>第 2–13 周</strong>：按角色主修能力线，每周完成该线产出物</li>
-            </ul>
-          </div>
-          <div class="panel">
+        <ol class="train-steps">
+          <li>
+            <span class="step-no">0</span><h3>第 0 周 · 定路径</h3>
+            <p>读首页说明与术语，选定 PM / 售前 / 测试路径。</p>
+          </li>
+          <li>
+            <span class="step-no">1</span><h3>第 1 周 · 3 天入门</h3>
+            <p>每天 0.5–1 天，完成页内自测（≥80%）与动手验收。</p>
+          </li>
+          <li>
+            <span class="step-no">12</span><h3>第 2–13 周 · 主修</h3>
+            <p>按角色走能力线，每周交该线产出物；结业见角色卡考核。</p>
+          </li>
+        </ol>
+        <div class="track-grid" style="margin-top:12px">
+          <div class="training-card">
             <h2>考核方式</h2>
             <ul>
-              <li>每页自测题建议正确率 <strong>≥ 80%</strong></li>
-              <li>动手任务按页内「验收标准」由导师勾选</li>
-              <li>结业材料见下方角色卡片中的「考核证据」</li>
+              <li>自测正确率 ≥ 80%</li>
+              <li>验收标准由导师勾选</li>
+              <li>结业材料按角色「考核证据」</li>
             </ul>
           </div>
-          <div class="panel">
+          <div class="training-card">
             <h2>结业标准（通用）</h2>
             <ul>
-              <li>完成所选角色路径的自测与产出物</li>
-              <li>能主持或主笔一次「核验包」相关评审</li>
-              <li>对外表述不越过证据边界（四态用法正确）</li>
+              <li>所选路径自测与产出物齐全</li>
+              <li>能主笔一次核验包评审</li>
+              <li>四态用法正确、不越证据边界</li>
+            </ul>
+          </div>
+          <div class="training-card">
+            <h2>组织者提示</h2>
+            <ul>
+              <li>用 <a href="toc.html">全站目录</a> 做签到</li>
+              <li>用 <a href="faq.html">FAQ</a> 统一答疑口径</li>
+              <li>变更内容见 <a href="changelog.html">更新日志</a></li>
             </ul>
           </div>
         </div>

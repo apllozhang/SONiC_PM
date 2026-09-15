@@ -60,7 +60,7 @@
     });
   });
 
-  // ── 当前页 aria-current（双线索：紫底 + 底条） ──
+  // ── 当前页 aria-current + 下拉父组高亮 ──
   const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const dayMatch = path.match(/^day-0[1-3]\.html$/);
   const trackMatch = path.match(/^track-0[1-6]\.html$/);
@@ -72,9 +72,38 @@
     if (key === 'intro' && dayMatch) current = true;
     if (trackMatch && key === trackMatch[0].replace('.html', '')) current = true;
     if (key && `${key}.html` === path) current = true;
-    if (current) a.setAttribute('aria-current', 'page');
-    else a.removeAttribute('aria-current');
+    if (current) {
+      a.setAttribute('aria-current', 'page');
+      a.closest('.nav-group')?.classList.add('has-current');
+    } else {
+      a.removeAttribute('aria-current');
+    }
   });
+
+  // ── 顶栏下拉：点击展开，再点/Esc/点外部关闭 ──
+  const groups = Array.from(document.querySelectorAll('.nav-group'));
+  function closeGroups(except) {
+    groups.forEach((g) => {
+      if (g === except) return;
+      g.classList.remove('is-open');
+      g.querySelector('.nav-group-btn')?.setAttribute('aria-expanded', 'false');
+    });
+  }
+  groups.forEach((g) => {
+    const btn = g.querySelector('.nav-group-btn');
+    btn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = !g.classList.contains('is-open');
+      closeGroups(g);
+      g.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+  document.addEventListener('click', () => closeGroups());
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeGroups();
+  });
+
   // ── 目录页标题过滤 ──
   const tocInput = document.querySelector('[data-toc-filter]');
   if (tocInput) {
