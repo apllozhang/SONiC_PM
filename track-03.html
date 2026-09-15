@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#6b489d">
   <meta name="description" content="测试环境是否贴近客户真实组网？异常场景和运维能力，如何写进产品验收。">
-  <title>03 测试与可运营性 · SONiC PM Atlas</title>
+  <title>03 测试与可运维性 · SONiC PM Atlas</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v1.0 · ALE WebUI</span>
+    <span class="ver-badge">v1.1 · ALE WebUI</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -32,6 +32,9 @@
       <a href="track-04.html" data-nav="track-04">社区</a>
       <a href="track-05.html" data-nav="track-05">定型</a>
       <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="glossary.html" data-nav="glossary">术语</a>
+      <a href="checklist.html" data-nav="checklist">核验包</a>
+      <a href="cases.html" data-nav="cases">案例</a>
     </nav>
 
     <div class="topbar-tools">
@@ -47,21 +50,59 @@
   <div class="nav-scrim" id="navScrim" hidden></div>
   <main class="main" id="main" tabindex="-1">
     <div class="container">
-<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="index.html#capability-map">能力线</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">测试与可运营性</span></nav>
+<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="index.html#capability-map">能力线</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">测试与可运维性</span></nav>
       <header class="page-header">
         <p class="section-kicker">12 周能力线 / 第 5–6 周</p>
-        <h1>03 · 测试与可运营性</h1>
+        <h1>03 · 测试与可运维性</h1>
         <p class="page-lead">测试环境是否贴近客户真实组网？异常场景和运维能力，如何写进产品验收。</p>
         <div class="meta-row"><span class="tag ">第 5–6 周</span><span class="tag info">能力线</span></div>
       </header>
       <div class="content-grid">
         <article class="prose">
 
-<h2>学习重点</h2>
+<h2>测试床：对齐真实，而不是「能通」</h2>
+<p>被测设备 + 交换机 + 流量仪要对齐客户真实组网：速率、分拆、缓冲、跨设备型号。实验室简化拓扑测出的结论，不能直接写成客户场景验收。</p>
+
+<h2>异常场景最小集</h2>
+<table class="matrix">
+  <thead><tr><th>场景</th><th>关注指标</th><th>产品要提供的证据</th></tr></thead>
+  <tbody>
+    <tr><td>MAC 泛洪</td><td>CPU、表项、业务影响</td><td>限速/保护是否生效，恢复时间</td></tr>
+    <tr><td>BGP 震荡</td><td>收敛时间、路由稳定性</td><td>震荡日志与收敛曲线</td></tr>
+    <tr><td>端口闪断</td><td>业务切换、告警风暴</td><td>闪断时间与恢复时间</td></tr>
+    <tr><td>PFC 风暴</td><td>暂停帧范围、级联影响</td><td>阈值配置与风暴抑制策略</td></tr>
+    <tr><td>控制面异常</td><td>orchagent/syncd 重启影响</td><td>Support Bundle 样例与恢复步骤</td></tr>
+  </tbody>
+</table>
+
+<h2>RoCE / AI 场景怎么拆（进阶）</h2>
 <ul>
-  <li>被测设备 + 交换机 + 流量仪要对齐真实环境，不能「能通就行」。</li>
-  <li>异常测试：MAC 泛洪、BGP 震荡、端口闪断的恢复时间指标。</li>
-  <li>可运维性：gNMI/gNOI/REST、Syslog、告警与诊断是否进入交付清单。</li>
+  <li>把验证拆到 Leaf 封装、Spine 隧道转发、Leaf 解封装。</li>
+  <li>EVPN/VXLAN 至少区分 L2、L3 对称与 L3 非对称路径。</li>
+  <li>明确 PFC/ECN 参数、拥塞点位置、性能目标与回退条件。</li>
+</ul>
+<div class="callout"><strong>注意：</strong>测试覆盖点不能代替吞吐、时延、收敛、无损、规模或跨光模块组合的验收结论。</div>
+
+<h2>可运维性是否进入交付</h2>
+<ul>
+  <li>结构化遥测（如 gNMI）与传统 CLI/SNMP 的分工：订阅路径、采样间隔、推送时延。</li>
+  <li>本地网管与云网管：安全隔离、证书轮换、断网离线自治差异。</li>
+  <li>Syslog、告警字段是否能进客户工单系统。</li>
+</ul>
+
+<h2>核对问题</h2>
+<ol>
+  <li>测试床是否覆盖客户真实组网差异清单？</li>
+  <li>负向用例集是否量化恢复时间？</li>
+  <li>遥测与告警是否做过对接演练？</li>
+  <li>诊断包是否覆盖该板卡与该镜像版本？</li>
+</ol>
+
+<h2>本阶段产出</h2>
+<ul>
+  <li>测试环境定义与差异说明。</li>
+  <li>异常用例集（含指标与证据列）。</li>
+  <li>运维验收清单。</li>
 </ul>
 
         </article>

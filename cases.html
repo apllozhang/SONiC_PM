@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6b489d">
+  <meta name="description" content="用 Broadcom/Edgecore、NVIDIA、Marvell/OpenLAN、Dell 等公开叙事练习分层核验，不作排名。">
+  <title>厂商案例拆解 · SONiC PM Atlas</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/atlas.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="返回首页 · SONiC PM Atlas">
+      <img class="logo-color" src="assets/brand/ale-primary-logo-horizontal.png" alt="Alcatel-Lucent Enterprise">
+      <img class="logo-white" src="assets/brand/ale-primary-logo-horizontal-white.png" alt="Alcatel-Lucent Enterprise">
+      <span class="divider" aria-hidden="true"></span>
+      <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
+    </a>
+    <span class="ver-badge">v1.1 · ALE WebUI</span>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="主导航">
+      <a href="index.html" data-nav="home">首页</a>
+      <a href="day-01.html" data-nav="intro">3 天入门</a>
+      <a href="track-01.html" data-nav="track-01">供应链</a>
+      <a href="track-02.html" data-nav="track-02">架构</a>
+      <a href="track-03.html" data-nav="track-03">测试</a>
+      <a href="track-04.html" data-nav="track-04">社区</a>
+      <a href="track-05.html" data-nav="track-05">定型</a>
+      <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="glossary.html" data-nav="glossary">术语</a>
+      <a href="checklist.html" data-nav="checklist">核验包</a>
+      <a href="cases.html" data-nav="cases">案例</a>
+    </nav>
+
+    <div class="topbar-tools">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="切换主题" title="切换主题">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="打开导航">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim" id="navScrim" hidden></div>
+  <main class="main" id="main" tabindex="-1">
+    <div class="container">
+<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="cases.html">工具</a></nav>
+      <header class="page-header">
+        <p class="section-kicker">工具</p>
+        <h1>厂商案例拆解（分层练习）</h1>
+        <p class="page-lead">本页以公开叙事为练习材料，训练区分芯片、软件分发、平台适配、硬件、测试加固和支持服务。不是厂商排名，也不是型号支持清单。</p>
+        <div class="meta-row"><span class="tag ">案例</span><span class="tag ">分层核验</span></div>
+      </header>
+      <div class="content-grid">
+        <article class="prose">
+
+<h2>练习框架</h2>
+<p>每一则公开材料都按六层问：芯片 → 平台 → 镜像 → 硬件/光学 → 测试加固 → 支持服务。问完再决定能不能写进定型表。</p>
+
+<h2>案例 A：芯片商 + 整机 ODM</h2>
+<ul>
+  <li><strong>常见叙事</strong>：Enterprise SONiC 覆盖 StrataXGS 系列大量 ODM 平台；整机侧在开放交换机上做 harden，强调与多来源光模块协同验证。</li>
+  <li><strong>分层追问</strong>
+    <ul>
+      <li>芯片：目标 ASIC 与 SAI 版本？内核是否锁定？</li>
+      <li>平台：目标板卡的 ONIE/CPLD/端口映射证据？</li>
+      <li>加固：每个补丁的 Issue/PR、CI、DUT、已知限制与 Owner？</li>
+      <li>光学：是否落到你项目的 HCL 行？</li>
+    </ul>
+  </li>
+  <li><strong>易错</strong>：把「50+ 平台」当成「我的型号已支持」。</li>
+</ul>
+
+<h2>案例 B：AI / 高带宽芯片定位</h2>
+<ul>
+  <li><strong>常见叙事</strong>：以 Tomahawk 5 等介绍 51.2 Tb/s 与 AI/ML 数据中心定位。</li>
+  <li><strong>分层追问</strong>：整机是否采用该芯片？镜像与插件是否适配？RoCE 拥塞验证是否拆到封装/隧道/解封装？</li>
+  <li><strong>易错</strong>：芯片公开定位 = 客户 AI Fabric 已验收。</li>
+</ul>
+
+<h2>案例 C：开放管理路径（Prestera / OpenLAN 类）</h2>
+<ul>
+  <li><strong>常见叙事</strong>：SAI、SONiC、客户端、gNMI/gNOI/REST 与云管 SDK 串成开放管理路径。</li>
+  <li><strong>分层追问</strong>：哪些进目标镜像？权限与证书如何？断网自治？对接客户网管的字段映射？</li>
+  <li><strong>易错</strong>：架构齐全 = 管理面产品化已完成。</li>
+</ul>
+
+<h2>案例 D：商业发行（PowerSwitch 类叙事）</h2>
+<ul>
+  <li><strong>常见叙事</strong>：社区代码 + 品牌平台 + 镜像版本 + 授权 + ONIE + 升级资料，绑定为可服务交付。</li>
+  <li><strong>分层追问</strong>：仅列出的型号与授权路径是否覆盖你的项目？非列出硬件能否外推？</li>
+  <li><strong>易错</strong>：商业发行文档外推到非清单硬件。</li>
+</ul>
+
+<h2>你自己的练习模板</h2>
+<table class="matrix">
+  <thead><tr><th>材料</th><th>层</th><th>原句</th><th>可写入定型表的改写</th><th>证据链接</th></tr></thead>
+  <tbody>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+<div class="callout"><strong>边界：</strong>本页只用于内部训练分层阅读能力。对外材料请以各厂商最新官方文档与你的合同范围为准。</div>
+
+        </article>
+        <aside class="side-panel">
+<div class="panel"><h2>六层追问</h2><ul>
+    <li>芯片 / SAI</li><li>平台 / 板卡</li><li>镜像 / 补丁</li>
+    <li>硬件 / 光学</li><li>测试 / 加固</li><li>支持 / 生命周期</li>
+  </ul></div>
+        </aside>
+      </div>
+      <nav class="page-nav" aria-label="上一页下一页">
+        <a href="checklist.html">← 产品定型核验包</a>
+        <a href="track-01.html">供应链能力线 →</a>
+      </nav>
+      <footer class="site-footer">SONiC PM Atlas · 结论要能对上版本、型号、证据和负责人</footer>
+    </div>
+  </main>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

@@ -70,10 +70,8 @@
     let current = false;
     if (key === 'home' && (path === '' || path === 'index.html')) current = true;
     if (key === 'intro' && dayMatch) current = true;
-    if (key === trackMatch?.[0]?.replace('.html', '') && trackMatch) current = true;
-    if (key === 'map' && (path === '' || path === 'index.html') && location.hash === '#capability-map') {
-      // 首页锚点不高亮顶栏，避免与「首页」冲突
-    }
+    if (trackMatch && key === trackMatch[0].replace('.html', '')) current = true;
+    if (key && `${key}.html` === path) current = true;
     if (current) a.setAttribute('aria-current', 'page');
     else a.removeAttribute('aria-current');
   });

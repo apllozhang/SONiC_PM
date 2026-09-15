@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#6b489d">
-  <meta name="description" content="把 SONiC 功能清单写成可验收的证据：设备、拓扑、版本、日志和负责人。">
+  <meta name="description" content="把功能清单写成可验收证据：拓扑、拥塞、故障、版本、日志与负责人；参数四态不可弱化。">
   <title>第 2 天 · 功能证据 · SONiC PM Atlas</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css">
@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v1.0 · ALE WebUI</span>
+    <span class="ver-badge">v1.1 · ALE WebUI</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -32,6 +32,9 @@
       <a href="track-04.html" data-nav="track-04">社区</a>
       <a href="track-05.html" data-nav="track-05">定型</a>
       <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="glossary.html" data-nav="glossary">术语</a>
+      <a href="checklist.html" data-nav="checklist">核验包</a>
+      <a href="cases.html" data-nav="cases">案例</a>
     </nav>
 
     <div class="topbar-tools">
@@ -51,31 +54,108 @@
       <header class="page-header">
         <p class="section-kicker">入门 / 第 2 天</p>
         <h1>功能证据：从功能名到可验收场景</h1>
-        <p class="page-lead">“支持 RoCE/EVPN”不能直接写进定型表。要写清楚在什么拓扑、什么拥塞、什么故障、什么升级条件下验证过，并绑定版本、配置、日志、负责人和风险签字人。</p>
-        <div class="meta-row"><span class="tag ">第 2 天</span><span class="tag ">功能证据</span><span class="tag ok">参数四态</span></div>
+        <p class="page-lead">「支持 RoCE/EVPN」不能直接进定型表。要写清楚在什么拓扑、什么拥塞、什么故障、什么升级条件下验证过，并绑定版本、配置、日志、负责人和风险签字人。</p>
+        <div class="meta-row"><span class="tag ">第 2 天</span><span class="tag ">功能证据</span><span class="tag ">参数四态</span></div>
       </header>
       <div class="content-grid">
         <article class="prose">
 
-<h2>证据怎么写</h2>
+<h2>功能名为什么不够用</h2>
+<p>定型表里写「支持 RoCEv2 over VXLAN」，评审时几乎无法反驳，也无法验收。可验收写法是把场景拆开：Leaf 封装、Spine 隧道转发、Leaf 解封装分别测什么；EVPN/VXLAN 至少区分 L2、L3 对称与 L3 非对称路径；队列/缓冲、PFC/ECN 参数、拥塞点、性能目标、故障恢复、日志与回退条件是否都写明。</p>
+<p>测试覆盖点不能代替吞吐、时延、收敛、无损、规模或跨光模块组合的验收结论。</p>
+
+<h2>证据五要素模板</h2>
 <table class="matrix">
-  <thead><tr><th>字段</th><th>要写清楚</th><th>常见问题</th></tr></thead>
+  <thead>
+    <tr><th>字段</th><th>要写清楚</th><th>常见问题</th><th>合格示例（示意）</th></tr>
+  </thead>
   <tbody>
-    <tr><td>被测设备 / 芯片</td><td>目标型号、芯片系列、板卡版本</td><td>只写芯片型号</td></tr>
-    <tr><td>拓扑 / 负载</td><td>被测设备 + 交换机 + 流量仪，速率、队列、缓冲</td><td>用功能清单代替测试环境</td></tr>
-    <tr><td>条件</td><td>拥塞、故障、升级/回退、光模块组合</td><td>只测顺利路径</td></tr>
-    <tr><td>证据</td><td>日志、配置、报告页码、哈希、链接</td><td>口头结论、截图不带版本</td></tr>
-    <tr><td>责任</td><td>负责人、风险签字人、补丁窗口</td><td>没人签字的「已支持」</td></tr>
+    <tr>
+      <td>被测设备 / 芯片</td>
+      <td>目标型号、芯片系列、板卡版本</td>
+      <td>只写芯片型号</td>
+      <td>型号 A / Trident 4 / 板卡 B1</td>
+    </tr>
+    <tr>
+      <td>拓扑 / 负载</td>
+      <td>被测设备 + 交换机 + 流量仪，速率、队列、缓冲</td>
+      <td>用功能清单代替测试环境</td>
+      <td>2 Leaf + 1 Spine，100G，PFC 阈值 …</td>
+    </tr>
+    <tr>
+      <td>条件</td>
+      <td>拥塞、故障、升级/回退、光模块组合</td>
+      <td>只测顺利路径</td>
+      <td>上行丢包 1% 时 RoCE 完成时间；端口闪断恢复 &lt; X 秒</td>
+    </tr>
+    <tr>
+      <td>证据</td>
+      <td>日志、配置、报告页码、哈希、链接</td>
+      <td>口头结论、截图不带版本</td>
+      <td>报告第 N 页 + 配置片段 + 镜像 SHA</td>
+    </tr>
+    <tr>
+      <td>责任</td>
+      <td>负责人、风险签字人、补丁窗口</td>
+      <td>没人签字的「已支持」</td>
+      <td>张三签字；风险由李四接受；补丁双周</td>
+    </tr>
   </tbody>
 </table>
+
+<h2>把功能名改成场景（练习表）</h2>
+<table class="matrix">
+  <thead><tr><th>功能名（不要直接用）</th><th>可验收改写</th><th>需要的证据</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>支持 EVPN/VXLAN</td>
+      <td>在 L2 与 L3 对称路径下，指定租户规模与网关角色，验证 ARP/路由学习与收敛时间</td>
+      <td>拓扑图、配置、学习与收敛日志、时间戳</td>
+    </tr>
+    <tr>
+      <td>支持 RoCE</td>
+      <td>指定 PFC/ECN 阈值与拥塞点，测无损传输完成时间与暂停帧风暴范围</td>
+      <td>队列配置、流量仪报告、交换机计数器</td>
+    </tr>
+    <tr>
+      <td>支持热升级</td>
+      <td>指定升级窗口内业务中断上限、失败回退步骤与数据保全结果</td>
+      <td>升级前后版本、回退演练记录、业务监控曲线</td>
+    </tr>
+    <tr>
+      <td>支持遥测</td>
+      <td>指定订阅路径与采样间隔，测推送时延与丢点率；断网后本地自治行为</td>
+      <td>gNMI 配置、抓包或服务端日志、断网演练</td>
+    </tr>
+  </tbody>
+</table>
+
 <h2>参数四态（语义不可弱化）</h2>
+<table class="matrix">
+  <thead><tr><th>状态</th><th>含义</th><th>允许写进定型表？</th><th>下一步动作</th></tr></thead>
+  <tbody>
+    <tr><td><strong>有值</strong></td><td>原文已核对，可回溯</td><td>可以，附引用</td><td>归档</td></tr>
+    <tr><td><strong>待复核</strong></td><td>系统推测或未对过原文</td><td>可以，但必须标待复核</td><td>人工核对原文</td></tr>
+    <tr><td><strong>未披露</strong></td><td>公开材料没写</td><td>可以，标未披露</td><td>向厂商提问，不默认不支持</td></tr>
+    <tr><td><strong>抽取失败</strong></td><td>解析失败</td><td>可以，标失败</td><td>换资料源或人工读原文</td></tr>
+  </tbody>
+</table>
+<div class="callout"><strong>对比检查：</strong>写了「已测」，仍不能代替吞吐、时延、收敛、无损、规模或跨光模块组合的验收结论。覆盖点 ≠ 验收结论。</div>
+
+<h2>一小时动手</h2>
+<ol>
+  <li>从厂商彩页或白皮书抽 3 个功能名，按上表各改写一条「设备 + 条件 + 证据 + 负责人」。</li>
+  <li>把无法证明的项标「待复核」，不要删除。</li>
+  <li>为每条证据补上版本绑定：目标 release 与配置摘要。</li>
+</ol>
+
+<h2>声明门禁（出门前自检）</h2>
 <ul>
-  <li><strong>有值</strong>：原文已核对，可回溯。</li>
-  <li><strong>待复核</strong>：系统推测或未对过原文，必须人工再核。</li>
-  <li><strong>未披露</strong>：公开材料没写，不等于不支持。</li>
-  <li><strong>抽取失败</strong>：解析失败，不等于功能不存在。</li>
+  <li>型号、版本已写明，不是系列名。</li>
+  <li>证据链接可打开，且带版本号或哈希。</li>
+  <li>负责人已确认；风险项有签字人。</li>
+  <li>四态标注完整，没有把「未披露」写成「不支持」或「已支持」。</li>
 </ul>
-<div class="callout"><strong>注意：</strong>写了测试覆盖点，不能代替吞吐、时延、收敛、无损、规模或跨光模块组合的验收结论。</div>
 
         </article>
         <aside class="side-panel">
@@ -87,6 +167,21 @@
     <li><span class="gate-dot"></span><span>版本已锁定</span></li>
     <li><span class="gate-dot ok"></span><span>证据链接可打开</span></li>
     <li><span class="gate-dot warn"></span><span>负责人已签字</span></li>
+  </ul>
+</div>
+<div class="panel">
+  <h2>本日产出</h2>
+  <ul>
+    <li>3 条场景化功能证据</li>
+    <li>四态标注练习</li>
+    <li>证据模板表</li>
+  </ul>
+</div>
+<div class="panel">
+  <h2>相关</h2>
+  <ul>
+    <li><a href="glossary.html">术语与参数四态</a></li>
+    <li>测试能力线：异常与遥测</li>
   </ul>
 </div>
         </aside>

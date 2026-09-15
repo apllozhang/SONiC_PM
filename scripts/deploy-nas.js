@@ -17,6 +17,7 @@ const RUNTIME_FILES = [
   'day-01.html', 'day-02.html', 'day-03.html',
   'track-01.html', 'track-02.html', 'track-03.html',
   'track-04.html', 'track-05.html', 'track-06.html',
+  'glossary.html', 'checklist.html', 'cases.html',
   'css', 'js', 'assets',
 ];
 

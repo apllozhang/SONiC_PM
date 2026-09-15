@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6b489d">
+  <meta name="description" content="SONiC 产品常用术语、架构缩写与参数四态语义速查。">
+  <title>术语与参数四态 · SONiC PM Atlas</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/atlas.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="返回首页 · SONiC PM Atlas">
+      <img class="logo-color" src="assets/brand/ale-primary-logo-horizontal.png" alt="Alcatel-Lucent Enterprise">
+      <img class="logo-white" src="assets/brand/ale-primary-logo-horizontal-white.png" alt="Alcatel-Lucent Enterprise">
+      <span class="divider" aria-hidden="true"></span>
+      <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
+    </a>
+    <span class="ver-badge">v1.1 · ALE WebUI</span>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="主导航">
+      <a href="index.html" data-nav="home">首页</a>
+      <a href="day-01.html" data-nav="intro">3 天入门</a>
+      <a href="track-01.html" data-nav="track-01">供应链</a>
+      <a href="track-02.html" data-nav="track-02">架构</a>
+      <a href="track-03.html" data-nav="track-03">测试</a>
+      <a href="track-04.html" data-nav="track-04">社区</a>
+      <a href="track-05.html" data-nav="track-05">定型</a>
+      <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="glossary.html" data-nav="glossary">术语</a>
+      <a href="checklist.html" data-nav="checklist">核验包</a>
+      <a href="cases.html" data-nav="cases">案例</a>
+    </nav>
+
+    <div class="topbar-tools">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="切换主题" title="切换主题">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="打开导航">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim" id="navScrim" hidden></div>
+  <main class="main" id="main" tabindex="-1">
+    <div class="container">
+<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="glossary.html">工具</a></nav>
+      <header class="page-header">
+        <p class="section-kicker">工具</p>
+        <h1>术语与参数四态</h1>
+        <p class="page-lead">给售前、研发、测试共用的一页速查。四态语义不可弱化：未披露不等于不支持，抽取失败不等于功能不存在。</p>
+        <div class="meta-row"><span class="tag ">工具</span><span class="tag ">术语</span><span class="tag ">四态</span></div>
+      </header>
+      <div class="content-grid">
+        <article class="prose">
+
+<h2>参数四态</h2>
+<table class="matrix">
+  <thead><tr><th>状态</th><th>含义</th><th>不可写成</th></tr></thead>
+  <tbody>
+    <tr><td>有值</td><td>原文引用已核验，可回溯</td><td>无引用的「听说支持」</td></tr>
+    <tr><td>待复核</td><td>机器推测或未过原文校验</td><td>直接当「有值」</td></tr>
+    <tr><td>未披露</td><td>公开材料没写</td><td>「不支持」或「已支持」</td></tr>
+    <tr><td>抽取失败</td><td>解析失败</td><td>「功能不存在」</td></tr>
+  </tbody>
+</table>
+
+<h2>架构与组件</h2>
+<table class="matrix">
+  <thead><tr><th>术语</th><th>一句话</th><th>产品经理要问</th></tr></thead>
+  <tbody>
+    <tr><td>SAI</td><td>交换机抽象接口，统一转发面 API</td><td>目标镜像用的 SAI 版本与厂商库？</td></tr>
+    <tr><td>syncd</td><td>执行 SAI 调用、与 ASIC 交互的组件</td><td>异常时如何取证、是否影响转发？</td></tr>
+    <tr><td>OrchAgent</td><td>把网络意图转成 SAI 对象（sonic-swss）</td><td>配置卡在这一环时的日志在哪？</td></tr>
+    <tr><td>CONFIG_DB / ASIC_DB / STATE_DB</td><td>配置、下发、状态的 Redis 库</td><td>遥测与诊断分别读哪里？</td></tr>
+    <tr><td>HW-SKU</td><td>硬件型号标识，驱动与端口映射关联</td><td>同芯片不同板是否分开发布？</td></tr>
+    <tr><td>ONIE</td><td>开放网络安装环境，装 NOS 用</td><td>固件版本与机型识别是否锁定？</td></tr>
+    <tr><td>CPLD</td><td>板级逻辑（风扇、端口、指示灯等）</td><td>版本是否进兼容矩阵？</td></tr>
+    <tr><td>HCL</td><td>硬件兼容列表</td><td>是否有同版本实验室证据？</td></tr>
+    <tr><td>gNMI / gNOI</td><td>配置遥测 / 运维操作的 gRPC 接口</td><td>对接客户网管的字段与权限？</td></tr>
+    <tr><td>Support Bundle</td><td>现场诊断打包（日志、状态等）</td><td>是否覆盖该板卡与该镜像？</td></tr>
+  </tbody>
+</table>
+
+<h2>商业与交付</h2>
+<table class="matrix">
+  <thead><tr><th>术语</th><th>一句话</th></tr></thead>
+  <tbody>
+    <tr><td>community SONiC</td><td>Apache 2.0 下的社区版本，支持通常以服务型方式提供</td></tr>
+    <tr><td>Enterprise / 商业发行</td><td>将社区代码、平台、镜像版本、授权与升级资料绑定为可服务交付</td></tr>
+    <tr><td>harden / 加固</td><td>选补丁、跑 CI/CT、平台验证与缺陷关闭的路径；是方法，不是自动等于 GA</td></tr>
+    <tr><td>EOL / 变更通知</td><td>停产与重大变更的提前告知，应写入合同</td></tr>
+    <tr><td>TAC / L3</td><td>技术支持层级；要写清升级路径与响应级别</td></tr>
+  </tbody>
+</table>
+
+        </article>
+        <aside class="side-panel">
+
+<div class="panel"><h2>速记</h2><ul class="gate-list">
+  <li><span class="gate-dot ok"></span><span>有值 = 可回溯</span></li>
+  <li><span class="gate-dot"></span><span>待复核 = 要人核</span></li>
+  <li><span class="gate-dot warn"></span><span>未披露 ≠ 不支持</span></li>
+  <li><span class="gate-dot err"></span><span>抽取失败 ≠ 不存在</span></li>
+</ul></div>
+        </aside>
+      </div>
+      <nav class="page-nav" aria-label="上一页下一页">
+        <a href="day-02.html">← 第 2 天 · 功能证据</a>
+        <a href="checklist.html">产品定型核验包 →</a>
+      </nav>
+      <footer class="site-footer">SONiC PM Atlas · 结论要能对上版本、型号、证据和负责人</footer>
+    </div>
+  </main>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

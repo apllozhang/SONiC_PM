@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v1.0 · ALE WebUI</span>
+    <span class="ver-badge">v1.1 · ALE WebUI</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -32,6 +32,9 @@
       <a href="track-04.html" data-nav="track-04">社区</a>
       <a href="track-05.html" data-nav="track-05">定型</a>
       <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="glossary.html" data-nav="glossary">术语</a>
+      <a href="checklist.html" data-nav="checklist">核验包</a>
+      <a href="cases.html" data-nav="cases">案例</a>
     </nav>
 
     <div class="topbar-tools">
@@ -57,22 +60,52 @@
       <div class="content-grid">
         <article class="prose">
 
-<h2>学习重点</h2>
+<h2>报价/定型表必须拆开的行</h2>
+<p>把「SONiC」当成一个含混的支持对象是商业化阶段最常见事故。至少拆成：镜像来源、许可证、CVE 责任、升级窗口、技术支持层级、平台 RMA、硬件生命周期，分独立行。</p>
+
+<h2>商业发行 vs 自建社区：怎么比</h2>
+<table class="matrix">
+  <thead><tr><th>维度</th><th>商业发行</th><th>自主维护社区版</th></tr></thead>
+  <tbody>
+    <tr><td>补丁周期</td><td>合同约定窗口</td><td>取决于自身人力与上游节奏</td></tr>
+    <tr><td>集成测试成本</td><td>通常含在许可/服务费</td><td>自己承担，且常被低估</td></tr>
+    <tr><td>CVE 响应</td><td>有 SLA 或公告机制</td><td>自己跟踪上游与回补丁</td></tr>
+    <tr><td>总体拥有成本</td><td>许可 + 服务</td><td>人力 + 测试 + 风险</td></tr>
+  </tbody>
+</table>
+<p>竞品对比时，软件许可费用、ASIC 硬件加速限制、第三方光模块锁定策略与厂商漏洞响应 SLA 必须同时对齐，不能只比功能列表。</p>
+
+<h2>支持合同与生命周期</h2>
 <ul>
-  <li>商业 SONiC 发行版 vs 自己维护开源版：总体拥有成本和补丁周期怎么比。</li>
-  <li>支持合同：服务级别、返修、停产/变更通知是否写进去。</li>
-  <li>生命周期预警如何回流到产品路线和备件策略。</li>
+  <li>服务级别：响应与恢复时间、现场/远程边界、备件时限。</li>
+  <li>返修与停产：EOL/变更通知提前期是否写入。</li>
+  <li>生命周期预警如何回流到产品路线与备件策略——不是售后单方面的事。</li>
 </ul>
-<div class="callout"><strong>本阶段验收：</strong>每一个产品结论都能回到版本、平台、证据和负责人——这是 12 周训练的终点。</div>
+
+<h2>商业化网关（放行条件）</h2>
+<ul>
+  <li>未通过目标规模/拓扑真实测试床闭环验证的方案，不进入 GA 叙述。</li>
+  <li>每一项对外「支持」都能回到版本、平台、证据与负责人。</li>
+  <li>未知项有风险签字人，且不进「已支持」统计口径。</li>
+</ul>
+<div class="callout"><strong>本阶段验收：</strong>12 周训练的终点不是做完 PPT，而是定型包、证据链与责任表能同时过法务、售前与交付。</div>
+
+<h2>本阶段产出</h2>
+<ul>
+  <li>商业化一页纸（给报价与售前）。</li>
+  <li>支持边界说明（给合同附件）。</li>
+  <li>生命周期风险表。</li>
+</ul>
 
         </article>
         <aside class="side-panel">
 <div class="panel"><h2>本阶段产出</h2><ul><li>商业化一页纸</li><li>支持边界说明</li><li>生命周期风险表</li></ul></div>
+<div class="panel"><h2>收口</h2><ul><li><a href="checklist.html">核验包总表</a></li><li><a href="index.html">返回首页</a></li></ul></div>
         </aside>
       </div>
       <nav class="page-nav" aria-label="上一页下一页">
         <a href="track-05.html">← 能力线 05</a>
-        <a href="index.html">返回首页 →</a>
+        <a href="glossary.html">术语与四态 →</a>
       </nav>
       <footer class="site-footer">SONiC PM Atlas · 结论要能对上版本、型号、证据和负责人</footer>
     </div>

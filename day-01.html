@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#6b489d">
-  <meta name="description" content="SONiC 交换机产品经理第 1 天：分清芯片、整机、NOS 与商业支持各自负责什么。">
+  <meta name="description" content="分清芯片、整机、镜像、服务四层责任；建立 SONiC 产品坐标系与核验包草稿。">
   <title>第 1 天 · 产品地图 · SONiC PM Atlas</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css">
@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v1.0 · ALE WebUI</span>
+    <span class="ver-badge">v1.1 · ALE WebUI</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -32,6 +32,9 @@
       <a href="track-04.html" data-nav="track-04">社区</a>
       <a href="track-05.html" data-nav="track-05">定型</a>
       <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="glossary.html" data-nav="glossary">术语</a>
+      <a href="checklist.html" data-nav="checklist">核验包</a>
+      <a href="cases.html" data-nav="cases">案例</a>
     </nav>
 
     <div class="topbar-tools">
@@ -51,29 +54,121 @@
       <header class="page-header">
         <p class="section-kicker">入门 / 第 1 天</p>
         <h1>产品地图：先分清谁负责什么</h1>
-        <p class="page-lead">第 1 天不背命令、不刷命令行。先把坐标系立起来：芯片能力、平台适配、镜像来源、硬件型号、测试加固、售后支持，每一层都要能对应到具体版本和负责人。</p>
-        <div class="meta-row"><span class="tag ">第 1 天</span><span class="tag ">产品地图</span><span class="tag info">责任划分</span></div>
+        <p class="page-lead">第 1 天不背命令。先立坐标系：芯片能力、平台适配、镜像来源、硬件型号、测试加固、售后支持，每一层都要能对应到具体版本和负责人。</p>
+        <div class="meta-row"><span class="tag ">第 1 天</span><span class="tag ">责任划分</span><span class="tag ">核验包</span></div>
       </header>
       <div class="content-grid">
         <article class="prose">
 
-<h2>今天要解决什么</h2>
-<p>“支持 SONiC”这句话，在不同材料里说的往往不是同一层。芯片厂说 SAI 开放了哪些能力，不等于某块板卡、某个商业镜像或客户现场已经获得支持。产品经理第 1 天就要把这句话拆开。</p>
-<ul>
-  <li><strong>芯片 / SDK / SAI</strong>：能力边界在上游接口层，必须核对 ASIC 驱动和 SAI 版本是否锁死。</li>
-  <li><strong>平台 / 整机 / 白牌</strong>：ONIE、CPLD、光模块兼容矩阵，必须落到具体型号（SKU）。</li>
-  <li><strong>NOS 发行版</strong>：社区镜像、商业发行版、厂商加固版，责任边界完全不同。</li>
-  <li><strong>服务与支持</strong>：技术支持层级、补丁节奏、生命周期，要能对上合同和发布计划。</li>
-</ul>
-<div class="callout"><strong>硬性原则：</strong>同一颗 ASIC，不同板卡设计不能当成同一种支持状态；芯片级公开能力，不能直接说成客户现场已经支持。</div>
-<h2>一小时动手</h2>
+<h2>为什么「支持 SONiC」不能一句话说完</h2>
+<p>同一句话在不同材料里指的往往不是同一层。芯片厂页面写「Enterprise SONiC 支持基于 StrataXGS 的 50 多个 ODM/OEM 平台」，说的是生态范围，不是某一块板卡的硬件兼容列表（HCL）。整机厂页面写「已在 1G–400G 开放交换机上 harden」，说的是方法路径，不等于你的目标型号已进正式支持清单。</p>
+<p>产品经理第 1 天的任务，是把「支持」拆成可核对的层，避免把生态声明当成客户现场结论。</p>
+
+<h2>四层责任地图</h2>
+<table class="matrix">
+  <thead>
+    <tr><th>层</th><th>典型对象</th><th>公开材料常写什么</th><th>你必须核对什么</th><th>常见误判</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>芯片 / SDK / SAI</strong></td>
+      <td>Tomahawk、Trident、Spectrum、Prestera</td>
+      <td>吞吐档位、端口速率、SAI 能力列表</td>
+      <td>ASIC 驱动与 SAI 版本是否锁死；内核版本（如 5.10 / 6.1）是否匹配；同 ASIC 不同板卡是否分开陈述</td>
+      <td>把「芯片支持 EVPN」写成「本型号支持 EVPN」</td>
+    </tr>
+    <tr>
+      <td><strong>平台 / 整机 / 白牌</strong></td>
+      <td>ONIE、CPLD、BIOS、风扇电源、端口映射</td>
+      <td>机型矩阵、端口形态、总容量</td>
+      <td>目标 HW-SKU 的板级版本、固件基线、光模块/DAC 兼容矩阵、实验室烧录与灌包证据</td>
+      <td>同芯片家族的不同板卡当成同一支持状态</td>
+    </tr>
+    <tr>
+      <td><strong>NOS 发行版</strong></td>
+      <td>community SONiC、商业发行、厂商加固版</td>
+      <td>版本号、功能列表、下载与授权方式</td>
+      <td>镜像来源、许可证、补丁清单、升级/回退路径、CVE 责任归属</td>
+      <td>社区功能清单直接当商业版承诺</td>
+    </tr>
+    <tr>
+      <td><strong>服务与支持</strong></td>
+      <td>技术支持层级、RMA、生命周期</td>
+      <td>服务网络、响应级别</td>
+      <td>合同里的 SLA、补丁窗口、停产/变更通知、现场与远程边界</td>
+      <td>市场页「全球服务」= 你的项目有专属响应</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>责任链示意（读法）</h2>
 <ol>
-  <li>拿一份厂商公开资料，标出它说的是哪一层（芯片 / 平台 / 镜像 / 服务）。</li>
-  <li>写下目标 NOS 版本、目标型号、证据链接、负责人这四项。</li>
-  <li>凡是说不清版本和平台的结论，标成「待核对」，不要写成「已有数据」。</li>
+  <li><strong>芯片级能力</strong>：SAI/SDK 暴露了什么，是接口事实，不是交付承诺。</li>
+  <li><strong>平台适配</strong>：驱动、插件、端口映射、热电诊断是否按该板卡锁定。</li>
+  <li><strong>镜像交付</strong>：谁编译、谁签名、谁提供补丁、升级怎么回退。</li>
+  <li><strong>硬件与光学</strong>：HCL 是否有同版本实验室证据，而不是 PPT 矩阵。</li>
+  <li><strong>测试与硬化</strong>：是否有问题单、补丁、测试床、缺陷关闭记录。</li>
+  <li><strong>支持服务</strong>：出问题找谁、多久响应、备件与停产怎么通知。</li>
 </ol>
-<h2>本日产出</h2>
-<p>一张责任链示意，加一份核验包草稿：目标 NOS 版本与镜像、目标型号、证据链接、负责人。这是第 2 天写功能证据的输入。</p>
+<div class="callout"><strong>硬性原则：</strong>不能把同 ASIC 的不同板卡设计泛化成相同支持状态；不能把芯片级公开定位外推为客户部署已获支持。</div>
+
+<h2>案例：三句话里的三个陷阱</h2>
+<table class="matrix">
+  <thead><tr><th>材料原句（示意）</th><th>陷阱</th><th>产品经理应改写为</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>「支持 StrataXGS Tomahawk / Trident 的 50+ 平台」</td>
+      <td>生态范围 ≠ 单一 SKU HCL</td>
+      <td>目标型号 × 端口分拆 × 光模块 × 镜像版本，是否在本项目 HCL 上</td>
+    </tr>
+    <tr>
+      <td>「已在开放交换机上 harden」</td>
+      <td>方法标签 ≠ 可追溯发布</td>
+      <td>每个目标补丁是否有 Issue/PR、CI、DUT、测试床、已知限制与负责人</td>
+    </tr>
+    <tr>
+      <td>「商用 Enterprise SONiC 含 EVPN/VXLAN」</td>
+      <td>功能名 ≠ 场景验收</td>
+      <td>在何拓扑、何拥塞、何故障、何升级条件下验证过（见第 2 天）</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>一小时动手（有产出）</h2>
+<ol>
+  <li>打开一份厂商公开页，用荧光笔标出它说的是哪一层（芯片 / 平台 / 镜像 / 服务）。</li>
+  <li>按下面模板写 <strong>核验包草稿</strong>（可整段复制到备忘录）：</li>
+</ol>
+<table class="matrix">
+  <thead><tr><th>字段</th><th>填写要求</th><th>你的值</th></tr></thead>
+  <tbody>
+    <tr><td>目标场景</td><td>园区接入 / 数据中心 / AI Fabric 等</td><td></td></tr>
+    <tr><td>目标客户 / 拓扑</td><td>规模、跨地域、是否有 RoCE</td><td></td></tr>
+    <tr><td>目标型号 / ASIC</td><td>板卡版本也要写</td><td></td></tr>
+    <tr><td>目标 NOS / 版本 / 镜像</td><td>社区 or 商业，下载与授权方式</td><td></td></tr>
+    <tr><td>SDK / SAI / 平台插件</td><td>版本号与锁定方式</td><td></td></tr>
+    <tr><td>硬件、光模块与 HCL</td><td>是否有同版本实验室证据</td><td></td></tr>
+    <tr><td>证据链接与负责人</td><td>URL 可打开，人可联系</td><td></td></tr>
+    <tr><td>已知限制与风险签字人</td><td>谁接受「未知」项</td><td></td></tr>
+  </tbody>
+</table>
+<ol start="3">
+  <li>对无法回到版本与平台的结论，一律标「待核对」，不要写成「已有数据」。</li>
+</ol>
+
+<h2>今日检查点</h2>
+<ul>
+  <li>能用一句话向研发解释：为什么「SAI 开放了 EVPN」不等于「这块板已支持」。</li>
+  <li>核验包草稿至少填满：场景、型号、NOS 版本、证据链接、负责人。</li>
+  <li>知道 draft 路线图不能写进对外 GA 承诺。</li>
+  <li>知道保密图表与未公开材料不得复制进学习笔记再外传。</li>
+</ul>
+
+<h2>延伸（进阶读）</h2>
+<ul>
+  <li>控制面简图：用户/管理写入 <code>CONFIG_DB</code> → OrchAgent 转成 SAI 对象 → <code>ASIC_DB</code> → <code>syncd</code> 下发芯片。第 1 天只需知道「意图要经过这条链」，细节在「架构」能力线。</li>
+  <li>术语：HCL、HW-SKU、ONIE、CPLD、SAI、syncd 见 <a href="glossary.html">术语与参数四态</a>。</li>
+</ul>
 
         </article>
         <aside class="side-panel">
@@ -88,10 +183,18 @@
   </ul>
 </div>
 <div class="panel">
+  <h2>本日产出</h2>
+  <ul>
+    <li>责任链示意（六层）</li>
+    <li>核验包草稿（八字段）</li>
+    <li>三条材料改写练习</li>
+  </ul>
+</div>
+<div class="panel">
   <h2>下一步</h2>
   <ul>
     <li>第 2 天：把功能名写成可验收场景</li>
-    <li>供应链能力线：芯片与白牌整机</li>
+    <li>工具页：<a href="checklist.html">产品定型核验包</a></li>
   </ul>
 </div>
         </aside>

@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v1.0 · ALE WebUI</span>
+    <span class="ver-badge">v1.1 · ALE WebUI</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -32,6 +32,9 @@
       <a href="track-04.html" data-nav="track-04">社区</a>
       <a href="track-05.html" data-nav="track-05">定型</a>
       <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="glossary.html" data-nav="glossary">术语</a>
+      <a href="checklist.html" data-nav="checklist">核验包</a>
+      <a href="cases.html" data-nav="cases">案例</a>
     </nav>
 
     <div class="topbar-tools">
@@ -57,22 +60,57 @@
       <div class="content-grid">
         <article class="prose">
 
-<h2>学习重点</h2>
+<h2>本周要建立的判断力</h2>
+<p>能一眼看出材料停在哪一层：是 ASIC 公开定位、ODM 板卡就绪、还是目标 SKU 已有实验室证据。把 ASIC 型号当成起点而不是准入结论：先冻结硬件型号、SDK/SAI、平台插件、固件、端口映射、热电与诊断责任，再谈「支持」。</p>
+
+<h2>ASIC 与软件栈怎么锁</h2>
 <ul>
-  <li>ASIC 驱动与 SAI 版本严格锁定；不同板卡设计不能当成同一种支持状态。</li>
-  <li>白牌准入：原理图、ONIE 固件、CPLD、光模块/线缆兼容矩阵，以及实验室实测证据。</li>
-  <li>双电源、气流、温升等硬件准入项，是否写进产品定义，而不是售后再打补丁。</li>
+  <li>ASIC 驱动经 <code>syncd</code> 容器加载；转发表项与状态同步必须经过 SAI 抽象。</li>
+  <li>核验硬件型号（HW-SKU）驱动是否与目标内核及 SAI 版本严格锁定。</li>
+  <li>同 ASIC 的不同板卡设计（端口映射、光学、电源）不能泛化为相同支持状态。</li>
 </ul>
-<h2>核对问题</h2>
+
+<h2>白牌准入：六件套</h2>
+<table class="matrix">
+  <thead><tr><th>项</th><th>说明</th><th>证据形态</th></tr></thead>
+  <tbody>
+    <tr><td>板级原理图 / 版本</td><td>目标 SKU 的硬件基线</td><td>受控文档版本号</td></tr>
+    <tr><td>ONIE 固件</td><td>安装器与机型识别</td><td>版本 + 校验值 + 烧录记录</td></tr>
+    <tr><td>CPLD</td><td>板级逻辑与端口/风扇控制</td><td>版本矩阵</td></tr>
+    <tr><td>光模块 / DAC HCL</td><td>兼容组合与距离/速率</td><td>实验室互通列表，不是营销矩阵</td></tr>
+    <tr><td>热与电</td><td>双电源、气流、温升</td><td>是否进入产品定义而非售后补丁</td></tr>
+    <tr><td>诊断</td><td>日志、LED、现场可更换件</td><td>Support Bundle 是否覆盖该板卡</td></tr>
+  </tbody>
+</table>
+
+<h2>案例拆解（示意，非排名）</h2>
+<ul>
+  <li><strong>芯片商生态页</strong>：Tomahawk 5 等以 51.2 Tb/s 档位介绍 AI/ML 定位——这是芯片级公开定位，不能自动等于某整机、某镜像已支持。</li>
+  <li><strong>整机/ODM harden 叙事</strong>：基于社区分支选 PR、跑 CI/CT、用 Jira 与测试床建追溯链——要问：是否能对每个目标补丁给出 Issue/PR、commit、DUT、已知限制与负责人。</li>
+  <li><strong>光学协同</strong>：强调交换机 + NOS + 多来源光模块组合验证——要落到你项目的 HCL 行，而不是「支持第三方光模块」一句话。</li>
+</ul>
+<div class="callout"><strong>网关：</strong>生态声明不能替代型号级 HCL。评审必须追到准确型号、端口/分拆模式、光模块、镜像、BIOS/CPLD、温度/气流、RMA 与测试报告。</div>
+
+<h2>核对问题（周会上直接用）</h2>
 <ol>
-  <li>目标型号的板级版本和固件基线是什么？</li>
-  <li>兼容矩阵有没有同版本实验室证据？</li>
-  <li>芯片级能力和目标镜像/硬件型号，是否分开陈述？</li>
+  <li>目标 SKU 的板级版本与固件基线是什么？谁签字冻结？</li>
+  <li>兼容矩阵是否有同版本实验室证据？还是供应商 Excel？</li>
+  <li>芯片级能力与目标镜像/硬件型号是否分开陈述？</li>
+  <li>双电源与温升测试是否在准入阶段完成？</li>
+  <li>光学不兼容时的责任在芯片、板卡还是光学供应商？</li>
 </ol>
+
+<h2>本阶段产出</h2>
+<ul>
+  <li>型号对照表（ASIC ↔ 板卡 ↔ 镜像 ↔ 插件版本）。</li>
+  <li>兼容矩阵草稿（含证据列与负责人列）。</li>
+  <li>供应链风险清单（缺证据项、依赖单一 ODM 等）。</li>
+</ul>
 
         </article>
         <aside class="side-panel">
 <div class="panel"><h2>本阶段产出</h2><ul><li>型号对照表</li><li>兼容矩阵草稿</li><li>供应链风险清单</li></ul></div>
+<div class="panel"><h2>相关</h2><ul><li><a href="glossary.html">术语表</a></li><li><a href="cases.html">厂商案例拆解</a></li></ul></div>
         </aside>
       </div>
       <nav class="page-nav" aria-label="上一页下一页">

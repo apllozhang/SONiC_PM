@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#6b489d">
-  <meta name="description" content="目标版本的分支策略、补丁清单和多仓库依赖是否锁定？没有版本工程，就没有可长期服务的产品。">
-  <title>02 架构与版本工程 · SONiC PM Atlas</title>
+  <meta name="description" content="行业竞争与产品定型核验包完整字段，可直接复制到表格使用。">
+  <title>产品定型核验包 · SONiC PM Atlas</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
@@ -50,64 +50,54 @@
   <div class="nav-scrim" id="navScrim" hidden></div>
   <main class="main" id="main" tabindex="-1">
     <div class="container">
-<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="index.html#capability-map">能力线</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">架构与版本工程</span></nav>
+<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="checklist.html">工具</a></nav>
       <header class="page-header">
-        <p class="section-kicker">12 周能力线 / 第 3–4 周</p>
-        <h1>02 · 架构与版本工程</h1>
-        <p class="page-lead">目标版本的分支策略、补丁清单和多仓库依赖是否锁定？没有版本工程，就没有可长期服务的产品。</p>
-        <div class="meta-row"><span class="tag ">第 3–4 周</span><span class="tag info">能力线</span></div>
+        <p class="section-kicker">工具</p>
+        <h1>产品定型核验包</h1>
+        <p class="page-lead">给定型会与售前共用的字段表。每一行都要能回到证据链接与负责人；未知项单独列出并指定风险签字人。</p>
+        <div class="meta-row"><span class="tag ">工具</span><span class="tag ">定型</span><span class="tag ">核验包</span></div>
       </header>
       <div class="content-grid">
         <article class="prose">
 
-<h2>控制面：意图如何到芯片</h2>
-<p>分布式控制面核心在 Redis 多实例与管道：管理接口对 <code>CONFIG_DB</code>（如 Redis DB 4）的写入触发 OrchAgent 监听；OrchAgent（sonic-swss）把 VLAN、BGP 等意图转成 SAI 对象，经 <code>ASIC_DB</code> 下发到 <code>syncd</code>。产品化时要能回答：配置从哪进、状态从哪出、失败卡在哪一环、如何取证。</p>
-
-<h2>多仓库依赖怎么进物料清单</h2>
+<h2>字段总表（复制用）</h2>
 <table class="matrix">
-  <thead><tr><th>仓库 / 组件</th><th>角色</th><th>版本工程要锁什么</th></tr></thead>
+  <thead><tr><th>#</th><th>字段</th><th>填写说明</th><th>四态</th><th>证据链接</th><th>负责人</th></tr></thead>
   <tbody>
-    <tr><td>sonic-buildimage</td><td>镜像组装</td><td>分支、构建参数、产物哈希</td></tr>
-    <tr><td>sonic-swss</td><td>OrchAgent 等</td><td>与 SAI/平台插件的兼容版本</td></tr>
-    <tr><td>sonic-sairedis / syncd</td><td>SAI 实现与下发</td><td>SAI 头文件与厂商库版本</td></tr>
-    <tr><td>sonic-utilities</td><td>运维命令</td><td>与镜像同版本发布</td></tr>
-    <tr><td>平台插件 / BSP</td><td>板卡适配</td><td>板卡版本 ↔ 插件版本矩阵</td></tr>
+    <tr><td>1</td><td>目标场景</td><td>园区 / 数据中心 / AI Fabric…</td><td></td><td></td><td></td></tr>
+    <tr><td>2</td><td>目标客户 / 拓扑</td><td>规模、冗余、是否 RoCE</td><td></td><td></td><td></td></tr>
+    <tr><td>3</td><td>目标型号 / ASIC</td><td>含板卡版本</td><td></td><td></td><td></td></tr>
+    <tr><td>4</td><td>目标 NOS / 版本 / 镜像</td><td>社区或商业、授权方式</td><td></td><td></td><td></td></tr>
+    <tr><td>5</td><td>SDK / SAI / 平台插件</td><td>版本锁定方式</td><td></td><td></td><td></td></tr>
+    <tr><td>6</td><td>硬件、光模块与 HCL</td><td>实验室证据有无</td><td></td><td></td><td></td></tr>
+    <tr><td>7</td><td>补丁 / CI / DUT / 回归</td><td>hardening 追溯链</td><td></td><td></td><td></td></tr>
+    <tr><td>8</td><td>AI/DC 拓扑与拥塞验证</td><td>PFC/ECN、封装路径</td><td></td><td></td><td></td></tr>
+    <tr><td>9</td><td>升级 / 回退 / CVE / RMA</td><td>窗口与责任</td><td></td><td></td><td></td></tr>
+    <tr><td>10</td><td>已知限制与风险签字人</td><td>未知项必须有主</td><td></td><td></td><td></td></tr>
   </tbody>
 </table>
 
-<h2>分支与发布节奏</h2>
-<ul>
-  <li>社区基线 → 平台插件 → 目标镜像的依赖链要与发布节奏对齐，避免「插件已升、镜像未跟」。</li>
-  <li>补丁物料清单（BOM）：每个补丁的来源 PR、优先级、冲突风险、回退方式。</li>
-  <li>升级与回退必须写进版本定义：失败恢复步骤、数据保全、时间窗口。</li>
-</ul>
-
-<h2>公开架构图怎么用（和不能怎么用）</h2>
-<p>公开架构图与流程可以成为验证问题的输入（例如：遥测挂哪个库、重启哪个容器影响业务），但不能绕过版本和平台门禁。问「这张图对应的版本号与板卡是什么」，而不是「图画得很全所以支持」。</p>
-
-<h2>核对问题</h2>
+<h2>使用规则</h2>
 <ol>
-  <li>目标 release 的分支策略是什么？与上游同步周期？</li>
-  <li>patch BOM 是否锁定？谁负责合并冲突？</li>
-  <li>多仓依赖进入 BOM 的机制是手工还是流水线？</li>
-  <li>升级失败时回退到哪一版？谁演练过？</li>
+  <li>四态只能填：有值 / 待复核 / 未披露 / 抽取失败。</li>
+  <li>「有值」必须有可打开的证据链接，且链接指向的版本与第 3、4 行一致。</li>
+  <li>定型会纪要中，未知项单独列表，不混入「已支持」统计。</li>
+  <li>基线哈希变化后，相关行自动标复核。</li>
 </ol>
-
-<h2>本阶段产出</h2>
-<ul>
-  <li>分支与发布节奏图。</li>
-  <li>补丁物料清单。</li>
-  <li>升级/回退策略一页纸。</li>
-</ul>
+<div class="callout"><strong>提醒：</strong>这张表的目的是减少会后扯皮，不是增加填表工作量。字段不全的行宁可标未知，也不要空白通过。</div>
 
         </article>
         <aside class="side-panel">
-<div class="panel"><h2>本阶段产出</h2><ul><li>分支与发布节奏图</li><li>补丁物料清单</li><li>升级/回退策略</li></ul></div>
+<div class="panel"><h2>配套</h2><ul>
+    <li><a href="glossary.html">四态与术语</a></li>
+    <li><a href="day-01.html">第 1 天核验包草稿</a></li>
+    <li><a href="cases.html">厂商案例</a></li>
+  </ul></div>
         </aside>
       </div>
       <nav class="page-nav" aria-label="上一页下一页">
-        <a href="track-01.html">← 能力线 01</a>
-        <a href="track-03.html">能力线 03 →</a>
+        <a href="glossary.html">← 术语与参数四态</a>
+        <a href="cases.html">厂商案例拆解 →</a>
       </nav>
       <footer class="site-footer">SONiC PM Atlas · 结论要能对上版本、型号、证据和负责人</footer>
     </div>

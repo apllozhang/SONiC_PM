@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v1.0 · ALE WebUI</span>
+    <span class="ver-badge">v1.1 · ALE WebUI</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -32,6 +32,9 @@
       <a href="track-04.html" data-nav="track-04">社区</a>
       <a href="track-05.html" data-nav="track-05">定型</a>
       <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="glossary.html" data-nav="glossary">术语</a>
+      <a href="checklist.html" data-nav="checklist">核验包</a>
+      <a href="cases.html" data-nav="cases">案例</a>
     </nav>
 
     <div class="topbar-tools">
@@ -57,16 +60,46 @@
       <div class="content-grid">
         <article class="prose">
 
-<h2>学习重点</h2>
+<h2>定型核验包最少要有什么</h2>
+<p>完整字段见 <a href="checklist.html">产品定型核验包</a>。本周重点是把字段变成跨部门可签字的流程，而不是多填一列。</p>
+
+<h2>跨部门检查点</h2>
+<table class="matrix">
+  <thead><tr><th>检查点</th><th>研发</th><th>测试</th><th>供应链</th><th>支持</th></tr></thead>
+  <tbody>
+    <tr><td>型号与板卡冻结</td><td>签字</td><td>知悉</td><td>备料</td><td>备件策略</td></tr>
+    <tr><td>镜像与补丁 BOM</td><td>签字</td><td>回归</td><td>—</td><td>升级窗口</td></tr>
+    <tr><td>HCL 与光学</td><td>提供</td><td>互通</td><td>采购</td><td>现场清单</td></tr>
+    <tr><td>验收表四态</td><td>提供证据</td><td>签字</td><td>—</td><td>风险说明</td></tr>
+    <tr><td>停产 / 变更通知</td><td>知悉</td><td>—</td><td>主责</td><td>客户沟通</td></tr>
+  </tbody>
+</table>
+
+<h2>确认绑定基线哈希</h2>
 <ul>
-  <li>竞品分析与产品定型核验包，最少要有哪些字段。</li>
-  <li>跨部门检查点：谁签字、何时过期、基线更新后如何复核。</li>
-  <li>确认结果绑定基线哈希：资料一更新，旧结论自动作废。</li>
+  <li>确认结果绑定当时的彩页/规格哈希或镜像哈希。</li>
+  <li>资料或镜像一更新，旧结论自动失效并提示复核——避免拿旧事实冒充新事实。</li>
+  <li>「清除确认」应保留覆盖前快照，便于审计。</li>
+</ul>
+
+<h2>核对问题</h2>
+<ol>
+  <li>定型表里每一行是否都有 Owner 与截止时间？</li>
+  <li>未知项是否有风险签字人？</li>
+  <li>基线更新后，谁负责触发复核？</li>
+</ol>
+
+<h2>本阶段产出</h2>
+<ul>
+  <li>定型核验包（可签字版）。</li>
+  <li>职责与负责人表（RACI 简化版）。</li>
+  <li>检查点日历。</li>
 </ul>
 
         </article>
         <aside class="side-panel">
 <div class="panel"><h2>本阶段产出</h2><ul><li>定型核验包</li><li>职责与负责人表</li><li>检查点日历</li></ul></div>
+<div class="panel"><h2>工具</h2><ul><li><a href="checklist.html">完整字段清单</a></li></ul></div>
         </aside>
       </div>
       <nav class="page-nav" aria-label="上一页下一页">

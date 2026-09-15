@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v1.0 · ALE WebUI</span>
+    <span class="ver-badge">v1.1 · ALE WebUI</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -32,6 +32,9 @@
       <a href="track-04.html" data-nav="track-04">社区</a>
       <a href="track-05.html" data-nav="track-05">定型</a>
       <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="glossary.html" data-nav="glossary">术语</a>
+      <a href="checklist.html" data-nav="checklist">核验包</a>
+      <a href="cases.html" data-nav="cases">案例</a>
     </nav>
 
     <div class="topbar-tools">
@@ -57,11 +60,39 @@
       <div class="content-grid">
         <article class="prose">
 
-<h2>学习重点</h2>
+<h2>两种责任不要混</h2>
+<p>上游贡献说明技术影响力与代码质量路径；商业发行说明你愿意对哪些型号、哪些版本、多长周期负责。把「我们参与上游」翻译成可核对的提交记录、版本号和回归证据，而不是口号。</p>
+
+<h2>社区路径怎么核验</h2>
 <ul>
-  <li>社区贡献路径、代码评审周期与回归测试套件。</li>
-  <li>OCP / 开放硬件与商业整机的边界在哪里。</li>
-  <li>把「我们参与上游」变成可核对的提交记录、版本号和回归证据。</li>
+  <li>贡献路径：Issue → PR → 评审 → 合并 → 进入哪个 release。</li>
+  <li>回归套件：sonic-mgmt 或等价，覆盖了哪些场景，失败如何关闭。</li>
+  <li>OCP / 开放硬件与商业整机的边界：硬件开放不等于软件支持承诺。</li>
+</ul>
+
+<h2>商业分发要独立回答的问题</h2>
+<table class="matrix">
+  <thead><tr><th>问题</th><th>为何重要</th></tr></thead>
+  <tbody>
+    <tr><td>镜像谁编译、谁签名、谁提供 CVE 补丁？</td><td>出漏洞时责任不能空转</td></tr>
+    <tr><td>许可证与 entitlement 如何约束客户？</td><td>影响报价与法务</td></tr>
+    <tr><td>升级窗口与回退是否写进合同？</td><td>影响现场与备件</td></tr>
+    <tr><td>社区快速演进 vs 商业稳定周期如何解释？</td><td>避免客户拿社区节奏要求商业 SLA</td></tr>
+  </tbody>
+</table>
+
+<h2>核对问题</h2>
+<ol>
+  <li>我们对上游的贡献，能否列出进入主线的 PR 与版本？</li>
+  <li>商业发行相对社区，具体多做了哪些测试与补丁？</li>
+  <li>客户若自建社区版，我们的支持边界写在哪一条？</li>
+</ol>
+
+<h2>本阶段产出</h2>
+<ul>
+  <li>上游策略一页纸。</li>
+  <li>贡献证据清单。</li>
+  <li>社区/商业边界说明（给售前与法务共用）。</li>
 </ul>
 
         </article>
