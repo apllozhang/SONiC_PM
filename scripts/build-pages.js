@@ -4,28 +4,25 @@ const root = path.join(__dirname, '..');
 
 const rail = (active) => `
     <div class="rail-scrim" id="railScrim" hidden></div>
-    <nav class="rail" id="rail" aria-label="学习导航">
+    <nav class="rail" id="rail" aria-label="主导航">
       <div class="rail-head">
-        <span class="rail-title">Learning Path</span>
+        <span class="rail-title">导航</span>
         <button class="icon-btn" id="railToggle" type="button" aria-expanded="true" aria-label="收起侧栏" title="收起侧栏">«</button>
       </div>
-      <section class="rail-section" aria-labelledby="rail-foundation">
-        <h2 class="rail-section-title" id="rail-foundation">Foundation / 03 Days</h2>
-        <ul class="rail-list">
-          ${[['day-01','产品地图','Day 01'],['day-02','功能证据','Day 02'],['day-03','试点验收','Day 03']]
-            .map(([id,name,sub]) => `<li><a class="rail-item${active===id?' is-active':''}" href="${id}.html"${active===id?' aria-current="page"':''}><span class="rail-no">${id.slice(-2)}</span><span class="rail-label"><span class="rail-name">${name}</span><span class="rail-sub">${sub}</span></span></a></li>`).join('')}
-        </ul>
-      </section>
-      <section class="rail-section" aria-labelledby="rail-fullstack">
-        <h2 class="rail-section-title" id="rail-fullstack">Full-Stack / 12 Weeks</h2>
+      <ul class="rail-list rail-list--root">
+        <li><a class="rail-item" href="index.html"><span class="rail-no">⌂</span><span class="rail-label"><span class="rail-name">首页</span></span></a></li>
+        <li><a class="rail-item${active && active.startsWith('day-') ? ' is-active' : ''}" href="day-01.html"${active === 'day-01' ? ' aria-current="page"' : ''}><span class="rail-no">启</span><span class="rail-label"><span class="rail-name">3 天入门</span><span class="rail-sub">建议先走完</span></span></a></li>
+      </ul>
+      <section class="rail-section" aria-labelledby="rail-tracks">
+        <h2 class="rail-section-title" id="rail-tracks">能力线 · 12 周</h2>
         <ul class="rail-list">
           ${[
-            ['track-01','芯片、整机与白牌供应链','第 1–2 周'],
-            ['track-02','架构、开发与版本工程','第 3–4 周'],
-            ['track-03','测试、质量与可运营性','第 5–6 周'],
-            ['track-04','开源社区、OCP 与上游策略','第 7–8 周'],
-            ['track-05','产品定型与跨部门协同','第 9–10 周'],
-            ['track-06','商业化、支持与生命周期','第 11–12 周'],
+            ['track-01','芯片与白牌供应链','第 1–2 周'],
+            ['track-02','架构与版本工程','第 3–4 周'],
+            ['track-03','测试与可运营性','第 5–6 周'],
+            ['track-04','开源社区与上游','第 7–8 周'],
+            ['track-05','定型与跨部门协同','第 9–10 周'],
+            ['track-06','商业化与生命周期','第 11–12 周'],
           ].map(([id,name,week],i) => `<li><a class="rail-item${active===id?' is-active':''}" href="${id}.html"${active===id?' aria-current="page"':''}><span class="rail-no">${String(i+1).padStart(2,'0')}</span><span class="rail-label"><span class="rail-name">${name}</span><span class="rail-week">${week}</span></span></a></li>`).join('')}
         </ul>
       </section>
