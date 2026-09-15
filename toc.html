@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#6b489d">
-  <meta name="description" content="行业竞争与产品定型核验包完整字段，可直接复制到表格使用。">
-  <title>产品定型核验包 · SONiC PM Atlas</title>
+  <meta name="description" content="SONiC PM Atlas 全站页面目录与建议阅读顺序。">
+  <title>全站目录 · SONiC PM Atlas</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
@@ -56,79 +56,76 @@
   <div class="nav-scrim" id="navScrim" hidden></div>
   <main class="main" id="main" tabindex="-1">
     <div class="container">
-<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="checklist.html">工具</a></nav>
+<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">全站目录</span></nav>
       <header class="page-header">
-        <p class="section-kicker">工具</p>
-        <h1>产品定型核验包</h1>
-        <p class="page-lead">给定型会与售前共用的字段表。每一行都要能回到证据链接与负责人；未知项单独列出并指定风险签字人。</p>
-        <div class="meta-row"><span class="tag ">工具</span><span class="tag ">定型</span><span class="tag ">核验包</span></div>
+        <p class="section-kicker">导航</p>
+        <h1>全站目录</h1>
+        <p class="page-lead">培训组织者可用本页做签到清单；个人可用页内检索框过滤标题。</p>
+        <div class="meta-row"><span class="tag ">P2</span><span class="tag ">目录</span></div>
       </header>
       <div class="content-grid">
         <article class="prose">
 
-<h2>字段总表（复制用）</h2>
-<table class="matrix">
-  <thead><tr><th>#</th><th>字段</th><th>填写说明</th><th>四态</th><th>证据链接</th><th>负责人</th></tr></thead>
+<div class="toc-search">
+  <label class="sr-only" for="toc-q">过滤目录</label>
+  <input id="toc-q" type="search" placeholder="输入关键词过滤标题…" data-toc-filter>
+</div>
+<table class="matrix toc-table">
+  <thead><tr><th>分组</th><th>页面</th><th>用途</th></tr></thead>
   <tbody>
-    <tr><td>1</td><td>目标场景</td><td>园区 / 数据中心 / AI Fabric…</td><td></td><td></td><td></td></tr>
-    <tr><td>2</td><td>目标客户 / 拓扑</td><td>规模、冗余、是否 RoCE</td><td></td><td></td><td></td></tr>
-    <tr><td>3</td><td>目标型号 / ASIC</td><td>含板卡版本</td><td></td><td></td><td></td></tr>
-    <tr><td>4</td><td>目标 NOS / 版本 / 镜像</td><td>社区或商业、授权方式</td><td></td><td></td><td></td></tr>
-    <tr><td>5</td><td>SDK / SAI / 平台插件</td><td>版本锁定方式</td><td></td><td></td><td></td></tr>
-    <tr><td>6</td><td>硬件、光模块与 HCL</td><td>实验室证据有无</td><td></td><td></td><td></td></tr>
-    <tr><td>7</td><td>补丁 / CI / DUT / 回归</td><td>hardening 追溯链</td><td></td><td></td><td></td></tr>
-    <tr><td>8</td><td>AI/DC 拓扑与拥塞验证</td><td>PFC/ECN、封装路径</td><td></td><td></td><td></td></tr>
-    <tr><td>9</td><td>升级 / 回退 / CVE / RMA</td><td>窗口与责任</td><td></td><td></td><td></td></tr>
-    <tr><td>10</td><td>已知限制与风险签字人</td><td>未知项必须有主</td><td></td><td></td><td></td></tr>
+    <tr><td>入口</td><td><a href="index.html">首页</a></td><td>角色路径、培训说明、能力地图</td></tr>
+    <tr><td>入门</td><td><a href="day-01.html">第 1 天 产品地图</a></td><td>四层责任、核验包草稿</td></tr>
+    <tr><td>入门</td><td><a href="day-02.html">第 2 天 功能证据</a></td><td>可验收场景、四态</td></tr>
+    <tr><td>入门</td><td><a href="day-03.html">第 3 天 试点验收</a></td><td>检查清单、证据链</td></tr>
+    <tr><td>能力线</td><td><a href="track-01.html">供应链</a></td><td>ASIC/板卡/HCL</td></tr>
+    <tr><td>能力线</td><td><a href="track-02.html">架构与版本</a></td><td>容器、DB、重启矩阵</td></tr>
+    <tr><td>能力线</td><td><a href="track-03.html">测试与运维</a></td><td>测试床、异常、遥测</td></tr>
+    <tr><td>能力线</td><td><a href="track-04.html">社区与上游</a></td><td>贡献与商业边界</td></tr>
+    <tr><td>能力线</td><td><a href="track-05.html">定型协同</a></td><td>跨部门检查点</td></tr>
+    <tr><td>能力线</td><td><a href="track-06.html">商业化</a></td><td>报价拆行、生命周期</td></tr>
+    <tr><td>知识底座</td><td><a href="feature-map.html">功能特性地图</a></td><td>功能×仓库×容器×命令</td></tr>
+    <tr><td>知识底座</td><td><a href="ecosystem.html">版本与生态</a></td><td>release、ASIC、外链</td></tr>
+    <tr><td>工具</td><td><a href="glossary.html">术语与四态</a></td><td>速查</td></tr>
+    <tr><td>工具</td><td><a href="checklist.html">定型核验包</a></td><td>10 字段模板</td></tr>
+    <tr><td>工具</td><td><a href="cases.html">案例拆解</a></td><td>六层追问 + 售前/测试口径</td></tr>
+    <tr><td>梯度</td><td><a href="levels.html">L1–L3</a></td><td>等级与 12 周映射</td></tr>
+    <tr><td>工具</td><td><a href="faq.html">FAQ</a></td><td>培训高频问题</td></tr>
+    <tr><td>维护</td><td><a href="changelog.html">更新日志</a></td><td>版本与负责人</td></tr>
+    <tr><td>评审</td><td><a href="review/index.html">评审意见</a></td><td>内容评审入口</td></tr>
   </tbody>
 </table>
-
-<h2>使用规则</h2>
-<ol>
-  <li>四态只能填：有值 / 待复核 / 未披露 / 抽取失败。</li>
-  <li>「有值」必须有可打开的证据链接，且链接指向的版本与第 3、4 行一致。</li>
-  <li>定型会纪要中，未知项单独列表，不混入「已支持」统计。</li>
-  <li>基线哈希变化后，相关行自动标复核。</li>
-</ol>
-<div class="callout"><strong>提醒：</strong>这张表的目的是减少会后扯皮，不是增加填表工作量。字段不全的行宁可标未知，也不要空白通过。</div>
 
 
 <section class="accept-block" aria-labelledby="acc-t">
   <h2 id="acc-t">动手任务验收标准</h2>
   <ul class="accept-list">
-    <li>复制表结构并填入真实或练习项目各 1 行完整样例</li>
-    <li>未知项均有 Owner</li>
+    <li>用目录完成一次签到式通读清单</li>
   </ul>
 </section>
 <section class="quiz-block" aria-labelledby="quiz-t">
   <h2 id="quiz-t">自测题（点击展开答案）</h2>
   
   <details class="quiz-item">
-    <summary>自测 1：核验包 10 字段中哪些最容易空着？</summary>
-    <div class="quiz-a">证据链接、负责人、已知限制与风险签字人——空着的行不能算通过。</div>
-  </details>
-  <details class="quiz-item">
-    <summary>自测 2：四态列允许留空吗？</summary>
-    <div class="quiz-a">不允许。必须是有值/待复核/未披露/抽取失败之一。</div>
-  </details>
-  <details class="quiz-item">
-    <summary>自测 3：基线哈希变化后相关行如何处理？</summary>
-    <div class="quiz-a">自动标复核，重新核对后再改四态，不得沿用旧「有值」。</div>
+    <summary>自测 1：新员工第一周应从目录哪几页开始？</summary>
+    <div class="quiz-a">首页角色路径 → 3 天入门 → 术语/核验包。</div>
   </details>
   <p class="quiz-note muted">建议：正确率 ≥ 80% 再进入下一页。培训组织者可按此判分。</p>
 </section>
         </article>
         <aside class="side-panel">
-<div class="panel"><h2>配套</h2><ul>
-    <li><a href="glossary.html">四态与术语</a></li>
-    <li><a href="day-01.html">第 1 天核验包草稿</a></li>
-    <li><a href="cases.html">厂商案例</a></li>
-  </ul></div>
+<div class="panel"><h2>建议顺序</h2><ol style="margin:0;padding-left:1.2em;font-size:14px;color:var(--color-text-secondary)">
+  <li>首页选角色</li>
+  <li>3 天入门</li>
+  <li>术语 / 核验包</li>
+  <li>主修能力线</li>
+  <li>功能地图 / 版本生态</li>
+  <li>案例 + L1–L3</li>
+</ol></div>
         </aside>
       </div>
       <nav class="page-nav" aria-label="上一页下一页">
-        <a href="glossary.html">← 术语与参数四态</a>
-        <a href="cases.html">厂商案例拆解 →</a>
+        <a href="faq.html">← 常见问题 FAQ</a>
+        <a href="changelog.html">更新日志 →</a>
       </nav>
       <footer class="site-footer">SONiC PM Atlas v2.1.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>

@@ -19,6 +19,7 @@ const RUNTIME_FILES = [
   'track-04.html', 'track-05.html', 'track-06.html',
   'glossary.html', 'checklist.html', 'cases.html', 'changelog.html',
   'feature-map.html', 'ecosystem.html',
+  'levels.html', 'faq.html', 'toc.html',
   'review',
   'css', 'js', 'assets',
 ];

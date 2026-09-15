@@ -1,11 +1,22 @@
 'use strict';
 
 /** 全站唯一版本号：改这里再 build/deploy */
-const SITE_VERSION = '2.0.1';
+const SITE_VERSION = '2.1.0';
 const SITE_VERSION_LABEL = `v${SITE_VERSION}`;
 
 /** CHANGELOG 数据（内容负责人列） */
 const CHANGELOG = [
+  {
+    version: '2.1.0',
+    date: '2026-09-15',
+    owner: '内容组 / SONiC PM Atlas',
+    summary: 'P2 成长梯度：L1–L3、案例口径、FAQ、目录',
+    changes: [
+      '新增 L1–L3 能力等级页并映射 12 周路线',
+      '案例页补售前应答口径与测试用例要点',
+      '新增 FAQ 与全站目录（目录内标题过滤）',
+    ],
+  },
   {
     version: '2.0.1',
     date: '2026-09-15',

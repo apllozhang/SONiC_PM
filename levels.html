@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6b489d">
+  <meta name="description" content="定义 L1–L3 能力等级、考核证据，并映射到 3 天入门与 12 周路线。">
+  <title>L1–L3 能力等级 · SONiC PM Atlas</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/atlas.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="返回首页 · SONiC PM Atlas">
+      <img class="logo-color" src="assets/brand/ale-primary-logo-horizontal.png" alt="Alcatel-Lucent Enterprise">
+      <img class="logo-white" src="assets/brand/ale-primary-logo-horizontal-white.png" alt="Alcatel-Lucent Enterprise">
+      <span class="divider" aria-hidden="true"></span>
+      <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
+    </a>
+    <span class="ver-badge">v2.1.0</span>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="主导航">
+      <a href="index.html" data-nav="home">首页</a>
+      <a href="day-01.html" data-nav="intro">3 天入门</a>
+      <a href="track-01.html" data-nav="track-01">供应链</a>
+      <a href="track-02.html" data-nav="track-02">架构</a>
+      <a href="track-03.html" data-nav="track-03">测试</a>
+      <a href="track-04.html" data-nav="track-04">社区</a>
+      <a href="track-05.html" data-nav="track-05">定型</a>
+      <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="feature-map.html" data-nav="feature-map">功能地图</a>
+      <a href="ecosystem.html" data-nav="ecosystem">版本生态</a>
+      <a href="glossary.html" data-nav="glossary">术语</a>
+      <a href="checklist.html" data-nav="checklist">核验包</a>
+      <a href="cases.html" data-nav="cases">案例</a>
+      <a href="levels.html" data-nav="levels">L1–L3</a>
+      <a href="toc.html" data-nav="toc">目录</a>
+      <a href="faq.html" data-nav="faq">FAQ</a>
+      <a href="changelog.html" data-nav="changelog">更新</a>
+    </nav>
+
+    <div class="topbar-tools">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="切换主题" title="切换主题">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="打开导航">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim" id="navScrim" hidden></div>
+  <main class="main" id="main" tabindex="-1">
+    <div class="container">
+<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="levels.html">成长梯度</a></nav>
+      <header class="page-header">
+        <p class="section-kicker">成长梯度</p>
+        <h1>L1–L3 能力等级与 12 周映射</h1>
+        <p class="page-lead">L1 会问对问题并核验外部材料；L2 能主导单模块证据；L3 能主持定型与商业化边界。等级用于培训结业与晋升参考，不是职称替代。</p>
+        <div class="meta-row"><span class="tag ">P2</span><span class="tag ">L1–L3</span><span class="tag ">考核</span></div>
+      </header>
+      <div class="content-grid">
+        <article class="prose">
+
+<h2>等级一览</h2>
+<table class="matrix">
+  <thead><tr><th>等级</th><th>一句话</th><th>能做什么</th><th>考核证据</th><th>对应路线</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>L1</strong></td>
+      <td>会问对问题</td>
+      <td>分清四层责任；功能名改写成可验收场景；正确用四态</td>
+      <td>3 天自测 ≥80%；1 份核验包草稿（场景/型号/版本/证据/负责人）</td>
+      <td>第 1–3 天 + 术语页</td>
+    </tr>
+    <tr>
+      <td><strong>L2</strong></td>
+      <td>能撑起单模块</td>
+      <td>读懂控制面与容器；按功能地图定位验证命令；独立收集供应链或测试床证据</td>
+      <td>架构/测试自测 + 1 条能力线产出物（兼容矩阵或异常用例集等）</td>
+      <td>供应链/架构/测试/社区 中主修 2 条</td>
+    </tr>
+    <tr>
+      <td><strong>L3</strong></td>
+      <td>能定型与商业化</td>
+      <td>主持定型核验包评审；对齐商业 vs 社区责任；对外不越证据边界</td>
+      <td>完整 10 字段核验包 + 模拟定型会纪要；商业化一页纸 + 支持边界说明</td>
+      <td>定型/商业化 + 案例页售前与测试口径</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>12 周映射表</h2>
+<table class="matrix">
+  <thead><tr><th>周次</th><th>内容</th><th>建议等级目标</th><th>产出物</th></tr></thead>
+  <tbody>
+    <tr><td>第 0 周</td><td>角色路径 + 术语</td><td>—</td><td>选定 PM/售前/测试路径</td></tr>
+    <tr><td>第 1 周（3 天）</td><td>产品地图 / 功能证据 / 试点验收</td><td>L1</td><td>核验包草稿 + 自测达标</td></tr>
+    <tr><td>第 1–2 周</td><td>供应链</td><td>L1→L2</td><td>型号对照表、HCL 草稿</td></tr>
+    <tr><td>第 3–4 周</td><td>架构与版本工程</td><td>L2</td><td>补丁 BOM、重启策略表</td></tr>
+    <tr><td>第 5–6 周</td><td>测试与可运维性</td><td>L2</td><td>异常用例集、测试床差异表</td></tr>
+    <tr><td>第 7–8 周</td><td>开源社区与上游</td><td>L2</td><td>上游策略、贡献证据清单</td></tr>
+    <tr><td>第 9–10 周</td><td>定型与跨部门</td><td>L2→L3</td><td>可签字核验包</td></tr>
+    <tr><td>第 11–12 周</td><td>商业化与生命周期</td><td>L3</td><td>商业化一页纸、支持边界</td></tr>
+  </tbody>
+</table>
+
+<h2>角色 × 等级（结业口径）</h2>
+<table class="matrix">
+  <thead><tr><th>角色</th><th>L1 必过</th><th>L2 建议</th><th>L3 结业加项</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>PM</td>
+      <td>3 天 + 核验包草稿</td>
+      <td>主修定型相关 2 条线</td>
+      <td>模拟定型会主持 + 商业化一页纸</td>
+    </tr>
+    <tr>
+      <td>售前</td>
+      <td>3 天 + 案例六层追问 1 则</td>
+      <td>供应链 + 测试 + 商业化要点</td>
+      <td>3 份「客户原句→可承诺」且证据齐全</td>
+    </tr>
+    <tr>
+      <td>测试</td>
+      <td>第 2–3 天 + 四态与证据</td>
+      <td>架构 + 测试线产出物</td>
+      <td>异常用例集 + 诊断包说明可评审</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>使用说明</h2>
+<ol>
+  <li>每完成一页自测与验收，在进度表勾选；导师按「考核证据」抽查。</li>
+  <li>未达 L1 不进入 12 周主修，避免只会名词。</li>
+  <li>L3 结业材料可归档为团队模板，新员工以旧材料为练习样本（脱敏后）。</li>
+</ol>
+
+
+<section class="accept-block" aria-labelledby="acc-t">
+  <h2 id="acc-t">动手任务验收标准</h2>
+  <ul class="accept-list">
+    <li>能说出自己当前等级与下一级缺口</li>
+    <li>为团队成员填写一条 L1/L2 证据清单</li>
+  </ul>
+</section>
+<section class="quiz-block" aria-labelledby="quiz-t">
+  <h2 id="quiz-t">自测题（点击展开答案）</h2>
+  
+  <details class="quiz-item">
+    <summary>自测 1：L1 与 L2 的核心差别？</summary>
+    <div class="quiz-a">L1 能核验外部材料并写对四态；L2 能主导单模块证据收集并读懂架构链路。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 2：L3 结业必须有什么？</summary>
+    <div class="quiz-a">完整核验包 + 模拟定型会纪要；售前/PM 另需商业化一页纸或可承诺改写集。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 3：未达 L1 能否直接进 12 周主修？</summary>
+    <div class="quiz-a">不建议。先过 3 天自测与核验包草稿，避免只会名词。</div>
+  </details>
+  <p class="quiz-note muted">建议：正确率 ≥ 80% 再进入下一页。培训组织者可按此判分。</p>
+</section>
+        </article>
+        <aside class="side-panel">
+<div class="panel"><h2>配套</h2><ul>
+    <li><a href="index.html#training">培训使用说明</a></li>
+    <li><a href="toc.html">全站目录</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul></div>
+        </aside>
+      </div>
+      <nav class="page-nav" aria-label="上一页下一页">
+        <a href="cases.html">← 厂商案例拆解</a>
+        <a href="faq.html">常见问题 FAQ →</a>
+      </nav>
+      <footer class="site-footer">SONiC PM Atlas v2.1.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
+    </div>
+  </main>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

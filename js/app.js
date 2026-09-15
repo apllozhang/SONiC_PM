@@ -75,4 +75,15 @@
     if (current) a.setAttribute('aria-current', 'page');
     else a.removeAttribute('aria-current');
   });
+  // ── 目录页标题过滤 ──
+  const tocInput = document.querySelector('[data-toc-filter]');
+  if (tocInput) {
+    const rows = Array.from(document.querySelectorAll('.toc-table tbody tr'));
+    tocInput.addEventListener('input', () => {
+      const q = tocInput.value.trim().toLowerCase();
+      rows.forEach((tr) => {
+        tr.hidden = q ? !tr.textContent.toLowerCase().includes(q) : false;
+      });
+    });
+  }
 })();

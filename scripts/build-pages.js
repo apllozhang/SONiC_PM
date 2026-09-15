@@ -4,6 +4,7 @@ const root = path.join(__dirname, '..');
 const { day01, day02, day03 } = require('./content-days');
 const { tracks, glossary, checklist, cases } = require('./content-tracks');
 const { featureMap, ecosystem } = require('./content-p1-pages');
+const { levels, faq, toc } = require('./content-p2');
 const { quiz } = require('./content-quiz');
 const { SITE_VERSION_LABEL, CHANGELOG } = require('./site-meta');
 
@@ -22,6 +23,9 @@ const NAV = `
       <a href="glossary.html" data-nav="glossary">术语</a>
       <a href="checklist.html" data-nav="checklist">核验包</a>
       <a href="cases.html" data-nav="cases">案例</a>
+      <a href="levels.html" data-nav="levels">L1–L3</a>
+      <a href="toc.html" data-nav="toc">目录</a>
+      <a href="faq.html" data-nav="faq">FAQ</a>
       <a href="changelog.html" data-nav="changelog">更新</a>
     </nav>`;
 
@@ -170,7 +174,7 @@ for (const t of tracks) {
   });
 }
 
-for (const p of [glossary, checklist, cases, featureMap, ecosystem]) {
+for (const p of [glossary, checklist, cases, featureMap, ecosystem, levels, faq, toc]) {
   writePage(p.file, p);
 }
 

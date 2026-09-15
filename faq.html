@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#6b489d">
-  <meta name="description" content="行业竞争与产品定型核验包完整字段，可直接复制到表格使用。">
-  <title>产品定型核验包 · SONiC PM Atlas</title>
+  <meta name="description" content="从各页核对问题沉淀的培训 FAQ，覆盖四态、证据、版本、试点与商业化。">
+  <title>常见问题 FAQ · SONiC PM Atlas</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
@@ -56,79 +56,68 @@
   <div class="nav-scrim" id="navScrim" hidden></div>
   <main class="main" id="main" tabindex="-1">
     <div class="container">
-<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="checklist.html">工具</a></nav>
+<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="faq.html">工具</a></nav>
       <header class="page-header">
         <p class="section-kicker">工具</p>
-        <h1>产品定型核验包</h1>
-        <p class="page-lead">给定型会与售前共用的字段表。每一行都要能回到证据链接与负责人；未知项单独列出并指定风险签字人。</p>
-        <div class="meta-row"><span class="tag ">工具</span><span class="tag ">定型</span><span class="tag ">核验包</span></div>
+        <h1>常见问题 FAQ</h1>
+        <p class="page-lead">答案尽量短、可执行；若与正式文档冲突，以目标发行版官方文档与合同为准。</p>
+        <div class="meta-row"><span class="tag ">P2</span><span class="tag ">FAQ</span></div>
       </header>
       <div class="content-grid">
         <article class="prose">
 
-<h2>字段总表（复制用）</h2>
-<table class="matrix">
-  <thead><tr><th>#</th><th>字段</th><th>填写说明</th><th>四态</th><th>证据链接</th><th>负责人</th></tr></thead>
-  <tbody>
-    <tr><td>1</td><td>目标场景</td><td>园区 / 数据中心 / AI Fabric…</td><td></td><td></td><td></td></tr>
-    <tr><td>2</td><td>目标客户 / 拓扑</td><td>规模、冗余、是否 RoCE</td><td></td><td></td><td></td></tr>
-    <tr><td>3</td><td>目标型号 / ASIC</td><td>含板卡版本</td><td></td><td></td><td></td></tr>
-    <tr><td>4</td><td>目标 NOS / 版本 / 镜像</td><td>社区或商业、授权方式</td><td></td><td></td><td></td></tr>
-    <tr><td>5</td><td>SDK / SAI / 平台插件</td><td>版本锁定方式</td><td></td><td></td><td></td></tr>
-    <tr><td>6</td><td>硬件、光模块与 HCL</td><td>实验室证据有无</td><td></td><td></td><td></td></tr>
-    <tr><td>7</td><td>补丁 / CI / DUT / 回归</td><td>hardening 追溯链</td><td></td><td></td><td></td></tr>
-    <tr><td>8</td><td>AI/DC 拓扑与拥塞验证</td><td>PFC/ECN、封装路径</td><td></td><td></td><td></td></tr>
-    <tr><td>9</td><td>升级 / 回退 / CVE / RMA</td><td>窗口与责任</td><td></td><td></td><td></td></tr>
-    <tr><td>10</td><td>已知限制与风险签字人</td><td>未知项必须有主</td><td></td><td></td><td></td></tr>
-  </tbody>
-</table>
+<h2>方法与四态</h2>
+<details class="quiz-item"><summary>未披露能不能写「不支持」？</summary><div class="quiz-a">不能。未披露只是公开材料没写，应提问或标待核。</div></details>
+<details class="quiz-item"><summary>「待复核」能进报价承诺吗？</summary><div class="quiz-a">不能单独作为承诺依据。承诺前需升为「有值」并附证据，或书面标风险。</div></details>
+<details class="quiz-item"><summary>抽取失败等于功能没有吗？</summary><div class="quiz-a">不等于。换资料源或人工读原文后再标四态。</div></details>
 
-<h2>使用规则</h2>
-<ol>
-  <li>四态只能填：有值 / 待复核 / 未披露 / 抽取失败。</li>
-  <li>「有值」必须有可打开的证据链接，且链接指向的版本与第 3、4 行一致。</li>
-  <li>定型会纪要中，未知项单独列表，不混入「已支持」统计。</li>
-  <li>基线哈希变化后，相关行自动标复核。</li>
-</ol>
-<div class="callout"><strong>提醒：</strong>这张表的目的是减少会后扯皮，不是增加填表工作量。字段不全的行宁可标未知，也不要空白通过。</div>
+<h2>证据与定型</h2>
+<details class="quiz-item"><summary>定型表空白行算通过吗？</summary><div class="quiz-a">不算。标未知并指定 Owner，禁止空白通过。</div></details>
+<details class="quiz-item"><summary>为什么要绑基线哈希？</summary><div class="quiz-a">资料或镜像更新后旧结论失效，避免拿旧事实冒充新事实。</div></details>
+<details class="quiz-item"><summary>测试覆盖点能否代替性能验收？</summary><div class="quiz-a">不能。覆盖点 ≠ 吞吐/时延/无损/规模结论。</div></details>
+
+<h2>版本与架构</h2>
+<details class="quiz-item"><summary>为什么不能写「最新 SONiC」？</summary><div class="quiz-a">无法复现与追责。写清社区基线、发行版、构建哈希与平台型号。</div></details>
+<details class="quiz-item"><summary>同 ASIC 不同板能写同一支持吗？</summary><div class="quiz-a">不能。按 HW-SKU 分开，核对端口映射、光学、固件与证据。</div></details>
+<details class="quiz-item"><summary>重启 orchagent 一定不影响业务吗？</summary><div class="quiz-a">不一定。取决于 warm/fast 与实现；产品定义需写明策略与回退。</div></details>
+
+<h2>试点与商业化</h2>
+<details class="quiz-item"><summary>试点通过是否等于可 GA？</summary><div class="quiz-a">不等于。还要过定型核验包、支持边界与发布门禁。</div></details>
+<details class="quiz-item"><summary>客户自建社区版我们怎么写支持边界？</summary><div class="quiz-a">合同写清：我们支持的镜像与型号范围；社区自建的责任与收费项单独列。</div></details>
+<details class="quiz-item"><summary>「未知」在验收表怎么处理？</summary><div class="quiz-a">单独列出，指定 Owner 与风险签字人；不计入「已支持」。</div></details>
 
 
 <section class="accept-block" aria-labelledby="acc-t">
   <h2 id="acc-t">动手任务验收标准</h2>
   <ul class="accept-list">
-    <li>复制表结构并填入真实或练习项目各 1 行完整样例</li>
-    <li>未知项均有 Owner</li>
+    <li>培训中至少引用 3 条 FAQ 答疑</li>
   </ul>
 </section>
 <section class="quiz-block" aria-labelledby="quiz-t">
   <h2 id="quiz-t">自测题（点击展开答案）</h2>
   
   <details class="quiz-item">
-    <summary>自测 1：核验包 10 字段中哪些最容易空着？</summary>
-    <div class="quiz-a">证据链接、负责人、已知限制与风险签字人——空着的行不能算通过。</div>
+    <summary>自测 1：客户问「社区都有了为什么你们还要验证」怎么答？</summary>
+    <div class="quiz-a">商业支持要可复现、可补丁、可追责；验证是把社区能力变成可交付范围。</div>
   </details>
   <details class="quiz-item">
-    <summary>自测 2：四态列允许留空吗？</summary>
-    <div class="quiz-a">不允许。必须是有值/待复核/未披露/抽取失败之一。</div>
-  </details>
-  <details class="quiz-item">
-    <summary>自测 3：基线哈希变化后相关行如何处理？</summary>
-    <div class="quiz-a">自动标复核，重新核对后再改四态，不得沿用旧「有值」。</div>
+    <summary>自测 2：FAQ 与正式文档冲突怎么办？</summary>
+    <div class="quiz-a">以目标发行版官方文档与合同为准，并回写 FAQ 修订。</div>
   </details>
   <p class="quiz-note muted">建议：正确率 ≥ 80% 再进入下一页。培训组织者可按此判分。</p>
 </section>
         </article>
         <aside class="side-panel">
-<div class="panel"><h2>配套</h2><ul>
+<div class="panel"><h2>相关</h2><ul>
     <li><a href="glossary.html">四态与术语</a></li>
-    <li><a href="day-01.html">第 1 天核验包草稿</a></li>
-    <li><a href="cases.html">厂商案例</a></li>
+    <li><a href="checklist.html">核验包</a></li>
+    <li><a href="levels.html">L1–L3</a></li>
   </ul></div>
         </aside>
       </div>
       <nav class="page-nav" aria-label="上一页下一页">
-        <a href="glossary.html">← 术语与参数四态</a>
-        <a href="cases.html">厂商案例拆解 →</a>
+        <a href="levels.html">← L1–L3 能力等级</a>
+        <a href="toc.html">全站目录 →</a>
       </nav>
       <footer class="site-footer">SONiC PM Atlas v2.1.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>

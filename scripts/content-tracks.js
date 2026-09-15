@@ -683,12 +683,76 @@ const cases = {
     <tr><td></td><td></td><td></td><td></td><td></td></tr>
   </tbody>
 </table>
+
+<h2>售前应答口径（每类案例）</h2>
+<table class="matrix">
+  <thead><tr><th>客户可能问</th><th>不建议</th><th>建议口径</th><th>要补的证据</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>「你们支持 50+ 平台，我这型号肯定行吧？」</td>
+      <td>「对，生态都支持」</td>
+      <td>「生态范围很广；具体到贵司型号与光模块，我们按 HCL 与镜像版本核对后书面确认。」</td>
+      <td>目标 HW-SKU + 镜像版本 + 实验室互通行</td>
+    </tr>
+    <tr>
+      <td>「芯片手册写了 EVPN，方案里就能写支持吧？」</td>
+      <td>「可以写支持 EVPN」</td>
+      <td>「芯片能力是前提；我们按贵司拓扑（L2/L3 路径）给出已验证范围与未验证项。」</td>
+      <td>路径级验收记录与报告编号</td>
+    </tr>
+    <tr>
+      <td>「社区已经有这功能，商业版一定有吧？」</td>
+      <td>「社区有就一定有」</td>
+      <td>「商业发行以我们清单与版本为准；社区有不等于已纳入支持与补丁流程。」</td>
+      <td>发行版功能清单与补丁窗口条款</td>
+    </tr>
+    <tr>
+      <td>「竞品宣传 harden，你们有吗？」</td>
+      <td>「我们也 hardened」</td>
+      <td>「我们可以说明补丁选取、CI 与平台验证流程，并给出可追溯清单范围。」</td>
+      <td>补丁追溯链样例（脱敏）</td>
+    </tr>
+  </tbody>
+</table>
+<p class="muted">原则：不否定客户场景，不把未验证项说成已验证；把对话拉回型号、版本与证据。</p>
+
+<h2>测试用例要点（每类案例）</h2>
+<table class="matrix">
+  <thead><tr><th>案例类型</th><th>测试应覆盖</th><th>证据形态</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>芯片 + ODM 平台</td>
+      <td>目标 SKU 冷启动、端口映射、光学互通、温升与双电源</td>
+      <td>实验室记录 + HCL 行 + 版本号</td>
+    </tr>
+    <tr>
+      <td>AI / RoCE 类</td>
+      <td>PFC/ECN 阈值、拥塞点、封装/隧道/解封装路径、恢复时间</td>
+      <td>流量仪报告 + 交换机计数器 + 配置片段</td>
+    </tr>
+    <tr>
+      <td>开放管理 / 遥测</td>
+      <td>订阅时延、丢点率、证书与权限、断网行为</td>
+      <td>抓包或服务端日志 + 断网演练</td>
+    </tr>
+    <tr>
+      <td>商业发行交付</td>
+      <td>安装/升级/回退、诊断包收集、授权与 entitlement 校验</td>
+      <td>升级回退记录 + Support Bundle 样例</td>
+    </tr>
+  </tbody>
+</table>
+
 <div class="callout"><strong>边界：</strong>本页只用于内部训练分层阅读能力。对外材料请以各厂商最新官方文档与你的合同范围为准。</div>
 `,
   side: `<div class="panel"><h2>六层追问</h2><ul>
     <li>芯片 / SAI</li><li>平台 / 板卡</li><li>镜像 / 补丁</li>
     <li>硬件 / 光学</li><li>测试 / 加固</li><li>支持 / 生命周期</li>
-  </ul></div>`,
+  </ul></div>
+<div class="panel"><h2>相关</h2><ul>
+  <li><a href="levels.html">L1–L3 等级</a></li>
+  <li><a href="faq.html">FAQ</a></li>
+</ul></div>`,
 };
 
 module.exports = { tracks, glossary, checklist, cases };
