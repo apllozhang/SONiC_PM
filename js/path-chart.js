@@ -44,7 +44,7 @@
         );
       },
     },
-    grid: { left: 108, right: 28, top: 36, bottom: 40 },
+    grid: { left: 108, right: 120, top: 36, bottom: 40 },
     xAxis: {
       type: 'value',
       min: 0,
@@ -106,15 +106,17 @@
         }),
       },
       {
-        // 右侧等级标注（透明点 + label）
+        // 右侧等级标注（透明点 + label，落在 grid 右侧留白）
         type: 'scatter',
         symbolSize: 0,
+        xAxisIndex: 0,
         data: rows.map(function (r, i) {
           return {
-            value: [13.15, i],
+            value: [12.85, i],
             label: {
               show: true,
               position: 'right',
+              distance: 8,
               formatter: r.level + ' · ' + r.roles,
               color: muted,
               fontSize: 11,
