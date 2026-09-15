@@ -37,8 +37,11 @@ function connect() {
 }
 
 function execCmd(conn, command, { sudoPassword = CONFIG.password, timeoutMs = 120000 } = {}) {
+  // JSON.stringify 的 \n 会被远端 sh 吃成字母 n，改用 base64 传脚本
+  const b64 = Buffer.from(command, 'utf8').toString('base64');
+  const remote = `echo ${b64} | base64 -d | sh`;
   return new Promise((resolve, reject) => {
-    conn.exec(`sudo -S -p '' -- sh -c ${JSON.stringify(command)}`, (err, stream) => {
+    conn.exec(`sudo -S -p '' -- sh -c ${JSON.stringify(remote)}`, (err, stream) => {
       if (err) return reject(err);
       let stdout = '', stderr = '';
       const timer = setTimeout(() => stream.close(), timeoutMs);
