@@ -161,9 +161,13 @@
 .hero-meta strong {
   font-size: 15px; font-weight: 700; color: #fff; font-family: var(--font-mono);
 }
+/* 波浪填色必须跟画布：SVG 默认 fill 是黑，漏了会出黑条 */
 .hero-wave {
   display: block; width: 100%; height: 28px; margin-bottom: -1px;
+  fill: var(--color-canvas);
+  transition: fill 280ms ease;
 }
+.hero-wave path { fill: inherit; }
 
 /* ── 区块 ── */
 .section { margin-top: var(--space-6); }
@@ -379,7 +383,6 @@
 
 /* ── 暗色 ── */
 :root.dark body { background: var(--color-canvas); color: var(--color-text-primary); }
-:root.dark .hero-wave path { fill: var(--color-canvas); }
 :root.dark .capability-card,
 :root.dark .path-strip a,
 :root.dark .panel,
