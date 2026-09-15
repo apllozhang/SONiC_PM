@@ -28,10 +28,17 @@
   font-weight: 700; text-decoration: none; white-space: nowrap;
   min-height: var(--hit-target-min);
 }
-.brand img { width: auto; height: 32px; display: block; }
+.brand img { width: auto; display: block; }
+.brand .logo-color { height: 32px; }
 .brand .logo-white { display: none; }
+/* 官方白标 200×141 竖版：按宽度放大，避免暗色下显得比亮色横版小一号 */
 :root.dark .brand .logo-color { display: none; }
-:root.dark .brand .logo-white { display: block; }
+:root.dark .brand .logo-white {
+  display: block;
+  height: auto;
+  width: 108px;
+  max-height: 56px;
+}
 .brand .divider { width: 1px; height: 22px; background: var(--color-border); flex: 0 0 auto; }
 .brand-title { font-size: .95rem; letter-spacing: .01em; color: var(--color-text-primary); }
 .brand-title .lite { color: var(--color-action); }
@@ -249,6 +256,7 @@
   color: var(--color-action); letter-spacing: .04em;
 }
 .path-strip .name { font-size: 14px; font-weight: 700; color: var(--color-text-primary); }
+.path-strip .hint { font-size: 12px; color: var(--color-text-muted); }
 
 /* ── 内容页 ── */
 .breadcrumb {
