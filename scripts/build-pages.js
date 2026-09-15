@@ -164,7 +164,7 @@ function writePage(file, data) {
   if (file === 'levels.html') {
     html = html.replace(
       /(\s*<script src="js\/app\.js[^"]*" defer><\/script>)/,
-      '$1\n  <script src="js/vendor/echarts.min.js?v=2.1.5" defer></script>\n  <script src="js/path-chart.js?v=2.1.6" defer></script>'
+      '$1\n  <script src="js/vendor/echarts.min.js?v=2.1.6" defer></script>\n  <script src="js/path-chart.js?v=2.1.7" defer></script>\n  <script src="js/role-chart.js?v=2.1.7" defer></script>'
     );
   }
   fs.writeFileSync(path.join(root, file), html, 'utf8');

@@ -22,6 +22,13 @@ const levels = {
 </div>
 <p class="muted" style="font-size:12px;margin-top:4px">图例说明：色条长度 = 该模块占用周数；L1→L2 表示从入门过渡到可独立做单模块。</p>
 
+<h2>角色覆盖对比</h2>
+<p>同一知识底座上，三类岗位的侧重不同。颜色越深表示越建议主修；「了解」表示够用即可，不必按完整产出物考核。</p>
+<div class="chart-wrap" role="img" aria-label="角色覆盖对比图：产品经理、售前、测试对六条能力线的主修与了解建议">
+  <div id="role-chart" class="path-chart"></div>
+</div>
+<p class="muted" style="font-size:12px;margin-top:4px">口径：主修 = 要交该线产出物并通过自测；重点 = 关键章节必读；了解 = 能听懂并问对问题即可。</p>
+
 <h2>等级一览</h2>
 <table class="matrix">
   <thead><tr><th>等级</th><th>一句话</th><th>能做什么</th><th>考核证据</th><th>对应路线</th></tr></thead>
