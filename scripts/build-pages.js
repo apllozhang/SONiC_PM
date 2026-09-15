@@ -1,4 +1,4 @@
-﻿const fs = require('fs');
+const fs = require('fs');
 const path = require('path');
 const root = path.join(__dirname, '..');
 const { day01, day02, day03 } = require('./content-days');
@@ -160,7 +160,14 @@ ${side}
 function writePage(file, data) {
   const t = quiz[file] || {};
   const body = `${data.body}\n${renderTraining(t)}`;
-  fs.writeFileSync(path.join(root, file), page({ ...data, body }), 'utf8');
+  let html = page({ ...data, body });
+  if (file === 'levels.html') {
+    html = html.replace(
+      /(\s*<script src="js\/app\.js[^"]*" defer><\/script>)/,
+      '$1\n  <script src="js/vendor/echarts.min.js?v=2.1.5" defer></script>\n  <script src="js/path-chart.js?v=2.1.5" defer></script>'
+    );
+  }
+  fs.writeFileSync(path.join(root, file), html, 'utf8');
   console.log('wrote', file);
 }
 

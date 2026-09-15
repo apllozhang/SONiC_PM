@@ -15,6 +15,13 @@ const levels = {
   prev: { href: 'cases.html', label: '厂商案例拆解' },
   next: { href: 'faq.html', label: '常见问题 FAQ' },
   body: `
+<h2>12 周路径总览</h2>
+<p>横轴为周次，色条为该阶段主修内容；标签给出建议等级与岗位侧重。可与下表对照使用。</p>
+<div class="chart-wrap" role="img" aria-label="12 周学习路径图：从第 0 周定路径到第 12 周商业化">
+  <div id="path-chart" class="path-chart"></div>
+</div>
+<p class="muted" style="font-size:12px;margin-top:4px">图例说明：色条长度 = 该模块占用周数；L1→L2 表示从入门过渡到可独立做单模块。</p>
+
 <h2>等级一览</h2>
 <table class="matrix">
   <thead><tr><th>等级</th><th>一句话</th><th>能做什么</th><th>考核证据</th><th>对应路线</th></tr></thead>
