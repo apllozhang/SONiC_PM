@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 const root = path.join(__dirname, '..');
 const { day01, day02, day03 } = require('./content-days');
@@ -119,10 +119,10 @@ function page({ title, description, breadcrumb, kicker, h1, lead, tags, body, si
   <meta name="description" content="${description}">
   <title>${title} · SONiC PM Atlas</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/atlas.css">
+  <link rel="stylesheet" href="css/tokens.css?v=2.1.1">
+  <link rel="stylesheet" href="css/base.css?v=2.1.1">
+  <link rel="stylesheet" href="css/components.css?v=2.1.1">
+  <link rel="stylesheet" href="css/atlas.css?v=2.1.1">
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要内容</a>
@@ -151,7 +151,7 @@ ${side}
       <footer class="site-footer">SONiC PM Atlas ${SITE_VERSION_LABEL} · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>
   </main>
-  <script src="js/app.js" defer></script>
+  <script src="js/app.js?v=2.1.1" defer></script>
 </body>
 </html>
 `;
