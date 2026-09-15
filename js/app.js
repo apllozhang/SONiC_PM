@@ -52,10 +52,17 @@
     }
   });
 
-  // 主题
-  function applyTheme(theme) {
+  // 主题：对齐 ALE theme.js（.dark class + theme-transitioning ≤300ms）
+  function applyTheme(theme, animate) {
+    if (animate) {
+      root.classList.add('theme-transitioning');
+      setTimeout(() => root.classList.remove('theme-transitioning'), 300);
+    }
     root.classList.toggle('dark', theme === 'dark');
-    try { localStorage.setItem('atlas-theme', theme); } catch (_) {}
+    try {
+      localStorage.setItem('theme', theme);
+      localStorage.setItem('atlas-theme', theme);
+    } catch (_) {}
     if (themeBtn) {
       themeBtn.textContent = theme === 'dark' ? '☀' : '🌙';
       themeBtn.setAttribute('aria-label', theme === 'dark' ? '切换到浅色主题' : '切换到深色主题');
@@ -64,11 +71,12 @@
   }
   let theme = 'light';
   try {
-    theme = localStorage.getItem('atlas-theme')
+    theme = localStorage.getItem('theme')
+      || localStorage.getItem('atlas-theme')
       || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   } catch (_) {}
-  applyTheme(theme);
+  applyTheme(theme, false);
   themeBtn?.addEventListener('click', () => {
-    applyTheme(root.classList.contains('dark') ? 'light' : 'dark');
+    applyTheme(root.classList.contains('dark') ? 'light' : 'dark', true);
   });
 })();

@@ -34,6 +34,8 @@
   min-height: var(--hit-target-min);
 }
 .brand img { height: 28px; width: auto; }
+.brand .logo-white { display: none; }
+.brand .logo-color { display: inline; }
 .brand-divider {
   width: 1px; height: 22px; background: var(--color-border);
 }
@@ -148,10 +150,10 @@
   padding-block: var(--space-6);
 }
 
-/* ── Hero：只用 ALE 品牌紫，禁止金/青/黑底混色 ── */
+/* ── Hero：规范 8.4 官方品牌紫渐变（亮/暗共用，不随主题切黑底） ── */
 .hero {
   position: relative; overflow: hidden;
-  background: var(--ale-purple-700);
+  background: linear-gradient(118deg, #4f3478 0%, #6b489d 55%, #7e5cb4 100%);
   color: #fff;
 }
 /* 轻网格：白丝线，不用黑色噪点 */
@@ -482,6 +484,80 @@
 }
 
 /* ── 响应式 ── */
+/* ── 暗色主题（严格走 ALE :root.dark 令牌，不引入黑/青自造色） ── */
+:root.dark body { background: var(--color-canvas); color: var(--color-text-primary); }
+:root.dark .topbar {
+  background: rgb(23 20 32 / 96%);
+  border-bottom-color: var(--color-border);
+}
+:root.dark .brand .logo-color { display: none; }
+:root.dark .brand .logo-white { display: inline; }
+:root.dark .rail {
+  background: var(--color-surface);
+  border-right-color: var(--color-border);
+}
+:root.dark .rail-item.is-active {
+  background: var(--color-purple-tint);
+  border-color: var(--ale-purple-500);
+  color: var(--color-on-tint);
+}
+:root.dark .rail-item.is-active .rail-no {
+  background: var(--ale-purple-600);
+  color: #fff;
+}
+/* Hero 保持品牌紫，不随主题变黑 */
+:root.dark .hero {
+  background: linear-gradient(118deg, #4f3478 0%, #6b489d 55%, #7e5cb4 100%);
+}
+:root.dark .hero-wave path,
+.hero-wave path { fill: var(--color-canvas); }
+:root.dark .capability-card,
+:root.dark .track-card,
+:root.dark .panel,
+:root.dark .page-nav a,
+:root.dark .matrix {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+:root.dark .capability-card h3,
+:root.dark .track-card h3 { color: var(--color-heading-accent); }
+:root.dark .capability-card p,
+:root.dark .track-card p,
+:root.dark .panel li { color: var(--color-text-secondary); }
+:root.dark .callout {
+  background: var(--color-purple-tint);
+  color: var(--color-text-primary);
+}
+:root.dark .callout strong { color: var(--color-on-tint); }
+:root.dark .matrix th { background: var(--color-canvas); color: var(--color-text-muted); }
+:root.dark .site-footer { border-top-color: var(--color-border); color: var(--color-text-muted); }
+:root.dark .icon-btn:hover {
+  background: var(--color-purple-tint);
+  color: var(--color-heading-accent);
+}
+:root.dark .button.primary {
+  background: var(--color-action);
+  color: var(--color-on-action);
+}
+:root.dark .button.primary:hover { background: var(--color-action-hover); }
+:root.dark .button.secondary {
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+  background: var(--color-surface);
+}
+:root.dark .button.secondary:hover {
+  border-color: var(--color-action);
+  color: var(--color-heading-accent);
+}
+:root.dark .prose,
+:root.dark .prose p,
+:root.dark .prose li { color: var(--color-text-secondary); }
+:root.dark .prose h2,
+:root.dark .prose h3 { color: var(--color-heading-accent); }
+:root.dark .page-header { border-bottom-color: var(--color-border); }
+:root.dark .gate-list li { border-bottom-color: var(--color-border-soft); color: var(--color-text-secondary); }
+
 @media (max-width: 1100px) {
   .capability-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .content-grid { grid-template-columns: 1fr; }
