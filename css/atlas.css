@@ -1,5 +1,45 @@
 /* SONiC PM Atlas — 严格对齐 ALE WebUI 规范站顶栏/内容壳（无左栏） */
 
+/* ── 字号阶梯（全站只允许用这几档，禁止随手写 px） ──
+   11  标签/编号
+   12  辅助说明
+   13  紧凑正文
+   14  正文
+   15  卡片标题
+   16  强调卡标题 / 路径名
+   20  区块标题
+   28  页面标题
+   32  首页主标题（桌面）
+*/
+:root {
+  --fs-label: 11px;
+  --fs-aux: 12px;
+  --fs-tight: 13px;
+  --fs-body: 14px;
+  --fs-card: 15px;
+  --fs-card-lg: 16px;
+  --fs-section: 20px;
+  --fs-page: 28px;
+  --fs-hero: 32px;
+  --lh-tight: 1.35;
+  --lh-body: 1.55;
+}
+
+/* 全站标题不继承 base 里过大的 h2/h3，避免区块标题压过卡片 */
+.section-head h2 {
+  font-size: var(--fs-section) !important;
+  line-height: var(--lh-tight);
+  font-weight: 700;
+}
+.page-header h1 { font-size: var(--fs-page) !important; line-height: 1.25; }
+.prose h2 { font-size: var(--fs-section); }
+.prose h3 { font-size: var(--fs-card-lg); }
+.panel h2,
+.training-card h2 {
+  font-size: var(--fs-label) !important;
+  letter-spacing: .08em;
+}
+
 .skip-link {
   position: fixed; left: 1rem; top: -10rem; z-index: 900;
   padding: .65rem 1rem;
@@ -165,7 +205,7 @@
 .hero h1 {
   margin: 0 0 var(--space-3);
   color: #fff;
-  font-size: clamp(24px, 2.6vw, 32px);
+  font-size: clamp(24px, 2.6vw, var(--fs-hero));
   line-height: 1.3;
   letter-spacing: -0.01em;
   /* 中文标题：均衡行宽，禁止在词中间硬断（交换/机产品） */
@@ -239,7 +279,8 @@
 }
 .section-kicker {
   margin: 0 0 var(--space-1);
-  font-size: 11px; font-weight: 700; letter-spacing: .14em;
+  font-size: var(--fs-label);
+  font-weight: 700; letter-spacing: .14em;
   text-transform: uppercase; color: var(--color-action);
 }
 
@@ -270,18 +311,19 @@
 .panel h2,
 .training-card h2 {
   margin: 0 0 var(--space-2);
-  font-size: 13px; letter-spacing: .06em; text-transform: uppercase;
+  font-size: var(--fs-label);
+  letter-spacing: .08em; text-transform: uppercase;
   color: var(--color-heading-accent);
 }
 .panel ul,
 .training-card ul {
   margin: 0; padding-left: 1.05em;
   color: var(--color-text-secondary);
-  font-size: 13px; line-height: 1.55;
+  font-size: var(--fs-tight); line-height: var(--lh-body);
 }
 .panel ul li + li,
 .training-card ul li + li { margin-top: .3em; }
-.panel p { margin: 0; font-size: 13px; color: var(--color-text-secondary); line-height: 1.55; }
+.panel p { margin: 0; font-size: var(--fs-tight); color: var(--color-text-secondary); line-height: var(--lh-body); }
 
 /* 培训步骤条（0→1→13 周） */
 .train-steps {
@@ -302,20 +344,20 @@
   width: 22px; height: 22px; margin-right: 8px;
   border-radius: 50%;
   background: var(--ale-purple-600); color: #fff;
-  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 700;
   vertical-align: middle;
 }
 .train-steps h3 {
   display: inline; margin: 0;
-  font-size: 14px; color: var(--color-heading-accent);
+  font-size: var(--fs-card); color: var(--color-heading-accent);
   vertical-align: middle;
 }
 .train-steps p {
   margin: 8px 0 0;
-  font-size: 13px; color: var(--color-text-secondary); line-height: 1.5;
+  font-size: var(--fs-tight); color: var(--color-text-secondary); line-height: var(--lh-body);
 }
 
-/* 能力地图：略紧 */
+/* 能力地图 */
 .capability-map {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -348,31 +390,36 @@
 }
 .capability-card .num {
   position: relative; z-index: 1;
-  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 700;
   color: var(--color-action);
+  letter-spacing: .02em;
 }
 .capability-card h3 {
   position: relative; z-index: 1;
-  margin: 0; font-size: 15px; color: var(--color-heading-accent);
+  margin: 0;
+  font-size: var(--fs-card-lg);
+  line-height: var(--lh-tight);
+  color: var(--color-heading-accent);
 }
 .capability-card p {
   position: relative; z-index: 1;
   margin: 0; flex: 1;
-  color: var(--color-text-secondary); font-size: 13px; line-height: 1.5;
+  color: var(--color-text-secondary);
+  font-size: var(--fs-tight); line-height: var(--lh-body);
 }
 .capability-card .go {
   position: relative; z-index: 1;
-  font-size: 12px; font-weight: 700; color: var(--color-action);
+  font-size: var(--fs-aux); font-weight: 700; color: var(--color-action);
 }
 .role-exam {
   position: relative; z-index: 1;
   margin: 0;
-  font-size: 12px; color: var(--color-text-muted); line-height: 1.45;
+  font-size: var(--fs-aux); color: var(--color-text-muted); line-height: 1.45;
 }
 .role-steps {
   position: relative; z-index: 1;
   display: flex; flex-wrap: wrap; gap: 5px;
-  margin: 0; font-size: 11px;
+  margin: 0; font-size: var(--fs-label);
 }
 .role-steps a {
   display: inline-flex; align-items: center;
@@ -384,15 +431,15 @@
 }
 .role-steps a:hover { background: var(--ale-purple-40); }
 
-/* 三天横带 */
+/* 三天横带：编号是标签，名称是主标题，说明是辅助 —— 三档拉开 */
 .path-strip {
   list-style: none; margin: 0; padding: 0;
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-3);
 }
 .path-strip a {
-  display: flex; flex-direction: column; gap: 2px;
-  min-height: 64px;
+  display: flex; flex-direction: column; gap: 6px;
+  min-height: 88px;
   padding: var(--space-3) var(--space-4);
   text-decoration: none; color: inherit;
   background: var(--color-surface);
@@ -408,11 +455,26 @@
   transform: translateY(-1px);
 }
 .path-strip .num {
-  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
-  color: var(--color-action); letter-spacing: .04em;
+  display: inline-flex; align-items: center;
+  align-self: flex-start;
+  height: 20px; padding: 0 8px;
+  border-radius: 999px;
+  background: var(--color-purple-tint);
+  color: var(--color-on-tint);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label); font-weight: 700; letter-spacing: .04em;
 }
-.path-strip .name { font-size: 14px; font-weight: 700; color: var(--color-text-primary); }
-.path-strip .hint { font-size: 12px; color: var(--color-text-muted); }
+.path-strip .name {
+  font-size: var(--fs-card-lg);
+  line-height: var(--lh-tight);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+.path-strip .hint {
+  font-size: var(--fs-aux);
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
 
 /* ── 内容页 ── */
 .breadcrumb {
