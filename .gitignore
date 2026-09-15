@@ -4,3 +4,7 @@ Thumbs.db
 .idea/
 .vscode/
 _tmp*
+
+.deploy-*.tgz
+*.tgz
+
