@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6b489d">
+  <meta name="description" content="功能 × 仓库 × 容器 × DB 表 × 验证命令速查，覆盖 L2/L3/EVPN-VXLAN/QoS/遥测。">
+  <title>功能特性地图 · SONiC PM Atlas</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/atlas.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="返回首页 · SONiC PM Atlas">
+      <img class="logo-color" src="assets/brand/ale-primary-logo-horizontal.png" alt="Alcatel-Lucent Enterprise">
+      <img class="logo-white" src="assets/brand/ale-primary-logo-horizontal-white.png" alt="Alcatel-Lucent Enterprise">
+      <span class="divider" aria-hidden="true"></span>
+      <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
+    </a>
+    <span class="ver-badge">v2.0.1</span>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="主导航">
+      <a href="index.html" data-nav="home">首页</a>
+      <a href="day-01.html" data-nav="intro">3 天入门</a>
+      <a href="track-01.html" data-nav="track-01">供应链</a>
+      <a href="track-02.html" data-nav="track-02">架构</a>
+      <a href="track-03.html" data-nav="track-03">测试</a>
+      <a href="track-04.html" data-nav="track-04">社区</a>
+      <a href="track-05.html" data-nav="track-05">定型</a>
+      <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="feature-map.html" data-nav="feature-map">功能地图</a>
+      <a href="ecosystem.html" data-nav="ecosystem">版本生态</a>
+      <a href="glossary.html" data-nav="glossary">术语</a>
+      <a href="checklist.html" data-nav="checklist">核验包</a>
+      <a href="cases.html" data-nav="cases">案例</a>
+      <a href="changelog.html" data-nav="changelog">更新</a>
+    </nav>
+
+    <div class="topbar-tools">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="切换主题" title="切换主题">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="打开导航">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim" id="navScrim" hidden></div>
+  <main class="main" id="main" tabindex="-1">
+    <div class="container">
+<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="feature-map.html">知识底座</a></nav>
+      <header class="page-header">
+        <p class="section-kicker">知识底座</p>
+        <h1>功能特性地图</h1>
+        <p class="page-lead">给售前查「归谁管」、给测试找「验什么」、给 PM 问「证据在哪」。每行尽量对应：社区仓库、容器、关键 DB 表、配置入口、验证命令。</p>
+        <div class="meta-row"><span class="tag ">P1</span><span class="tag ">速查</span><span class="tag ">功能地图</span></div>
+      </header>
+      <div class="content-grid">
+        <article class="prose">
+
+<p class="muted">说明：表中命令为社区常见 CLI 示意，商业发行版命令可能不同；验收前以目标镜像文档为准。仓库名以 GitHub 组织 <code>sonic-net</code> 为准。</p>
+
+<h2>L2：VLAN / LAG / MCLAG / STP 类</h2>
+<table class="matrix">
+  <thead><tr><th>功能</th><th>主要仓库</th><th>容器 / 组件</th><th>关键 DB 表（示意）</th><th>配置入口</th><th>验证命令（示意）</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>VLAN / 端口加入</td>
+      <td>sonic-swss、sonic-utilities</td>
+      <td>orchagent（vlanorch）</td>
+      <td>VLAN、VLAN_MEMBER、PORT</td>
+      <td>config vlan add / config vlan member add</td>
+      <td>show vlan brief；show vlan config</td>
+    </tr>
+    <tr>
+      <td>PortChannel / LAG</td>
+      <td>sonic-swss、teamd</td>
+      <td>teamd + orchagent</td>
+      <td>PORTCHANNEL、PORTCHANNEL_MEMBER、TEAM</td>
+      <td>config portchannel add …</td>
+      <td>show interfaces portchannel；teamdctl</td>
+    </tr>
+    <tr>
+      <td>MCLAG / 双活网关类</td>
+      <td>视发行版与平台插件</td>
+      <td>常与 orchagent / 专用进程相关</td>
+      <td>MCLAG 相关表（因版本而异）</td>
+      <td>以目标镜像文档为准</td>
+      <td>show mclag 之类（发行版差异大）</td>
+    </tr>
+  </tbody>
+</table>
+<pre class="code-sample" aria-label="VLAN 配置样例"><code>{
+  "VLAN": {
+    "Vlan100": { "vlanid": "100" }
+  },
+  "VLAN_MEMBER": {
+    "Vlan100|Ethernet0": { "tagging_mode": "tagged" }
+  }
+}</code></pre>
+<p class="sample-cap">样例：config_db 中 VLAN 与成员的最小片段（示意，字段随版本可能增减）</p>
+
+<h2>L3：接口 / 路由 / BGP（FRR）</h2>
+<table class="matrix">
+  <thead><tr><th>功能</th><th>主要仓库</th><th>容器 / 组件</th><th>关键 DB 表（示意）</th><th>配置入口</th><th>验证命令（示意）</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>三层接口 / IP</td>
+      <td>sonic-swss</td>
+      <td>orchagent</td>
+      <td>INTERFACE、LOOPBACK</td>
+      <td>config interface ip add …</td>
+      <td>show ip interfaces；show interfaces counters</td>
+    </tr>
+    <tr>
+      <td>BGP / 静态路由</td>
+      <td>sonic-frr / FRR、sonic-bgpcfgd</td>
+      <td>fpm（FRR）+ bgpcfgd</td>
+      <td>DEVICE_NEIGHBOR、BGP 相关表</td>
+      <td>config bgp / vtysh（视版本）</td>
+      <td>show ip bgp summary；show ip route</td>
+    </tr>
+    <tr>
+      <td>ECMP / 下一代跳</td>
+      <td>sonic-swss</td>
+      <td>orchagent</td>
+      <td>ROUTE、NEXTHOP、NEXTHOP_GROUP</td>
+      <td>路由协议或静态配置</td>
+      <td>show ip route &lt;prefix&gt;；ASIC 计数器</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>EVPN / VXLAN</h2>
+<table class="matrix">
+  <thead><tr><th>功能</th><th>主要仓库</th><th>容器 / 组件</th><th>关键 DB 表（示意）</th><th>配置入口</th><th>验证命令（示意）</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>VXLAN 隧道 / VNI</td>
+      <td>sonic-swss</td>
+      <td>orchagent（vxlan）</td>
+      <td>VXLAN_TUNNEL、VXLAN_TUNNEL_MAP、VLAN</td>
+      <td>config vxlan …</td>
+      <td>show vxlan tunnel；show vxlan map</td>
+    </tr>
+    <tr>
+      <td>EVPN 邻居与路由</td>
+      <td>FRR、sonic-swss</td>
+      <td>fpm + orchagent</td>
+      <td>与 BGP/EVPN 表相关</td>
+      <td>vtysh / config</td>
+      <td>show bgp l2vpn evpn summary；show bgp evpn route</td>
+    </tr>
+  </tbody>
+</table>
+<p class="muted">验收提醒：必须区分 L2、L3 对称、L3 非对称路径；只写「支持 EVPN」无法验收。</p>
+
+<h2>QoS / ACL / 队列</h2>
+<table class="matrix">
+  <thead><tr><th>功能</th><th>主要仓库</th><th>容器 / 组件</th><th>关键 DB 表（示意）</th><th>配置入口</th><th>验证命令（示意）</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>端口 QoS 模板 / 队列</td>
+      <td>sonic-swss</td>
+      <td>orchagent（qos）</td>
+      <td>PORT_QOS_MAP、QUEUE、SCHEDULER</td>
+      <td>config qos …</td>
+      <td>show qos configuration；show queue counters</td>
+    </tr>
+    <tr>
+      <td>ACL</td>
+      <td>sonic-swss</td>
+      <td>orchagent（acl）</td>
+      <td>ACL_TABLE、ACL_RULE</td>
+      <td>config acl add …</td>
+      <td>show acl table；show acl rule</td>
+    </tr>
+    <tr>
+      <td>PFC / ECN（RoCE 相关）</td>
+      <td>sonic-swss、平台相关</td>
+      <td>orchagent + 硬件能力</td>
+      <td>PORT_QOS_MAP、PFC 相关映射</td>
+      <td>config qos pfc …</td>
+      <td>show pfc counters；show ecn</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>遥测 / 网管 / 日志</h2>
+<table class="matrix">
+  <thead><tr><th>功能</th><th>主要仓库</th><th>容器 / 组件</th><th>关键 DB 表（示意）</th><th>配置入口</th><th>验证命令（示意）</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>gNMI 遥测</td>
+      <td>sonic-gnmi 等</td>
+      <td>telemetry</td>
+      <td>从 CONFIG_DB/STATE_DB 等读取路径相关数据</td>
+      <td>配置订阅客户端与证书</td>
+      <td>客户端订阅成功日志；推送样本</td>
+    </tr>
+    <tr>
+      <td>SNMP</td>
+      <td>sonic-snmp 等</td>
+      <td>snmp</td>
+      <td>多库聚合，视实现</td>
+      <td>config snmp …</td>
+      <td>snmpwalk 指定 OID（环境内）</td>
+    </tr>
+    <tr>
+      <td>Syslog / 诊断包</td>
+      <td>utilities、平台</td>
+      <td>多容器日志</td>
+      <td>—</td>
+      <td>系统 syslog 配置</td>
+      <td>show techsupport / support dump（视版本）</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>怎么用这张地图做培训</h2>
+<ol>
+  <li><strong>售前</strong>：客户问「支不支持 X」，先定位行，再问「目标镜像上验证命令输出是否归档」。</li>
+  <li><strong>测试</strong>：按行设计用例，证据列写「命令输出 + 版本」。</li>
+  <li><strong>PM</strong>：定型表「功能」列必须能映射到本页某一行，禁止只写营销词。</li>
+</ol>
+
+
+<section class="accept-block" aria-labelledby="acc-t">
+  <h2 id="acc-t">动手任务验收标准</h2>
+  <ul class="accept-list">
+    <li>能为任选 2 个功能找到仓库、容器、表与验证命令</li>
+    <li>定型表「功能」列可映射到本页行</li>
+  </ul>
+</section>
+<section class="quiz-block" aria-labelledby="quiz-t">
+  <h2 id="quiz-t">自测题（点击展开答案）</h2>
+  
+  <details class="quiz-item">
+    <summary>自测 1：客户问「支持 EVPN 吗」，售前应先做什么？</summary>
+    <div class="quiz-a">在功能地图定位 EVPN 行，追问目标镜像上的验证命令输出与路径类型（L2/L3 对称/非对称）是否归档。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 2：VLAN 成员配置主要落在哪张表？</summary>
+    <div class="quiz-a">常见在 CONFIG_DB 的 VLAN_MEMBER（与 VLAN、PORT 关联）。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 3：遥测容器故障是否一定影响转发？</summary>
+    <div class="quiz-a">通常不影响转发，但影响可观测；需在交付说明中写明缺口与恢复。</div>
+  </details>
+  <p class="quiz-note muted">建议：正确率 ≥ 80% 再进入下一页。培训组织者可按此判分。</p>
+</section>
+        </article>
+        <aside class="side-panel">
+
+<div class="panel"><h2>使用方式</h2><ul>
+  <li>售前：定位归谁管</li>
+  <li>测试：生成验证命令</li>
+  <li>PM：写入定型表</li>
+</ul></div>
+<div class="panel"><h2>官方文档</h2><ul>
+  <li><a href="https://sonic.readthedocs.io/" target="_blank" rel="noopener">sonic.readthedocs.io</a></li>
+  <li><a href="https://github.com/sonic-net" target="_blank" rel="noopener">github.com/sonic-net</a></li>
+</ul></div>
+        </aside>
+      </div>
+      <nav class="page-nav" aria-label="上一页下一页">
+        <a href="track-02.html">← 架构与版本工程</a>
+        <a href="ecosystem.html">版本与生态坐标系 →</a>
+      </nav>
+      <footer class="site-footer">SONiC PM Atlas v2.0.1 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
+    </div>
+  </main>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

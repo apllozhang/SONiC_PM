@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6b489d">
+  <meta name="description" content="社区 release 节奏与命名、商业发行版对照、主流 ASIC 与白牌整机矩阵，附官方外链。">
+  <title>版本与生态坐标系 · SONiC PM Atlas</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/atlas.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="返回首页 · SONiC PM Atlas">
+      <img class="logo-color" src="assets/brand/ale-primary-logo-horizontal.png" alt="Alcatel-Lucent Enterprise">
+      <img class="logo-white" src="assets/brand/ale-primary-logo-horizontal-white.png" alt="Alcatel-Lucent Enterprise">
+      <span class="divider" aria-hidden="true"></span>
+      <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
+    </a>
+    <span class="ver-badge">v2.0.1</span>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="主导航">
+      <a href="index.html" data-nav="home">首页</a>
+      <a href="day-01.html" data-nav="intro">3 天入门</a>
+      <a href="track-01.html" data-nav="track-01">供应链</a>
+      <a href="track-02.html" data-nav="track-02">架构</a>
+      <a href="track-03.html" data-nav="track-03">测试</a>
+      <a href="track-04.html" data-nav="track-04">社区</a>
+      <a href="track-05.html" data-nav="track-05">定型</a>
+      <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="feature-map.html" data-nav="feature-map">功能地图</a>
+      <a href="ecosystem.html" data-nav="ecosystem">版本生态</a>
+      <a href="glossary.html" data-nav="glossary">术语</a>
+      <a href="checklist.html" data-nav="checklist">核验包</a>
+      <a href="cases.html" data-nav="cases">案例</a>
+      <a href="changelog.html" data-nav="changelog">更新</a>
+    </nav>
+
+    <div class="topbar-tools">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="切换主题" title="切换主题">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="打开导航">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim" id="navScrim" hidden></div>
+  <main class="main" id="main" tabindex="-1">
+    <div class="container">
+<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="ecosystem.html">知识底座</a></nav>
+      <header class="page-header">
+        <p class="section-kicker">知识底座</p>
+        <h1>版本与生态坐标系</h1>
+        <p class="page-lead">全站反复要求「结论对上版本」——本页解释版本从哪来、商业发行如何对照、ASIC 与整机如何分层，避免名词悬空。</p>
+        <div class="meta-row"><span class="tag ">P1</span><span class="tag ">版本</span><span class="tag ">生态</span></div>
+      </header>
+      <div class="content-grid">
+        <article class="prose">
+
+<h2>社区 release：节奏与命名（理解用）</h2>
+<ul>
+  <li>SONiC 社区以<strong>年份命名</strong>的版本线演进（如 202012、202211、202311、202411 等），具体以官方 release 页为准。</li>
+  <li>分支与 feature freeze、回归窗口由社区治理流程决定；你的商业镜像<strong>必须写明基于哪条社区基线</strong>。</li>
+  <li>产品文档禁止只写「最新 SONiC」；应写「基于 &lt;社区版本&gt; + &lt;发行版/厂商版本&gt; + 构建号/哈希」。</li>
+</ul>
+<div class="callout"><strong>官方入口：</strong>文档 <a href="https://sonic.readthedocs.io/" target="_blank" rel="noopener">sonic.readthedocs.io</a> · 代码组织 <a href="https://github.com/sonic-net" target="_blank" rel="noopener">github.com/sonic-net</a> · 镜像与发布说明以社区 GitHub Release / 分支说明为准。</div>
+
+<h2>商业发行版对照（概念层，非推荐）</h2>
+<table class="matrix">
+  <thead><tr><th>类型</th><th>典型特征</th><th>产品要单独核验</th><th>易混点</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>community SONiC</td>
+      <td>Apache 2.0；社区合并节奏；支持常以服务型提供</td>
+      <td>自建镜像的构建链、补丁责任、CVE 跟踪</td>
+      <td>把社区功能列表当商业 SLA</td>
+    </tr>
+    <tr>
+      <td>芯片商 Enterprise SONiC</td>
+      <td>与特定 ASIC SDK 深度绑定；生态平台列表</td>
+      <td>目标板卡是否在清单；SDK/SAI 锁定</td>
+      <td>「50+ 平台」= 你的 SKU 已支持</td>
+    </tr>
+    <tr>
+      <td>整机厂商业发行</td>
+      <td>绑定品牌机型、授权、升级资料、服务网络</td>
+      <td>仅列出型号/授权路径能否覆盖项目</td>
+      <td>外推到非清单硬件</td>
+    </tr>
+    <tr>
+      <td>厂商加固版（harden）</td>
+      <td>选 PR、CI/CT、平台验证、缺陷关闭</td>
+      <td>每个补丁的追溯链是否完整</td>
+      <td>市场标签代替发布门禁</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>主流 ASIC 与白牌整机（分层矩阵示意）</h2>
+<table class="matrix">
+  <thead><tr><th>层</th><th>代表（示意）</th><th>公开材料常说</th><th>你必须落到</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>交换芯片</td>
+      <td>Broadcom Tomahawk / Trident；NVIDIA Spectrum；Marvell Prestera 等</td>
+      <td>吞吐档位、端口速率、AI/DC 定位</td>
+      <td>目标 ASIC 型号 + SAI/SDK 版本 + 内核</td>
+    </tr>
+    <tr>
+      <td>白牌 / ODM 整机</td>
+      <td>Edgecore、Celestica、Delta 等开放网络机型（示例方向）</td>
+      <td>机型矩阵、端口形态</td>
+      <td>HW-SKU、板卡版本、ONIE/CPLD、HCL</td>
+    </tr>
+    <tr>
+      <td>品牌整机</td>
+      <td>Dell PowerSwitch 等与商业 SONiC 绑定的路径（示例方向）</td>
+      <td>授权、升级、服务</td>
+      <td>是否在该品牌清单与合同范围内</td>
+    </tr>
+    <tr>
+      <td>光学与线缆</td>
+      <td>多来源光模块 / DAC</td>
+      <td>兼容、距离、速率</td>
+      <td>实验室互通证据行</td>
+    </tr>
+  </tbody>
+</table>
+<p class="muted">本表只用于建立「坐标系」，不是选型推荐或正式 HCL。对外材料请以各厂商最新官方文档与合同范围为准。</p>
+
+<h2>把版本写进结论的模板</h2>
+<pre class="code-sample"><code>社区基线：202311（或目标发行版所声明的上游）
+发行版/厂商版本：&lt;名称+版本&gt;
+构建：&lt;镜像名/构建号/SHA256&gt;
+平台：&lt;ODM/品牌 + HW-SKU + 板卡版本&gt;
+SAI/SDK：&lt;版本&gt;  内核：&lt;版本&gt;
+证据：&lt;链接或报告编号&gt;  负责人：&lt;姓名&gt;</code></pre>
+
+<h2>官方与社区外链</h2>
+<ul>
+  <li><a href="https://sonic.readthedocs.io/" target="_blank" rel="noopener">SONiC 官方文档</a></li>
+  <li><a href="https://github.com/sonic-net/sonic-buildimage" target="_blank" rel="noopener">sonic-buildimage</a>（镜像组装）</li>
+  <li><a href="https://github.com/sonic-net/sonic-swss" target="_blank" rel="noopener">sonic-swss</a>（OrchAgent 等）</li>
+  <li><a href="https://github.com/sonic-net/sonic-utilities" target="_blank" rel="noopener">sonic-utilities</a>（CLI）</li>
+  <li><a href="https://github.com/sonic-net" target="_blank" rel="noopener">sonic-net 组织主页</a></li>
+  <li><a href="https://www.opencompute.org/" target="_blank" rel="noopener">OCP（开放计算项目）</a></li>
+</ul>
+
+
+<section class="accept-block" aria-labelledby="acc-t">
+  <h2 id="acc-t">动手任务验收标准</h2>
+  <ul class="accept-list">
+    <li>能写出一条符合模板的版本锁定声明</li>
+    <li>能指出至少 3 个官方外链的用途</li>
+  </ul>
+</section>
+<section class="quiz-block" aria-labelledby="quiz-t">
+  <h2 id="quiz-t">自测题（点击展开答案）</h2>
+  
+  <details class="quiz-item">
+    <summary>自测 1：为什么禁止写「最新 SONiC」？</summary>
+    <div class="quiz-a">无法复现与追责。必须写清社区基线、发行版、构建哈希与平台型号。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 2：芯片商 Enterprise SONiC 的「50+ 平台」属于哪一层？</summary>
+    <div class="quiz-a">生态范围说明，不是单一 SKU 的 HCL。</div>
+  </details>
+  <details class="quiz-item">
+    <summary>自测 3：版本坐标系里 ASIC 与白牌整机如何分层？</summary>
+    <div class="quiz-a">ASIC 是芯片层；白牌/ODM 是板卡层（HW-SKU/ONIE/CPLD/HCL）；还要再绑镜像与服务。</div>
+  </details>
+  <p class="quiz-note muted">建议：正确率 ≥ 80% 再进入下一页。培训组织者可按此判分。</p>
+</section>
+        </article>
+        <aside class="side-panel">
+
+<div class="panel"><h2>版本一句话</h2><p style="font-size:14px">禁止「最新 SONiC」。必须写清社区基线 + 发行版 + 构建哈希 + 平台型号。</p></div>
+<div class="panel"><h2>外链</h2><ul>
+  <li><a href="https://sonic.readthedocs.io/" target="_blank" rel="noopener">Read the Docs</a></li>
+  <li><a href="https://github.com/sonic-net" target="_blank" rel="noopener">GitHub sonic-net</a></li>
+</ul></div>
+        </aside>
+      </div>
+      <nav class="page-nav" aria-label="上一页下一页">
+        <a href="feature-map.html">← 功能特性地图</a>
+        <a href="glossary.html">术语与参数四态 →</a>
+      </nav>
+      <footer class="site-footer">SONiC PM Atlas v2.0.1 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
+    </div>
+  </main>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

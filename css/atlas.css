@@ -468,6 +468,30 @@
   .page-lead { word-break: break-word; }
 }
 
+/* ── 代码/样例 ── */
+.code-sample {
+  margin: var(--space-3) 0;
+  padding: var(--space-4);
+  overflow-x: auto;
+  background: var(--color-canvas);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--color-text-primary);
+}
+.code-sample code { font-family: inherit; }
+.sample-cap {
+  margin: calc(var(--space-2) * -1) 0 var(--space-4);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+:root.dark .code-sample {
+  background: #171420;
+  border-color: var(--color-border);
+}
+
 /* ── 培训：验收标准与自测题 ── */
 .accept-block,
 .quiz-block {

@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v2.0.0</span>
+    <span class="ver-badge">v2.0.1</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -32,6 +32,8 @@
       <a href="track-04.html" data-nav="track-04">社区</a>
       <a href="track-05.html" data-nav="track-05">定型</a>
       <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="feature-map.html" data-nav="feature-map">功能地图</a>
+      <a href="ecosystem.html" data-nav="ecosystem">版本生态</a>
       <a href="glossary.html" data-nav="glossary">术语</a>
       <a href="checklist.html" data-nav="checklist">核验包</a>
       <a href="cases.html" data-nav="cases">案例</a>
@@ -91,6 +93,26 @@
   <li>Syslog、告警字段是否能进客户工单系统。</li>
 </ul>
 
+<h2>真实样例：异常用例行（示意）</h2>
+<table class="matrix">
+  <thead><tr><th>用例</th><th>步骤摘要</th><th>通过标准</th><th>证据</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>BGP 邻居震荡恢复</td>
+      <td>反复 shut/no shut 邻居 10 次，间隔 5s</td>
+      <td>每次收敛时间 ≤ 约定秒数；无残留黑洞</td>
+      <td>show ip bgp summary 时间戳 + 流量曲线</td>
+    </tr>
+    <tr>
+      <td>端口闪断</td>
+      <td>物理闪断 1s / 30s 两档</td>
+      <td>业务恢复时间达标；告警可进工单字段</td>
+      <td>syslog + 接口计数</td>
+    </tr>
+  </tbody>
+</table>
+<p class="sample-cap">样例：报告行应能直接进验收表，而不是「测试通过」四个字。</p>
+
 <h2>核对问题</h2>
 <ol>
   <li>测试床是否覆盖客户真实组网差异清单？</li>
@@ -141,7 +163,7 @@
         <a href="track-02.html">← 能力线 02</a>
         <a href="track-04.html">能力线 04 →</a>
       </nav>
-      <footer class="site-footer">SONiC PM Atlas v2.0.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
+      <footer class="site-footer">SONiC PM Atlas v2.0.1 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>
   </main>
   <script src="js/app.js" defer></script>

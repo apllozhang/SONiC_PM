@@ -38,6 +38,16 @@ const tracks = [
 </ul>
 <div class="callout"><strong>网关：</strong>生态声明不能替代型号级 HCL。评审必须追到准确型号、端口/分拆模式、光模块、镜像、BIOS/CPLD、温度/气流、RMA 与测试报告。</div>
 
+<h2>真实样例：HCL 行与证据列（示意）</h2>
+<table class="matrix">
+  <thead><tr><th>型号 / 板卡</th><th>光模块</th><th>速率/距离</th><th>镜像版本</th><th>证据</th><th>负责人</th></tr></thead>
+  <tbody>
+    <tr><td>ODM-A / B1.3</td><td>厂商 X 25G SR</td><td>25G / 100m MMF</td><td>4.2.1</td><td>实验室互通表 E-112</td><td>李四</td></tr>
+    <tr><td>ODM-A / B1.3</td><td>厂商 Y 100G DAC 3m</td><td>100G / 机柜内</td><td>4.2.1</td><td>待复核（缺报告号）</td><td>王五</td></tr>
+  </tbody>
+</table>
+<p class="sample-cap">样例：兼容矩阵必须带证据与负责人；「待复核」不能写成「已兼容」。</p>
+
 <h2>核对问题（周会上直接用）</h2>
 <ol>
   <li>目标 SKU 的板级版本与固件基线是什么？谁签字冻结？</li>
@@ -66,27 +76,180 @@ const tracks = [
 <h2>控制面：意图如何到芯片</h2>
 <p>分布式控制面核心在 Redis 多实例与管道：管理接口对 <code>CONFIG_DB</code>（如 Redis DB 4）的写入触发 OrchAgent 监听；OrchAgent（sonic-swss）把 VLAN、BGP 等意图转成 SAI 对象，经 <code>ASIC_DB</code> 下发到 <code>syncd</code>。产品化时要能回答：配置从哪进、状态从哪出、失败卡在哪一环、如何取证。</p>
 
-<h2>多仓库依赖怎么进物料清单</h2>
+<h2>容器全景：谁负责什么</h2>
+<p class="muted">下表为社区常见容器职责示意，商业发行版可能增删组件；以目标镜像 <code>docker ps</code> 与文档为准。</p>
 <table class="matrix">
-  <thead><tr><th>仓库 / 组件</th><th>角色</th><th>版本工程要锁什么</th></tr></thead>
+  <thead><tr><th>容器 / 进程</th><th>主要仓库</th><th>职责</th><th>故障时业务感知</th><th>取证点</th></tr></thead>
   <tbody>
-    <tr><td>sonic-buildimage</td><td>镜像组装</td><td>分支、构建参数、产物哈希</td></tr>
-    <tr><td>sonic-swss</td><td>OrchAgent 等</td><td>与 SAI/平台插件的兼容版本</td></tr>
-    <tr><td>sonic-sairedis / syncd</td><td>SAI 实现与下发</td><td>SAI 头文件与厂商库版本</td></tr>
-    <tr><td>sonic-utilities</td><td>运维命令</td><td>与镜像同版本发布</td></tr>
-    <tr><td>平台插件 / BSP</td><td>板卡适配</td><td>板卡版本 ↔ 插件版本矩阵</td></tr>
+    <tr>
+      <td><strong>database</strong></td>
+      <td>sonic-buildimage 等</td>
+      <td>承载 CONFIG_DB / APP_DB / ASIC_DB / STATE_DB 等 Redis 实例</td>
+      <td>严重；配置与状态链路中断</td>
+      <td>redis-cli ping；各 DB 键空间</td>
+    </tr>
+    <tr>
+      <td><strong>orchagent</strong></td>
+      <td>sonic-swss</td>
+      <td>监听 DB，把网络意图转成 SAI 对象并下发</td>
+      <td>高；新配置不生效，依赖 warm/fast 语义</td>
+      <td>orchagent 日志；APP_DB→ASIC_DB 变化</td>
+    </tr>
+    <tr>
+      <td><strong>syncd</strong></td>
+      <td>sonic-sairedis 等</td>
+      <td>执行 SAI 调用，与 ASIC SDK 交互</td>
+      <td>极高；转发表项异常</td>
+      <td>syncd 日志；SAI 返回码</td>
+    </tr>
+    <tr>
+      <td><strong>fpm / FRR</strong></td>
+      <td>sonic-frr 等</td>
+      <td>BGP/路由协议栈，向控制面提供路由信息</td>
+      <td>高；邻居与路由震荡</td>
+      <td>show ip bgp summary；FRR 日志</td>
+    </tr>
+    <tr>
+      <td><strong>teamd</strong></td>
+      <td>sonic-teamd 等</td>
+      <td>PortChannel / LAG 成员状态机</td>
+      <td>中高；聚合口成员异常</td>
+      <td>teamdctl state</td>
+    </tr>
+    <tr>
+      <td><strong>telemetry</strong></td>
+      <td>sonic-gnmi 等</td>
+      <td>gNMI 遥测推送</td>
+      <td>通常不影响转发；影响可观测</td>
+      <td>订阅日志；推送样本</td>
+    </tr>
+    <tr>
+      <td><strong>snmp</strong></td>
+      <td>sonic-snmp 等</td>
+      <td>SNMP Agent</td>
+      <td>通常不影响转发</td>
+      <td>snmpwalk / agent 日志</td>
+    </tr>
+    <tr>
+      <td><strong>lldp / dhcp_relay 等</strong></td>
+      <td>对应 sonic-* 仓库</td>
+      <td>邻居发现、DHCP 中继等</td>
+      <td>按功能影响</td>
+      <td>对应 show 命令</td>
+    </tr>
   </tbody>
 </table>
 
-<h2>分支与发布节奏</h2>
+<h2>Redis 各 DB 关键表速查（示意）</h2>
+<table class="matrix">
+  <thead><tr><th>DB（社区常见编号）</th><th>角色</th><th>谁写</th><th>谁读</th><th>关键表举例</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>CONFIG_DB</strong>（常为 4）</td>
+      <td>期望配置</td>
+      <td>用户 / config 命令 / 网管</td>
+      <td>orchagent、bgpcfgd 等</td>
+      <td>VLAN、VLAN_MEMBER、PORT、INTERFACE、PORTCHANNEL、ACL_TABLE、ACL_RULE、PORT_QOS_MAP、DEVICE_NEIGHBOR</td>
+    </tr>
+    <tr>
+      <td><strong>APP_DB</strong>（常为 0）</td>
+      <td>应用层意图</td>
+      <td>部分应用 / 转换组件</td>
+      <td>orchagent</td>
+      <td>与转发意图相关的 INTF、ROUTE、NEIGH 等（视版本）</td>
+    </tr>
+    <tr>
+      <td><strong>ASIC_DB</strong>（常为 1）</td>
+      <td>SAI 层状态/下发</td>
+      <td>orchagent / syncd</td>
+      <td>syncd、调试工具</td>
+      <td>SAI 对象与属性（ASIC_* 风格键，调试用）</td>
+    </tr>
+    <tr>
+      <td><strong>STATE_DB</strong>（常为 6）</td>
+      <td>运行状态</td>
+      <td>各组件</td>
+      <td>show 命令、遥测、诊断</td>
+      <td>端口状态、转发表项摘要、温感等（视版本）</td>
+    </tr>
+    <tr>
+      <td><strong>COUNTERS_DB</strong>（常为 2）</td>
+      <td>计数器</td>
+      <td>syncd / 计数器收集</td>
+      <td>show counters、遥测</td>
+      <td>端口/队列计数</td>
+    </tr>
+  </tbody>
+</table>
+<p class="muted">编号在不同版本/发行版可能变化；培训时要求学员用目标镜像实际确认，而不是背死数字。</p>
+
+<h2>容器重启影响矩阵（示意）</h2>
+<table class="matrix">
+  <thead><tr><th>操作</th><th>对已装转发的影响</th><th>对新配置的影响</th><th>产品定义要写什么</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>重启 telemetry / snmp</td>
+      <td>通常不影响</td>
+      <td>不影响转发配置</td>
+      <td>可观测短暂缺口的告警说明</td>
+    </tr>
+    <tr>
+      <td>重启 teamd</td>
+      <td>可能影响 LAG 成员收敛</td>
+      <td>PortChannel 相关变更延迟</td>
+      <td>是否允许在线重启、回退步骤</td>
+    </tr>
+    <tr>
+      <td>重启 FRR/fpm</td>
+      <td>BGP 邻居可能重连、路由收敛</td>
+      <td>协议配置重算</td>
+      <td>收敛时间指标与客户沟通口径</td>
+    </tr>
+    <tr>
+      <td>重启 orchagent</td>
+      <td>取决于 warm/fast 与实现；可能重编程</td>
+      <td>配置处理中断</td>
+      <td>是否支持及窗口；失败如何取证</td>
+    </tr>
+    <tr>
+      <td>重启 syncd</td>
+      <td>高风险；SAI/ASIC 交互中断</td>
+      <td>下发中断</td>
+      <td>通常仅维护窗口；必须有回退</td>
+    </tr>
+    <tr>
+      <td>重启 database</td>
+      <td>极高风险</td>
+      <td>全链路依赖</td>
+      <td>禁止随意重启；灾备与恢复手册</td>
+    </tr>
+  </tbody>
+</table>
+<div class="callout"><strong>培训要求：</strong>能画出「CONFIG_DB → orchagent → ASIC_DB → syncd → ASIC」并说出每一环的取证命令/日志位置；不要求学员在无实验环境时操作生产。</div>
+
+<h2>真实样例：版本锁定声明（示意）</h2>
+<pre class="code-sample"><code>社区基线：202311
+厂商发行版：Example-SONiC 4.2.1（构建 2026-08-01）
+平台：ODM-A / HW-SKU: A-48X / 板卡 B1.3
+SAI：vendor-sai 3.x.y   内核：5.10.xxx
+orchagent/syncd：与镜像同构建
+证据：内部报告 R-2026-0815  Owner：张三</code></pre>
+
+<h2>多仓库依赖怎么进物料清单</h2>
 <ul>
-  <li>社区基线 → 平台插件 → 目标镜像的依赖链要与发布节奏对齐，避免「插件已升、镜像未跟」。</li>
-  <li>补丁物料清单（BOM）：每个补丁的来源 PR、优先级、冲突风险、回退方式。</li>
-  <li>升级与回退必须写进版本定义：失败恢复步骤、数据保全、时间窗口。</li>
+  <li>sonic-buildimage：镜像组装、构建参数、产物哈希</li>
+  <li>sonic-swss：OrchAgent 与 SAI/平台插件兼容版本</li>
+  <li>sonic-sairedis / syncd：SAI 头文件与厂商库版本</li>
+  <li>sonic-utilities：CLI 与镜像同版本</li>
+  <li>平台插件 / BSP：板卡版本矩阵</li>
 </ul>
 
-<h2>公开架构图怎么用（和不能怎么用）</h2>
-<p>公开架构图与流程可以成为验证问题的输入（例如：遥测挂哪个库、重启哪个容器影响业务），但不能绕过版本和平台门禁。问「这张图对应的版本号与板卡是什么」，而不是「图画得很全所以支持」。</p>
+<h2>分支与发布节奏</h2>
+<ul>
+  <li>社区基线 → 平台插件 → 目标镜像的依赖链要与发布节奏对齐。</li>
+  <li>补丁物料清单（BOM）：来源 PR、优先级、冲突风险、回退方式。</li>
+  <li>升级与回退写进版本定义：失败恢复、数据保全、时间窗口。</li>
+</ul>
 
 <h2>核对问题</h2>
 <ol>
@@ -94,16 +257,22 @@ const tracks = [
   <li>patch BOM 是否锁定？谁负责合并冲突？</li>
   <li>多仓依赖进入 BOM 的机制是手工还是流水线？</li>
   <li>升级失败时回退到哪一版？谁演练过？</li>
+  <li>哪些容器重启允许在线做？依据是什么？</li>
 </ol>
 
 <h2>本阶段产出</h2>
 <ul>
-  <li>分支与发布节奏图。</li>
-  <li>补丁物料清单。</li>
-  <li>升级/回退策略一页纸。</li>
+  <li>分支与发布节奏图 + 补丁 BOM + 升级/回退策略。</li>
+  <li>目标镜像的容器清单与重启策略表。</li>
+  <li>CONFIG_DB 关键表与本项目配置片段的对应说明。</li>
 </ul>
 `,
-    side: `<div class="panel"><h2>本阶段产出</h2><ul><li>分支与发布节奏图</li><li>补丁物料清单</li><li>升级/回退策略</li></ul></div>`,
+    side: `<div class="panel"><h2>本阶段产出</h2><ul><li>分支与发布节奏图</li><li>补丁物料清单</li><li>升级/回退策略</li><li>容器与重启策略</li></ul></div>
+<div class="panel"><h2>外链</h2><ul>
+  <li><a href="https://sonic.readthedocs.io/" target="_blank" rel="noopener">官方文档</a></li>
+  <li><a href="https://github.com/sonic-net/sonic-swss" target="_blank" rel="noopener">sonic-swss</a></li>
+  <li><a href="feature-map.html">功能特性地图</a></li>
+</ul></div>`,
   },
   {
     file: 'track-03.html', num: '03', nav: 'track-03',
@@ -140,6 +309,26 @@ const tracks = [
   <li>本地网管与云网管：安全隔离、证书轮换、断网离线自治差异。</li>
   <li>Syslog、告警字段是否能进客户工单系统。</li>
 </ul>
+
+<h2>真实样例：异常用例行（示意）</h2>
+<table class="matrix">
+  <thead><tr><th>用例</th><th>步骤摘要</th><th>通过标准</th><th>证据</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>BGP 邻居震荡恢复</td>
+      <td>反复 shut/no shut 邻居 10 次，间隔 5s</td>
+      <td>每次收敛时间 ≤ 约定秒数；无残留黑洞</td>
+      <td>show ip bgp summary 时间戳 + 流量曲线</td>
+    </tr>
+    <tr>
+      <td>端口闪断</td>
+      <td>物理闪断 1s / 30s 两档</td>
+      <td>业务恢复时间达标；告警可进工单字段</td>
+      <td>syslog + 接口计数</td>
+    </tr>
+  </tbody>
+</table>
+<p class="sample-cap">样例：报告行应能直接进验收表，而不是「测试通过」四个字。</p>
 
 <h2>核对问题</h2>
 <ol>
@@ -185,6 +374,14 @@ const tracks = [
   </tbody>
 </table>
 
+<h2>真实样例：贡献与版本对应（示意）</h2>
+<pre class="code-sample"><code>PR: sonic-net/sonic-swss #12345  标题：…（示例）
+合并：进入社区 202311
+本产品镜像：Example-SONiC 4.2.1 已包含对应 commit abc123
+回归：相关用例通过（报告编号 R-…）
+已知限制：在 HW-SKU B 上不适用
+Owner：赵六</code></pre>
+
 <h2>核对问题</h2>
 <ol>
   <li>我们对上游的贡献，能否列出进入主线的 PR 与版本？</li>
@@ -228,6 +425,14 @@ const tracks = [
   <li>资料或镜像一更新，旧结论自动失效并提示复核——避免拿旧事实冒充新事实。</li>
   <li>「清除确认」应保留覆盖前快照，便于审计。</li>
 </ul>
+
+<h2>真实样例：定型表一行（示意）</h2>
+<pre class="code-sample"><code>字段：EVPN/VXLAN L3 对称路径
+四态：待复核
+证据：待补报告链接
+负责人：钱七
+风险签字人：孙八（接受「未在目标拓扑验证」）
+基线哈希：规格书 S-2026-03 若变更则本行失效</code></pre>
 
 <h2>核对问题</h2>
 <ol>
@@ -273,6 +478,16 @@ const tracks = [
   <li>返修与停产：EOL/变更通知提前期是否写入。</li>
   <li>生命周期预警如何回流到产品路线与备件策略——不是售后单方面的事。</li>
 </ul>
+
+<h2>真实样例：报价表拆行（示意）</h2>
+<table class="matrix">
+  <thead><tr><th>行项目</th><th>写法</th><th>不要写成</th></tr></thead>
+  <tbody>
+    <tr><td>镜像来源</td><td>基于社区 202311 的 Example-SONiC 4.2.1</td><td>最新 SONiC</td></tr>
+    <tr><td>CVE 责任</td><td>发行版提供通告，窗口 ≤ X 个工作日</td><td>社区会修</td></tr>
+    <tr><td>硬件 RMA</td><td>按整机合同条款编号</td><td>SONiC 负责</td></tr>
+  </tbody>
+</table>
 
 <h2>商业化网关（放行条件）</h2>
 <ul>

@@ -21,7 +21,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span class="brand-title">SONiC PM <span class="lite">Atlas</span></span>
     </a>
-    <span class="ver-badge">v2.0.0</span>
+    <span class="ver-badge">v2.0.1</span>
 
     <nav class="primary-nav" id="primaryNav" aria-label="主导航">
       <a href="index.html" data-nav="home">首页</a>
@@ -32,6 +32,8 @@
       <a href="track-04.html" data-nav="track-04">社区</a>
       <a href="track-05.html" data-nav="track-05">定型</a>
       <a href="track-06.html" data-nav="track-06">商业化</a>
+      <a href="feature-map.html" data-nav="feature-map">功能地图</a>
+      <a href="ecosystem.html" data-nav="ecosystem">版本生态</a>
       <a href="glossary.html" data-nav="glossary">术语</a>
       <a href="checklist.html" data-nav="checklist">核验包</a>
       <a href="cases.html" data-nav="cases">案例</a>
@@ -92,6 +94,16 @@
 </ul>
 <div class="callout"><strong>网关：</strong>生态声明不能替代型号级 HCL。评审必须追到准确型号、端口/分拆模式、光模块、镜像、BIOS/CPLD、温度/气流、RMA 与测试报告。</div>
 
+<h2>真实样例：HCL 行与证据列（示意）</h2>
+<table class="matrix">
+  <thead><tr><th>型号 / 板卡</th><th>光模块</th><th>速率/距离</th><th>镜像版本</th><th>证据</th><th>负责人</th></tr></thead>
+  <tbody>
+    <tr><td>ODM-A / B1.3</td><td>厂商 X 25G SR</td><td>25G / 100m MMF</td><td>4.2.1</td><td>实验室互通表 E-112</td><td>李四</td></tr>
+    <tr><td>ODM-A / B1.3</td><td>厂商 Y 100G DAC 3m</td><td>100G / 机柜内</td><td>4.2.1</td><td>待复核（缺报告号）</td><td>王五</td></tr>
+  </tbody>
+</table>
+<p class="sample-cap">样例：兼容矩阵必须带证据与负责人；「待复核」不能写成「已兼容」。</p>
+
 <h2>核对问题（周会上直接用）</h2>
 <ol>
   <li>目标 SKU 的板级版本与固件基线是什么？谁签字冻结？</li>
@@ -144,7 +156,7 @@
         <a href="day-03.html">← 第 3 天 · 试点验收</a>
         <a href="track-02.html">能力线 02 →</a>
       </nav>
-      <footer class="site-footer">SONiC PM Atlas v2.0.0 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
+      <footer class="site-footer">SONiC PM Atlas v2.0.1 · 结论要能对上版本、型号、证据和负责人 · <a href="changelog.html">更新日志</a></footer>
     </div>
   </main>
   <script src="js/app.js" defer></script>
