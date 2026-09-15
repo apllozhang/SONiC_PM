@@ -91,6 +91,7 @@ track-01.html …            六条能力线
 glossary.html              术语与参数四态
 checklist.html             产品定型核验包
 cases.html                 厂商案例拆解
+review/                    内容评审意见（index + 评审 md，部署时随 site 发布）
 css/                       ALE 令牌与组件样式
 js/app.js                  主题 + 移动端导航
 scripts/content-days.js    Day 正文真源

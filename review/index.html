@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>内容评审意见 · 2026-09-15 · SONiC PM Atlas</title>
+  <style>
+    :root { --brand:#6b489d; --ink:#1f2430; --line:#e3e0ea; --soft:#f6f4fa; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif; color:var(--ink); background:#fbfafd; line-height:1.75; }
+    .wrap { max-width:920px; margin:0 auto; padding:40px 24px 80px; }
+    header.page { border-bottom:3px solid var(--brand); padding-bottom:18px; margin-bottom:28px; }
+    .kicker { color:var(--brand); font-weight:700; letter-spacing:.06em; font-size:13px; margin:0 0 6px; }
+    h1 { font-size:26px; margin:0 0 10px; }
+    h2 { font-size:19px; margin:34px 0 10px; padding-left:10px; border-left:4px solid var(--brand); }
+    h3 { font-size:16px; margin:22px 0 8px; }
+    table { border-collapse:collapse; width:100%; margin:12px 0; background:#fff; font-size:14px; }
+    th, td { border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+    th { background:var(--soft); }
+    code { background:var(--soft); padding:1px 5px; border-radius:4px; font-size:.92em; }
+    ul, ol { padding-left:22px; }
+    li { margin:4px 0; }
+    .meta { font-size:13px; color:#5a5f6e; background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px 16px; }
+    .callout { background:#f3eefb; border:1px solid #d9cdee; border-radius:8px; padding:12px 16px; margin:16px 0; }
+    .tagline { display:inline-block; background:var(--soft); border:1px solid var(--line); border-radius:999px; padding:2px 12px; font-size:12px; margin:2px 6px 2px 0; }
+    a { color:var(--brand); }
+    footer { margin-top:48px; font-size:12px; color:#8a8f9c; border-top:1px solid var(--line); padding-top:14px; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page">
+    <p class="kicker">SONiC PM Atlas · /review/</p>
+    <h1>内容评审意见（2026-09-15）</h1>
+    <div>
+      <span class="tagline">评审对象：全站 12 页</span>
+      <span class="tagline">读者定位：产品经理 + 售前 + 测试</span>
+      <span class="tagline">用途：新人培训 + 成长梯度</span>
+    </div>
+  </header>
+
+  <div class="meta">
+    <strong>评审方式</strong>：新任产品经理视角全站通读（正文逐页提取核对，JS 已确认无隐藏动态内容）。<br>
+    <strong>源文件</strong>：<a href="2026-09-15-content-review.md">2026-09-15-content-review.md</a>（本页为其渲染版，供开发 AI 直接读取）。
+  </div>
+
+  <h2>一、总体结论</h2>
+  <p>方法论扎实，知识本体偏薄。全站正文合计约 1 万字，平均每条能力线仅 400–1000 字，一小时可通读完毕。作为「上岗第一周方法论手册」够用且质量高；作为支撑「新人培训 + 三类读者 + 成长梯度」的知识站，内容量与深度均不足，「12 周」路线的中间材料大半缺位。</p>
+
+  <h2>二、应保留的优点</h2>
+  <ol>
+    <li>「支持」四层责任地图（芯片 / 平台 / 镜像 / 服务），切中「生态声明 ≠ 型号级 HCL」这一最大误区；</li>
+    <li>工具页实用：参数四态（有值 / 待复核 / 未披露 / 抽取失败）、核验包 10 字段、证据五要素、案例页六层追问，可直接用于会议；</li>
+    <li>学习闭环完整：每页有检查点、产出清单、周会可用的核对问题。</li>
+  </ol>
+
+  <h2>三、按确认后定位的具体缺口</h2>
+
+  <h3>A. 面向三类读者的分层缺口</h3>
+  <p>现有内容全部按 PM 视角撰写。售前需要「客户常见问题应答口径、竞品对比要点、案例库」；测试需要「用例设计要点、指标基线、测试床搭建指南」——站内均无。<br><strong>建议</strong>：同一知识底座上建角色导航（PM / 售前 / 测试三条学习路径），每条能力线标注「按角色读法」与各角色产出。</p>
+
+  <h3>B. 新人培训用途的缺口</h3>
+  <ul>
+    <li>无自测题与通过标准：现检查点为定性描述，培训组织者无法判分；</li>
+    <li>无学习进度跟踪、无练习参考答案；</li>
+    <li>无「第 0 天」入口：环境准备、所需权限账号、遇到问题找谁。</li>
+  </ul>
+  <p><strong>建议</strong>：每页补 3–5 道自测题（答案可折叠）；关键页加动手任务的验收标准；首页加培训使用说明（周期、考核方式、结业标准）。</p>
+
+  <h3>C. 成长梯度的缺口</h3>
+  <p>站点声称「12 周建立产品判断力」，但实际只有每两周一页的任务卡，知识密度撑不起 12 周节奏。<br><strong>建议</strong>：显式定义 L1–L3 能力等级（示例：L1 能核验外部材料 → L2 能主导定型评审 → L3 能定产品路线与生态策略），每级配知识清单、任务与考核证据；现有内容明确标注为 L1。</p>
+
+  <h3>D. SONiC 知识本体的缺口（最大短板）</h3>
+  <ol>
+    <li><strong>架构线过薄</strong>（正文约 760 字）：仅覆盖 CONFIG_DB → OrchAgent → SAI → syncd 主链一小段。缺：容器全景（orchagent、FRR、teamd、telemetry、snmp、syncd 等各自职责）、APP_DB / STATE_DB / CONFIG_DB 关键表速查、warm-reboot / fast-reboot 机制、「哪些容器重启不影响业务」的重启矩阵。</li>
+    <li><strong>功能特性地图空白</strong>：L2（VLAN / STP / LAG / MCLAG）、L3 与 BGP（FRR）、EVPN / VXLAN、QoS / ACL、DHCP、SNMP / gNMI 遥测、PortChannel 等均无系统条目。EVPN 只作为「要拆场景」出现。应每项配齐：社区仓库 → 容器 → 关键 DB 表 → 配置入口 → 验证命令。</li>
+    <li><strong>零真实样例</strong>：无 config_db.json 片段、无 CLI 与 show 命令示例、无测试报告样例；全站无一张内容配图（纯文字 + 表格）。PM 可不亲手配置，但必须能读懂研发给的配置与测试报告。</li>
+    <li><strong>版本与生态坐标系缺失</strong>：全站反复要求「结论对上版本」，却没有页面讲社区 release 节奏与命名规则、主要商业发行版格局、主流 ASIC（Tomahawk / Trident / Prestera / Spectrum 等）与白牌整机对照。案例页提及的名词均点到为止。</li>
+    <li><strong>零外部链接</strong>：无 SONiC 官方文档（sonic.readthedocs.io）、GitHub 组织、OCP 社区入口。「社区与上游」能力线不给社区地址，属硬伤。</li>
+  </ol>
+
+  <h3>E. 站点维护机制问题</h3>
+  <ul>
+    <li>版本号不一致：首页标 v1.0，内容页标 v1.1；</li>
+    <li>无更新日志（changelog）、无内容负责人、无页面评审日期——与站点自身强调的「基线哈希变化自动失效复核」原则不符；</li>
+    <li>无站内搜索、无完整目录页（sitemap）。</li>
+  </ul>
+
+  <h2>四、建议改造清单（按优先级）</h2>
+  <table>
+    <thead><tr><th style="width:70px">优先级</th><th>事项</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="3"><strong>P0</strong><br>培训可用性</td><td>1. 统一全站版本号；新增 CHANGELOG 页与「内容 Owner + 最近评审日期」列；</td></tr>
+      <tr><td>2. 每页补 3–5 道自测题（含可折叠答案）与动手任务验收标准；</td></tr>
+      <tr><td>3. 首页加三类读者导航（PM / 售前 / 测试）与培训使用说明（周期、考核、结业标准）。</td></tr>
+      <tr><td rowspan="4"><strong>P1</strong><br>知识底座</td><td>4. 架构线扩容：容器全景图 + Redis DB 关键表速查 + 容器重启影响矩阵；</td></tr>
+      <tr><td>5. 新增「功能特性地图」页：功能 × 仓库 × 容器 × DB 表 × 验证命令；</td></tr>
+      <tr><td>6. 新增「版本与生态坐标系」页：release 节奏、商业发行版对照、ASIC / 白牌矩阵，附官方文档与社区外链；</td></tr>
+      <tr><td>7. 每条能力线至少补 1 个真实样例（配置片段、测试报告节选、HCL 行示例）。</td></tr>
+      <tr><td rowspan="3"><strong>P2</strong><br>梯度与运营</td><td>8. 定义 L1–L3 能力等级与对应考核证据，映射到 12 周路线；</td></tr>
+      <tr><td>9. 案例页扩容：每类案例补售前应答口径与测试用例要点；</td></tr>
+      <tr><td>10. 新增 FAQ 页，从各页「核对问题」沉淀；补全站目录页与站内搜索。</td></tr>
+    </tbody>
+  </table>
+
+  <h2>五、评审边界说明</h2>
+  <p>本评审基于 2026-09-15 抓取的站点快照，仅针对内容规划与知识覆盖，不涉及视觉与代码质量；文中功能与生态条目为方向性建议，具体条目应对照 SONiC 官方文档与公司产品线实际情况核实后落地。</p>
+
+  <footer>SONiC PM Atlas · /review/ · 评审意见由产品经理主导、AI 辅助全站核对 · 2026-09-15</footer>
+</div>
+</body>
+</html>
