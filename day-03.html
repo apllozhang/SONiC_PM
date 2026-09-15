@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#6b489d">
-  <meta name="description" content="SONiC 产品试点验收门禁、交付包与商业化支持边界。">
-  <title>Day 03 试点验收 · SONiC PM Atlas</title>
+  <meta name="description" content="SONiC 产品试点验收清单、交付包和支持边界怎么定。">
+  <title>第 3 天 · 试点验收 · SONiC PM Atlas</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
@@ -47,46 +47,46 @@
   <div class="nav-scrim" id="navScrim" hidden></div>
   <main class="main" id="main" tabindex="-1">
     <div class="container">
-<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="day-01.html">3 天入门</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Day 03</span></nav>
+<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="day-01.html">3 天入门</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">第 3 天</span></nav>
       <header class="page-header">
-        <p class="section-kicker">Foundation / Day 03</p>
-        <h1>试点验收：让结论能交付、能追责</h1>
-        <p class="page-lead">试点不是演示。交付包、验收矩阵、支持 SLA、生命周期预警，要在试点阶段就写进产品定义，而不是上线后补。</p>
-        <div class="meta-row"><span class="tag ">Day 03</span><span class="tag ">试点验收</span><span class="tag warn">商业化</span></div>
+        <p class="section-kicker">入门 / 第 3 天</p>
+        <h1>试点验收：结论要能交付、能追责</h1>
+        <p class="page-lead">试点不是演示。交付包、验收表、服务级别、生命周期预警，要在试点阶段就写进产品定义，不能等上线后再补。</p>
+        <div class="meta-row"><span class="tag ">第 3 天</span><span class="tag ">试点验收</span><span class="tag warn">商业化</span></div>
       </header>
       <div class="content-grid">
         <article class="prose">
 
-<h2>试点门禁清单</h2>
+<h2>试点检查清单</h2>
 <ul>
-  <li>目标拓扑与规模：是否覆盖客户真实组网，而非实验室简化拓扑。</li>
-  <li>负向条件：MAC 泛洪、BGP 震荡、端口瞬断、PFC 风暴的收敛耗时。</li>
-  <li>交付包：整机、NOS、光模块与服务是否同一基线交付。</li>
-  <li>升级/回退：窗口、失败恢复、数据保全是否演练过。</li>
-  <li>支持边界：TAC/L3、补丁周期、RMA 与 EOL 预警是否写入合同。</li>
+  <li>拓扑与规模：是否覆盖客户真实组网，而不是实验室简化环境。</li>
+  <li>异常场景：MAC 泛洪、BGP 震荡、端口闪断、PFC 风暴下的恢复时间。</li>
+  <li>交付包：整机、NOS、光模块与服务是否同一基线出厂/交付。</li>
+  <li>升级与回退：窗口、失败恢复、数据保全是否演练过。</li>
+  <li>支持边界：技术支持层级、补丁周期、返修与停产预警是否写进合同。</li>
 </ul>
 <h2>从社区代码到可交付版本</h2>
-<p>最小证据链通常包括：社区分支基线、必要 PR 选择、CI/CT、平台验证、缺陷关闭记录、发布门禁。它是方法案例，不是任一 release 的公开支持清单——对外材料里要写清边界。</p>
+<p>最小证据链通常包括：社区分支基线、必要补丁取舍、持续集成与测试、平台验证、缺陷关闭记录、发布门禁。这是方法示例，不是任一正式版本的公开支持清单——对外材料里要把边界写清楚。</p>
 
         </article>
         <aside class="side-panel">
 
 <div class="panel">
-  <h2>试点输出</h2>
+  <h2>试点产出</h2>
   <ul>
-    <li>验收矩阵（满足 / 不满足 / 未知）</li>
+    <li>验收表（满足 / 不满足 / 未知）</li>
     <li>交付包基线清单</li>
-    <li>风险与 Owner 表</li>
-    <li>是否放行试点扩展</li>
+    <li>风险与负责人表</li>
+    <li>是否放量扩大试点</li>
   </ul>
 </div>
         </aside>
       </div>
       <nav class="page-nav" aria-label="上一页下一页">
-        <a href="day-02.html">← Day 02 功能证据</a>
+        <a href="day-02.html">← 第 2 天 · 功能证据</a>
         <a href="track-01.html">进入供应链能力线 →</a>
       </nav>
-      <footer class="site-footer">SONiC PM Atlas · 结论必须回到版本 / SKU / 证据 / Owner</footer>
+      <footer class="site-footer">SONiC PM Atlas · 结论要能对上版本、型号、证据和负责人</footer>
     </div>
   </main>
   <script src="js/app.js" defer></script>

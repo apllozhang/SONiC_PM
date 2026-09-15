@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#6b489d">
-  <meta name="description" content="把 SONiC 功能清单改写成可验收证据：DUT、拓扑、版本、日志与 Owner。">
-  <title>Day 02 功能证据 · SONiC PM Atlas</title>
+  <meta name="description" content="把 SONiC 功能清单写成可验收的证据：设备、拓扑、版本、日志和负责人。">
+  <title>第 2 天 · 功能证据 · SONiC PM Atlas</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
@@ -47,55 +47,55 @@
   <div class="nav-scrim" id="navScrim" hidden></div>
   <main class="main" id="main" tabindex="-1">
     <div class="container">
-<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="day-01.html">3 天入门</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Day 02</span></nav>
+<nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="day-01.html">3 天入门</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">第 2 天</span></nav>
       <header class="page-header">
-        <p class="section-kicker">Foundation / Day 02</p>
+        <p class="section-kicker">入门 / 第 2 天</p>
         <h1>功能证据：从功能名到可验收场景</h1>
-        <p class="page-lead">“支持 RoCE/EVPN”不能直接进定型表。要写成拓扑、拥塞、故障、升级条件下的证据，并绑定版本、配置、日志、Owner 与风险接受人。</p>
-        <div class="meta-row"><span class="tag ">Day 02</span><span class="tag ">功能证据</span><span class="tag ok">四态语义</span></div>
+        <p class="page-lead">“支持 RoCE/EVPN”不能直接写进定型表。要写清楚在什么拓扑、什么拥塞、什么故障、什么升级条件下验证过，并绑定版本、配置、日志、负责人和风险签字人。</p>
+        <div class="meta-row"><span class="tag ">第 2 天</span><span class="tag ">功能证据</span><span class="tag ok">参数四态</span></div>
       </header>
       <div class="content-grid">
         <article class="prose">
 
-<h2>证据模板</h2>
+<h2>证据怎么写</h2>
 <table class="matrix">
-  <thead><tr><th>字段</th><th>要写清楚什么</th><th>常见错误</th></tr></thead>
+  <thead><tr><th>字段</th><th>要写清楚</th><th>常见问题</th></tr></thead>
   <tbody>
-    <tr><td>DUT / ASIC</td><td>目标 SKU、芯片族、板卡版本</td><td>只写芯片型号</td></tr>
-    <tr><td>拓扑 / 负载</td><td>DUT+Fanout+流量仪，速率、队列、缓冲</td><td>用功能清单代替测试床</td></tr>
-    <tr><td>条件</td><td>拥塞、故障、升级/回退、光模块组合</td><td>只报 happy path</td></tr>
-    <tr><td>证据</td><td>日志、配置、报告页码、SHA、链接</td><td>口头结论、截图无版本</td></tr>
-    <tr><td>责任</td><td>Owner、风险接受人、补丁窗口</td><td>无人签字的“已支持”</td></tr>
+    <tr><td>被测设备 / 芯片</td><td>目标型号、芯片系列、板卡版本</td><td>只写芯片型号</td></tr>
+    <tr><td>拓扑 / 负载</td><td>被测设备 + 交换机 + 流量仪，速率、队列、缓冲</td><td>用功能清单代替测试环境</td></tr>
+    <tr><td>条件</td><td>拥塞、故障、升级/回退、光模块组合</td><td>只测顺利路径</td></tr>
+    <tr><td>证据</td><td>日志、配置、报告页码、哈希、链接</td><td>口头结论、截图不带版本</td></tr>
+    <tr><td>责任</td><td>负责人、风险签字人、补丁窗口</td><td>没人签字的「已支持」</td></tr>
   </tbody>
 </table>
-<h2>四态语义（不许弱化）</h2>
+<h2>参数四态（语义不可弱化）</h2>
 <ul>
-  <li><strong>有值</strong>：原文引用已核验，可回溯。</li>
-  <li><strong>待复核</strong>：机器推测或未过原文校验，必须人工核对。</li>
-  <li><strong>未披露</strong>：公开材料没写，不代表不支持。</li>
+  <li><strong>有值</strong>：原文已核对，可回溯。</li>
+  <li><strong>待复核</strong>：系统推测或未对过原文，必须人工再核。</li>
+  <li><strong>未披露</strong>：公开材料没写，不等于不支持。</li>
   <li><strong>抽取失败</strong>：解析失败，不等于功能不存在。</li>
 </ul>
-<div class="callout"><strong>对比检查：</strong>测试覆盖点不能替代吞吐、时延、收敛、无损、规模或跨光模块组合的验收结论。</div>
+<div class="callout"><strong>注意：</strong>写了测试覆盖点，不能代替吞吐、时延、收敛、无损、规模或跨光模块组合的验收结论。</div>
 
         </article>
         <aside class="side-panel">
 
 <div class="panel">
-  <h2>Claim Gate</h2>
+  <h2>声明门禁</h2>
   <ul class="gate-list">
-    <li><span class="gate-dot"></span><span>SKU 已写明</span></li>
-    <li><span class="gate-dot"></span><span>Version 已锁定</span></li>
-    <li><span class="gate-dot ok"></span><span>Evidence 可打开</span></li>
-    <li><span class="gate-dot warn"></span><span>Owner 已签字</span></li>
+    <li><span class="gate-dot"></span><span>型号已写明</span></li>
+    <li><span class="gate-dot"></span><span>版本已锁定</span></li>
+    <li><span class="gate-dot ok"></span><span>证据链接可打开</span></li>
+    <li><span class="gate-dot warn"></span><span>负责人已签字</span></li>
   </ul>
 </div>
         </aside>
       </div>
       <nav class="page-nav" aria-label="上一页下一页">
-        <a href="day-01.html">← Day 01 产品地图</a>
-        <a href="day-03.html">Day 03 试点验收 →</a>
+        <a href="day-01.html">← 第 1 天 · 产品地图</a>
+        <a href="day-03.html">第 3 天 · 试点验收 →</a>
       </nav>
-      <footer class="site-footer">SONiC PM Atlas · 结论必须回到版本 / SKU / 证据 / Owner</footer>
+      <footer class="site-footer">SONiC PM Atlas · 结论要能对上版本、型号、证据和负责人</footer>
     </div>
   </main>
   <script src="js/app.js" defer></script>

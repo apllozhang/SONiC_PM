@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#6b489d">
-  <meta name="description" content="目标版本的分支策略、patch BOM 与多仓依赖是否锁定？没有版本工程，就没有可服务的产品。">
+  <meta name="description" content="目标版本的分支策略、补丁清单和多仓库依赖是否锁定？没有版本工程，就没有可长期服务的产品。">
   <title>02 架构与版本工程 · SONiC PM Atlas</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css">
@@ -49,32 +49,32 @@
     <div class="container">
 <nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep" aria-hidden="true">/</span><a href="index.html#capability-map">能力线</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">架构与版本工程</span></nav>
       <header class="page-header">
-        <p class="section-kicker">Full-Stack / 第 3–4 周</p>
+        <p class="section-kicker">12 周能力线 / 第 3–4 周</p>
         <h1>02 · 架构与版本工程</h1>
-        <p class="page-lead">目标版本的分支策略、patch BOM 与多仓依赖是否锁定？没有版本工程，就没有可服务的产品。</p>
+        <p class="page-lead">目标版本的分支策略、补丁清单和多仓库依赖是否锁定？没有版本工程，就没有可长期服务的产品。</p>
         <div class="meta-row"><span class="tag ">第 3–4 周</span><span class="tag info">能力线</span></div>
       </header>
       <div class="content-grid">
         <article class="prose">
 
-<h2>训练重点</h2>
+<h2>学习重点</h2>
 <ul>
-  <li>社区 ref → 平台插件 → 目标镜像的依赖链与发布列车同步。</li>
-  <li>多仓依赖（sonic-buildimage / swss / sairedis / utilities）如何进入 BOM。</li>
-  <li>升级与回退路径：失败恢复是否进入版本定义。</li>
+  <li>社区基线 → 平台插件 → 目标镜像的依赖链，如何与发布节奏对齐。</li>
+  <li>多仓库依赖（sonic-buildimage / swss / sairedis / utilities）如何进入物料清单。</li>
+  <li>升级与回退：失败恢复是否写进版本定义。</li>
 </ul>
-<div class="callout"><strong>注意：</strong>公开架构图与流程可以成为验证问题的输入，不能绕过版本和平台门禁。</div>
+<div class="callout"><strong>注意：</strong>公开架构图和流程可以用来提出验证问题，但不能绕过版本门禁和平台门禁。</div>
 
         </article>
         <aside class="side-panel">
-<div class="panel"><h2>输出</h2><ul><li>分支与发布列车图</li><li>patch BOM</li><li>升级/回退策略</li></ul></div>
+<div class="panel"><h2>本阶段产出</h2><ul><li>分支与发布节奏图</li><li>补丁物料清单</li><li>升级/回退策略</li></ul></div>
         </aside>
       </div>
       <nav class="page-nav" aria-label="上一页下一页">
-        <a href="track-01.html">← Track 01</a>
-        <a href="track-03.html">Track 03 →</a>
+        <a href="track-01.html">← 能力线 01</a>
+        <a href="track-03.html">能力线 03 →</a>
       </nav>
-      <footer class="site-footer">SONiC PM Atlas · 结论必须回到版本 / SKU / 证据 / Owner</footer>
+      <footer class="site-footer">SONiC PM Atlas · 结论要能对上版本、型号、证据和负责人</footer>
     </div>
   </main>
   <script src="js/app.js" defer></script>
