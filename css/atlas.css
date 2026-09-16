@@ -799,6 +799,9 @@
   width: 100%;
   height: 340px;
 }
+.path-chart--radar {
+  height: 380px;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .capability-card, .path-strip a, .primary-nav, .topbar { transition: none !important; }
